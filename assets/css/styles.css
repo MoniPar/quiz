@@ -1,0 +1,100 @@
+/* * target all elements inc. pseudo */
+*, *::before, *::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* 10px of 16px (browser's font size) 1rem = 10px  */
+html {
+    font-size: 62.5%;
+}
+
+li { list-style-type: none;}
+a {text-decoration: none;}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(
+        to right,
+        #EF798A,
+        #EF899B,
+        #EF798A
+    );
+    font-family: 'Nova Square', cursive;
+    font-size: 1.6rem;
+    line-height: 1.1;
+}
+
+.home {
+    max-width: 350px;
+    width: 300px;
+    color: #20232E;
+    text-align: center;
+    margin: 2em auto;
+}
+
+h1 {
+    font-size: 5rem;
+    letter-spacing: 3px;
+    margin-bottom: .5em;
+}
+
+.logo {
+    display: block;
+    width: 250px;
+    height: 250px;
+    margin: 0 auto 1.5em;
+    border-bottom-left-radius: 40px;
+    border-top-right-radius: 40px;
+}
+
+.home p {
+    font-size: 2rem;
+    margin-bottom: .75em;
+}
+
+input[type="text"] {
+    width: 200px;
+    padding: .5em 1em;
+    margin: .5em auto 1.5em;
+    background-color: #ecabb5;
+    border-radius: 4px;
+    border: none;
+    font-size: 1.8rem;
+    color: #2D232E;
+}
+
+/* https://medium.com/codex/how-to-style-an-input-field-with-css-only-tips-and-techniques-e6a00e9dcc50 */
+.custom-field::after {
+    content: attr(aria-label);
+}
+
+.start-btn {
+    padding: .5em 1em;
+    background-color: #0E6BA8;
+    color: #fff;
+    letter-spacing: 2px;
+    border: 1px solid #2D232E;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(45, 35, 46, .5);
+    cursor: pointer;
+}
+
+.start-btn:hover,
+.start-btn:focus {
+    transform: scale(1.02);
+    transition: transform 250s;
+    color: #2D232E;
+    background-color: #B8EBD0;
+    box-shadow: 0 4px 15px rgba(45, 35, 46, .8);
+}
+
+.feedback {
+    width: 300px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.4rem;
+    color: #fff;
+    margin: 1.5em auto 1em;
+}
