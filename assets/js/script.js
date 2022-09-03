@@ -28,14 +28,38 @@ function validateUserInput(user) {
     return true;
 }
 
+/**
+ * Gets and stores user's input if validateUserInput 
+ * function is true
+ */
 function getUserName() {
 
     let user = username.value;
 
     if (validateUserInput(user)) {
-        alert('username validated');
-        console.log(user);
+        // alert('username validated');
+        // console.log(user);
+
+        // stores username in url 
+        window.location.replace('../../quiz.html?user='+user);
     }
+
+    return true;
+}
+
+/**
+ * Gets username value stored in url and redirects it to quiz.html
+ */
+function redirectUserName() {
+    // https://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
+    const params = new Proxy(new URLSearchParams(window.location.search), {
+        get: (searchParams, prop) => searchParams.get(prop),
+    });
+    // Get the value of "some_key" in eg "https://example.com/?some_key=some_value"
+    let user = params.user; // "user"
+
+    alert(user);
+    console.log(user);
 
     return true;
 }

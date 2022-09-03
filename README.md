@@ -92,7 +92,18 @@ The main goal of the online quiz game is to provide users with a challenging gam
 
 #### [HTML Validator](https://validator.w3.org/)
 
-index.html -> No Errors or Warnings to Show
+* index.html
+
+Warning: The type attribute is unnecessary for JavaScript resources.
+
+From line 46, column 5; to line 46, column 61
+```HTML
+<script src="assets/js/script.js" type="text/javascript"></script>
+```
+Solution: The type attribute was removed.
+
+* quiz.html
+
 
 #### [CSS Validator](https://jigsaw.w3.org/css-validator/)
 
