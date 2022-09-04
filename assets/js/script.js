@@ -115,6 +115,9 @@ let questions = [
     }
 ];
 
+
+// Some of the following code was adapted from https://simplestepscode.com/javascript-quiz-tutorial/
+
 /**
  * Generates the quiz: has helper functions which display questions, 
  * accept submissions and show results
@@ -135,7 +138,7 @@ function displayQuiz() {
                 // adds an HTML radio button
                 answers.push(
                     `<label>
-                        <input type="radio" name="question${questions[i]}" value="${letter}">
+                        <input type="radio" name="question${[i]}" value="${letter}">
                         ${questions[i].answers[letter]}
                     </label>`
                 );

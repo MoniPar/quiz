@@ -141,6 +141,10 @@ Solution: `<input type="submit">` submits the form data to the server and refres
 
 Solution: The else if statement was changed to `(user.length <= 4)`
 
+* The tutorial being followed for the Quiz display function did not use template literals which made the code difficult to read.  When template literals were attempted, the radio buttons innerHTML tag name's value displayed `name="question[object Object]"` in the HTML when the js expression `${questions[i]}` was added to the 'question' value. This meant that the question number was not being defined properly and could cause errors later.
+
+Solution: This was substituted by just `[i]`, since in this case 'i' represents each question in the array.   
+
 
 [Back to Top](#table-of-contents)
 
