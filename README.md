@@ -155,6 +155,11 @@ Solution: The else if statement was changed to `(user.length <= 4)`
 
 # Citation of Sources
 
+[How to redirect to a new page using Javascript](https://www.designcise.com/web/tutorial/how-to-redirect-to-another-web-page-using-javascript)
+
+[How to get string values from URL](https://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript)
+
+
 ## Content
 
 ## Media
