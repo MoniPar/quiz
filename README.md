@@ -143,7 +143,7 @@ Solution: The else if statement was changed to `(user.length <= 4)`
 
 * The tutorial being followed for the Quiz display function did not use template literals which made the code difficult to read.  When template literals were attempted, the radio buttons innerHTML tag name's value displayed `name="question[object Object]"` in the HTML when the js expression `${questions[i]}` was added to the 'question' value. This meant that the question number was not being defined properly and could cause errors later.
 
-Solution: This was substituted by just `[i]`, since in this case 'i' represents each question in the array.   
+Solution: This was substituted with `[i]`, since in this case 'i' represents each question in the array.   
 
 
 [Back to Top](#table-of-contents)
@@ -162,6 +162,8 @@ Solution: This was substituted by just `[i]`, since in this case 'i' represents 
 [How to redirect to a new page using Javascript](https://www.designcise.com/web/tutorial/how-to-redirect-to-another-web-page-using-javascript)
 
 [How to get string values from URL](https://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript)
+
+[How to shuffle an array of objects](https://www.webmound.com/shuffle-javascript-array/)
 
 
 ## Content

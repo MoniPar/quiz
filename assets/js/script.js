@@ -115,7 +115,6 @@ let questions = [
     }
 ];
 
-
 // Some of the following code was adapted from https://simplestepscode.com/javascript-quiz-tutorial/
 
 /**
@@ -123,6 +122,22 @@ let questions = [
  * accept submissions and show results
  */
 function displayQuiz() {
+
+    /**
+     * Shuffles the order of questions in the array of objects using the built in
+     * JS array sort() method which swaps one item with the next one, 
+     * takes a callback function which returns a random + or - number, 
+     */
+    function randomise(questions) {
+        // makes a new copy of the array using the JS spread operator
+        let questionsShuffled = [...questions]
+
+        return questionsShuffled.sort(() => 0.5 - Math.random());
+    };
+
+    console.log(randomise(questions));
+    
+
     // stores HTML output
     let output = [];
 
@@ -130,28 +145,29 @@ function displayQuiz() {
     for (let i = 0; i < questions.length; i++) {
             
         // stores list of possible answers
-            let answers = [];
+        let answers = [];
 
-            // iterates through list of available answers
-            for(letter in questions[i].answers) {
+        // iterates through list of available answers
+        for(letter in questions[i].answers) {
 
-                // adds an HTML radio button
-                answers.push(
-                    `<label>
-                        <input type="radio" name="question${[i]}" value="${letter}">
-                        ${questions[i].answers[letter]}
-                    </label>`
-                );
-            }
+            // adds an HTML radio button
+            answers.push(
+                `<label>
+                    <input type="radio" name="question${[i]}" value="${letter}">
+                    ${questions[i].answers[letter]}
+                </label>`
+            );
+        }
 
-            // adds the question and the answers to the output
-            output.push(
-                `<div class="question"> ${questions[i].question} </div>
-                <div class="answers"> ${answers.join('')} </div>`
+        // adds the question and the answers to the output
+        output.push(
+            `<div class="question"> ${questions[i].question} </div>
+            <div class="answers"> ${answers.join('')} </div>`
         );
 
     }
 
+    randomise(questions);
     quizContainer.innerHTML = output.join('');
         
 }
@@ -167,3 +183,16 @@ displayQuiz();
 
 // Shows results when Get Results Button is clicked
 submitBtn.addEventListener('click', showResults);
+
+
+// let shuffledQuestions = [];
+
+// for (let i in questions) {
+//     let randomIndex = Math.floor(Math.random() * questions.length);
+
+//     while(shuffledQuestions.includes(questions[randomIndex])) {
+//         randomIndex = Math.floor(Math.random() * questions.length);
+//     }
+//     shuffledQuestions[i] = questions[randomIndex];
+//     console.log(shuffledQuestions[i]);
+// }
