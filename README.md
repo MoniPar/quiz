@@ -143,8 +143,12 @@ Solution: The else if statement was changed to `(user.length <= 4)`
 
 * The tutorial being followed for the Quiz display function did not use template literals which made the code difficult to read.  When template literals were attempted, the radio buttons innerHTML tag name's value displayed `name="question[object Object]"` in the HTML when the js expression `${questions[i]}` was added to the 'question' value. This meant that the question number was not being defined properly and could cause errors later.
 
-Solution: This was substituted with `[i]`, since in this case 'i' represents each question in the array.   
+Solution: This was substituted with `[i]`, since in this case 'i' represents each question in the array.  
 
+* Uncaught TypeError: Cannot read properties of undefined (reading 'classList') at showExhibit 
+The element was referenced by its ID instead of class, therefore it could not add or remove another CSS class when needed to.
+
+Solution: A class attribute was added to the element so that the classList property was able to add/remove classes to/from the list.  
 
 [Back to Top](#table-of-contents)
 

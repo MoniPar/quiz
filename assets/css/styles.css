@@ -170,6 +170,27 @@ input[type="radio" i] {
     color: #B8EBD0;
 } */
 
+.quiz-container {
+    position: relative;
+    height: 75vh;
+    margin-top: 2em;
+}
+
+.exhibit {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 500ms ease-in-out;
+}
+
+.active-exhibit {
+    opacity: 1;
+    z-index: 2;
+}
+
 #submit {
     display: block;
     background-color: #0E6BA8;

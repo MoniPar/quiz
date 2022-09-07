@@ -1,10 +1,6 @@
 // Reference DOM Elements from index.html
 const username = document.getElementById("user-input");
 const feedback = document.getElementById("feedback");
-// Reference DOM Elements from quiz.html
-const quizContainer = document.getElementById("quiz");
-const resultsContainer = document.getElementById("results");
-const submitBtn = document.getElementById("submit");
 
 /**
  * Validates username inserted on the index.html(homepage)
@@ -67,6 +63,85 @@ function redirectUserName() {
    
 }
 
+
+// Some of the following code was adapted from https://simplestepscode.com/javascript-quiz-tutorial/
+
+/**
+ * Generates the quiz: has helper functions which display questions, 
+ * accept submissions and show results
+ */
+function displayQuiz() {
+
+    /**
+     * Shuffles the order of questions in the array of objects using the built in
+     * JS array sort() method which swaps one item with the next one, 
+     * takes a callback function which returns a random + or - number, 
+     */
+    function randomise(questions) {
+
+        return questions.sort(() => 0.5 - Math.random());
+    };
+
+    randomise(questions);
+    
+    // stores HTML output
+    let output = [];
+
+    // iterates through the array of questions
+    for (let i = 0; i < questions.length; i++) {
+            
+        // stores list of possible answers
+        let answers = [];
+
+        // iterates through list of available answers
+        for(letter in questions[i].answers) {
+
+            // adds an HTML radio button
+            answers.push(
+                `<label>
+                    <input type="radio" name="question${[i]}" value="${letter}">
+                    ${questions[i].answers[letter]}
+                </label>`
+            );
+        }
+
+        // adds the question and the answers to the output
+        output.push(
+            `
+            <div class="exhibit">
+            <div class="question"> ${questions[i].question} </div>
+            <div class="answers"> ${answers.join('')} </div>
+            </div>
+            `
+        );
+
+    }
+    // combines output list into one string of HTML and displays it on the page
+    quizContainer.innerHTML = output.join('');        
+}
+
+
+/**
+ * Runs when user clicks the Get results button
+ */
+function showResults() {}
+
+
+/**
+ * Shows one question at a time by hiding current question and showing
+ * new question.  
+ */
+function showExhibit(n) {
+    exhibits[currentExhibit].classList.remove('active-exhibit');
+    exhibits[n].classList.add('active-exhibit');
+    return currentExhibit = n;
+
+}
+
+// Reference DOM Elements from quiz.html
+const quizContainer = document.getElementById("quiz");
+const resultsContainer = document.getElementById("results");
+const submitBtn = document.getElementById("submit");
 // Array of quiz questions
 
 let questions = [
@@ -112,66 +187,16 @@ let questions = [
     }
 ];
 
-// Some of the following code was adapted from https://simplestepscode.com/javascript-quiz-tutorial/
-
-/**
- * Generates the quiz: has helper functions which display questions, 
- * accept submissions and show results
- */
-function displayQuiz() {
-
-    /**
-     * Shuffles the order of questions in the array of objects using the built in
-     * JS array sort() method which swaps one item with the next one, 
-     * takes a callback function which returns a random + or - number, 
-     */
-    function randomise(questions) {
-
-        return questions.sort(() => 0.5 - Math.random());
-    };
-
-    randomise(questions);
-    
-    // stores HTML output
-    let output = [];
-
-    // iterates through the array of questions
-    for (let i = 0; i < questions.length; i++) {
-            
-        // stores list of possible answers
-        let answers = [];
-
-        // iterates through list of available answers
-        for(letter in questions[i].answers) {
-
-            // adds an HTML radio button
-            answers.push(
-                `<label>
-                    <input type="radio" name="question${[i]}" value="${letter}">
-                    ${questions[i].answers[letter]}
-                </label>`
-            );
-        }
-
-        // adds the question and the answers to the output
-        output.push(
-            `<div class="question"> ${questions[i].question} </div>
-            <div class="answers"> ${answers.join('')} </div>`
-        );
-
-    }
-    // combines output list into one string of HTML and displays it on the page
-    quizContainer.innerHTML = output.join('');        
-}
-
-
-/**
- * Runs when user clicks the Get results button
- */
-function showResults() {}
-
 // shows quiz questions upon redirection to quiz.html
 displayQuiz();
+
+// Define variables and reference DOM Elements
+const preBtn = document.getElementById('previous');
+const postBtn = document.getElementById('next');
+const exhibits = document.getElementsByClassName('exhibit');
+let currentExhibit = 0;
+
+showExhibit(currentExhibit);
 
 // Shows results when Get Results Button is clicked
 submitBtn.addEventListener('click', showResults);
