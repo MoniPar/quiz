@@ -1,8 +1,7 @@
-console.log('Hello World!');
-
-// Reference DOM Elements
+// Reference DOM Elements from index.html
 const username = document.getElementById("user-input");
 const feedback = document.getElementById("feedback");
+// Reference DOM Elements from quiz.html
 const quizContainer = document.getElementById("quiz");
 const resultsContainer = document.getElementById("results");
 const submitBtn = document.getElementById("submit");
@@ -33,7 +32,7 @@ function validateUserInput(user) {
 
 /**
  * Gets and stores user's input if validateUserInput 
- * function is true and redirects to a quiz.html page
+ * function is true and redirects to quiz.html page
  */
 function getUserName() {
 
@@ -44,8 +43,7 @@ function getUserName() {
         // console.log(user);
 
         // redirects to quiz.html while storing username in url 
-        window.location.replace('../../quiz.html?user='+user);
-        
+        window.location.replace('../../quiz.html?user='+user);     
     }
    
     return true;
@@ -65,7 +63,6 @@ function redirectUserName() {
     // alert(user);
     console.log(user);
 
-    
     return true;
    
 }
@@ -129,15 +126,12 @@ function displayQuiz() {
      * takes a callback function which returns a random + or - number, 
      */
     function randomise(questions) {
-        // makes a new copy of the array using the JS spread operator
-        let questionsShuffled = [...questions]
 
-        return questionsShuffled.sort(() => 0.5 - Math.random());
+        return questions.sort(() => 0.5 - Math.random());
     };
 
-    console.log(randomise(questions));
+    randomise(questions);
     
-
     // stores HTML output
     let output = [];
 
@@ -166,10 +160,8 @@ function displayQuiz() {
         );
 
     }
-
-    randomise(questions);
-    quizContainer.innerHTML = output.join('');
-        
+    // combines output list into one string of HTML and displays it on the page
+    quizContainer.innerHTML = output.join('');        
 }
 
 
@@ -184,15 +176,3 @@ displayQuiz();
 // Shows results when Get Results Button is clicked
 submitBtn.addEventListener('click', showResults);
 
-
-// let shuffledQuestions = [];
-
-// for (let i in questions) {
-//     let randomIndex = Math.floor(Math.random() * questions.length);
-
-//     while(shuffledQuestions.includes(questions[randomIndex])) {
-//         randomIndex = Math.floor(Math.random() * questions.length);
-//     }
-//     shuffledQuestions[i] = questions[randomIndex];
-//     console.log(shuffledQuestions[i]);
-// }
