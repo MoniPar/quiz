@@ -23,9 +23,14 @@
         <div class="quiz-container">
             <div id="quiz"></div>
         </div>
-        <button id="previous">Previous</button>
-        <button id="next">Next</button>
-        <button id="submit">Get Results</button>
+        <div class="navigation-btns">
+            <button id="previous" aria-label="Previous Button" 
+            data-choice="prebtn" class="btn btn--prev">Previous</button>
+            <button id="next" aria-label="Next Button"
+            data-choice="postbtn" class="btn btn--next">Next</button>
+        </div>
+        <button id="submit" aria-label="Get Results"
+        data-choice="submit" class="btn btn--submit">Get Results</button>
         <div id="results">?</div>
     </main>
     <!-- Link for External JavaScript -->

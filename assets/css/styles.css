@@ -25,7 +25,16 @@ body {
     font-family: 'Nova Square', cursive;
     font-size: 1.6rem;
     line-height: 1.1;
+    overflow: scroll;
+    -ms-overflow-style: none; /* Hide scrollbar for Edge */
+    scrollbar-width: none;    /* Hide scrollbar for Firefox */
 }
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+    display: none;
+}
+
 
 .home {
     max-width: 350px;
@@ -37,14 +46,14 @@ body {
 
 h1 {
     font-size: 5rem;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     margin-bottom: .5em;
 }
 
 .logo {
     display: block;
     width: 250px;
-    height: 250px;
+    /* height: 250px; */
     margin: 0 auto 1.5em;
     border-bottom-left-radius: 40px;
     border-top-right-radius: 40px;
@@ -52,51 +61,61 @@ h1 {
 
 .home p {
     font-size: 2rem;
-    margin-bottom: .75em;
+    margin-bottom: 1.5em;
 }
 
 input[type="text"] {
     width: 200px;
     padding: .5em 1em;
-    margin: .5em auto 1.5em;
+    margin: .5em auto;
     background-color: #ecabb5;
     border-radius: 4px;
     border: none;
-    font-size: 1.8rem;
+    font-size: 2rem;
     color: #2D232E;
+}
+
+input[type="text"]:hover,
+input[type="text"]:focus {
+    background-color: #B8EBD0;
+    outline: 1px solid #9381FF;
 }
 
 /* https://medium.com/codex/how-to-style-an-input-field-with-css-only-tips-and-techniques-e6a00e9dcc50 */
 .custom-field::after {
     content: attr(aria-label);
-}
+    font-size: 1.8rem;
+}   
 
-.start-btn {
+.btn--start {
     padding: .5em 1em;
     background-color: #0E6BA8;
     color: #fff;
     letter-spacing: 2px;
-    border: 1px solid #2D232E;
+    border: none;
     border-radius: 5px;
     box-shadow: 0 2px 10px rgba(45, 35, 46, .5);
     cursor: pointer;
 }
 
-.start-btn:hover,
-.start-btn:focus {
+.btn--start:hover,
+.btn--start:focus {
     transform: scale(1.02);
     transition: transform 250s;
     color: #2D232E;
     background-color: #B8EBD0;
+    outline: 1px solid #2D232E;
     box-shadow: 0 4px 15px rgba(45, 35, 46, .8);
 }
 
 .feedback {
-    width: 300px;
+    max-width: 300px;
+    width: 250px;
+    height: 35px;
     font-family: 'Ubuntu', sans-serif;
-    font-size: 1.4rem;
+    font-style: italic;
     color: #fff;
-    margin: 1.5em auto 1em;
+    margin: .25em auto .5em;
 }
 
 /* Quiz */
@@ -172,15 +191,15 @@ input[type="radio" i] {
 
 .quiz-container {
     position: relative;
-    height: 75vh;
-    margin-top: 2em;
+    height: 50vh;
+    margin-top: 1.5em;
 }
 
 .exhibit {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 90%;
     z-index: 1;
     opacity: 0;
     transition: opacity 500ms ease-in-out;
@@ -191,8 +210,16 @@ input[type="radio" i] {
     z-index: 2;
 }
 
-#submit {
-    display: block;
+.navigation-btns {
+    width: 90%;
+    margin: .5em auto;
+    padding: 0 .5em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn {
     background-color: #0E6BA8;
     color: #fff;
     font-variant: small-caps;
@@ -204,14 +231,21 @@ input[type="radio" i] {
     cursor: pointer;
     margin: 0 auto 1em;
 }
-#submit:hover,
-#submit:focus {
-    background-color: #EF798A;
-    color: #20232E;
-    font-weight: 700;
+
+.btn:hover,
+.btn:focus {
+    border: 1px solid #EF798A;
 }
+
+.btn:active {
+    background-color: #B8EBD0;
+    color: #20232E;
+}
+
+
 
 #results {
     color: #B8EBD0;
     text-align: center;
 }
+

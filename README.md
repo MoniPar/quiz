@@ -137,9 +137,9 @@ Solution: All extensions were disabled and upon refresh the error was gone.  Ext
 
 Solution: `<input type="submit">` submits the form data to the server and refreshes the page.  If `type="submit"` is removed, it will still behave in the same way since it is a form element.  In order to stop this refresh, it was changed to `<input type="button">`. 
 
-* The function validateUserInput() was passing the errorMsg "Username must have 3 or more characters" when 3 characters were inputted in the text field.  This is due to the fact that user.length is index based and thus was counting from 0.  
+* The function validateUserInput() was passing the errorMsg "Username must have 3 or more characters", when 3 characters were inputted in the text field.  This is due to the fact that user.length is index based and thus was counting from 0.  
 
-Solution: The else if statement was changed to `(user.length <= 4)`
+Solution: The else if statement was changed to `(user.length <= 2)`
 
 * The tutorial being followed for the Quiz display function did not use template literals which made the code difficult to read.  When template literals were attempted, the radio buttons innerHTML tag name's value displayed `name="question[object Object]"` in the HTML when the js expression `${questions[i]}` was added to the 'question' value. This meant that the question number was not being defined properly and could cause errors later.
 
@@ -149,6 +149,19 @@ Solution: This was substituted with `[i]`, since in this case 'i' represents eac
 The element was referenced by its ID instead of class, therefore it could not add or remove another CSS class when needed to.
 
 Solution: A class attribute was added to the element so that the classList property was able to add/remove classes to/from the list.  
+
+* Uncaught TypeError: Cannot set properties of null (setting 'innerHTML') at displayQuiz
+
+This error was showing as soon as the index.html page was loaded refering to this piece of JS code:
+```javaScript
+quizContainer.innerHTML = output.join('');
+```
+Once the username was validated and the start button directed the user to the quiz.html page, the error did not show up anymore. 
+
+Solution: Since the quizContainer is only displayed on the quiz.html page, it had to be specified that it should only be called for when it needed to be displayed.  This was done by putting the code in an 'if clause' with a condition, like so:
+```javaScript
+ if (quizContainer != null) { quizContainer.innerHTML = output.join(''); }
+``` 
 
 [Back to Top](#table-of-contents)
 
