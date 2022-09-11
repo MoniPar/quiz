@@ -182,7 +182,7 @@ function displayQuiz() {
  * gives their selected option a different style to distinguish it from the other unchecked
  * options.
  */
-function selectOption(questionID, selection) {
+ function selectOption(questionID, selection) {
     
     const optionList = 'abcd';
     for (let i = 0; i <= optionList.length - 1; i++) {
@@ -197,8 +197,6 @@ function selectOption(questionID, selection) {
     }
     return true;
 }
-
-
 
 // Define variables and reference DOM Elements
 const preBtn = document.getElementById('previous');
