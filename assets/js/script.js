@@ -13,7 +13,7 @@ function validateUserInput(user) {
     if (user == '') {
         // alert('username not specified');
         errorMsg = "Please enter a Username";
-} else if (user.length <= 2) {
+    } else if (user.length <= 2) {
         // alert('username has less than 3 characters')
         errorMsg = "Username must have 3 or more characters";
     } 
@@ -22,7 +22,7 @@ function validateUserInput(user) {
         feedback.innerHTML = errorMsg;
         return false;
     }
-
+    
     return true;
 }
 
@@ -37,18 +37,18 @@ function getUserName() {
     if (validateUserInput(user)) {
         // alert('username validated');
         // console.log(user);
-
+        
         // redirects to quiz.html while storing username in url 
         window.location.replace('../../quiz.html?user='+user);     
     }
-   
+    
     return true;
 }
 
 /**
- * Gets username value stored in url and redirects it to quiz.html
+ * Takes username value stored in url and stores it in a variable
  */
-function redirectUserName() {
+function saveUserName() {
     // https://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
     const params = new Proxy(new URLSearchParams(window.location.search), {
         get: (searchParams, prop) => searchParams.get(prop),
@@ -60,17 +60,17 @@ function redirectUserName() {
     console.log(user);
 
     return true;
-   
 }
 
 // Reference DOM Elements from quiz.html
 const quizContainer = document.getElementById("quiz");
 const resultsContainer = document.getElementById("results");
 const submitBtn = document.getElementById("submit");
-// Array of quiz questions
 
+// Array of quiz questions
 let questions = [
     {
+        questionID: 0,
         question: "Who was the Ancient Greek God of the Sun?",
         answers: {
             a: 'Zeus', 
@@ -81,6 +81,7 @@ let questions = [
         correctAnswer: 'c'
     }, 
     {
+        questionID: 1,
         question: "How many elements are there in the periodic table?",
         answers: {
             a: '42', 
@@ -91,6 +92,7 @@ let questions = [
         correctAnswer: 'd'
     },
     {
+        questionID: 2,
         question: "Which country has the highest life expectancy?",
         answers: {
             a: 'Hong Kong', 
@@ -101,6 +103,7 @@ let questions = [
         correctAnswer: 'a'
     },
     {
+        questionID: 3,
         question: "Who put a man in space first?",
         answers: {
             a: 'China', 
@@ -111,25 +114,25 @@ let questions = [
         correctAnswer: 'b'
     }
 ];
+ 
+/**
+ * Shuffles the order of questions in the array of objects using the built in
+ * JS array sort() method which swaps one item with the next one, 
+ * takes a callback function which returns a random + or - number, 
+ */
+function randomise(questions) {
+
+    return questions.sort(() => 0.5 - Math.random());
+};
 
 // Some of the following code was adapted from https://simplestepscode.com/javascript-quiz-tutorial/
 
 /**
- * Generates the quiz: has helper functions which display questions, 
- * accept submissions and show results
+ * Generates the quiz: calls function to shuffle questions, adds HTML radio buttons to each answer,
+ * adds each question and its answers to the output list and displays them on the page.
  */
 function displayQuiz() {
-
-    /**
-     * Shuffles the order of questions in the array of objects using the built in
-     * JS array sort() method which swaps one item with the next one, 
-     * takes a callback function which returns a random + or - number, 
-     */
-    function randomise(questions) {
-
-        return questions.sort(() => 0.5 - Math.random());
-    };
-
+    // randomises the questions
     randomise(questions);
     
     // stores HTML output
@@ -137,51 +140,64 @@ function displayQuiz() {
 
     // iterates through the array of questions
     for (let i = 0; i < questions.length; i++) {
-            
+        
         // stores list of possible answers
         let answers = [];
 
-        // iterates through list of available answers
+        // iterates through the list of available answers
         for(letter in questions[i].answers) {
-
-            // adds an HTML radio button
+            
+            // stores the Question ID for each of the questions in the array
+            const questionID = questions[i].questionID;
+            
+            // adds an HTML radio button and attributes to each of the available answers 
             answers.push(
                 `
-                <label>
-                    <input type="radio" name="question${[i]}" value="${letter}">
-                    ${questions[i].answers[letter]}
+                <label id="label${[questionID]}_${letter}" class="option">
+                    <input type="radio" name="question${[questionID]}" value="${letter}" 
+                      onclick="selectOption(${[questionID]}, this.value);">
+                    ${questions[questionID].answers[letter]}
                 </label>
                 `
             );
         }
 
-        // adds the question and the answers to the output
+        // adds the question and its answers to the output
         output.push(
             `
             <div class="exhibit">
-            <div class="question"> ${questions[i].question} </div>
-            <div class="answers"> ${answers.join('')} </div>
+            <div id="question${[i]}" class="question-container"> ${questions[i].question} </div>
+            <div class="option-container"> ${answers.join('')} </div>
             </div>
             `
         );
 
     }
     // combines output list into one string of HTML and displays it on the page
-    if (quizContainer != null) { quizContainer.innerHTML = output.join(''); }    
+    quizContainer.innerHTML = output.join('');    
 }
-
 
 /**
- * Runs when user clicks the Get results button
+ * Takes two parameters, the question the user is currently on and their selection,
+ * gives their selected option a different style to distinguish it from the other unchecked
+ * options.
  */
-function showResults() {
-    let answerContainers = quizContainer.getElementsByClassName('answers');
-
-    //save user's answer in numCorrect variable
-    let numCorrect = 0;
-
+function selectOption(questionID, selection) {
     
+    const optionList = 'abcd';
+    for (let i = 0; i <= optionList.length - 1; i++) {
+
+        if (optionList[i] == selection) {
+            const optionChoice = document.getElementById('label'+questionID+'_'+selection);
+            optionChoice.classList.add('radio-checked');
+        } else {
+            const radioBtn = document.getElementById('label'+questionID+'_'+optionList[i]);
+            radioBtn.classList.remove('radio-checked');
+        }
+    }
+    return true;
 }
+
 
 
 // Define variables and reference DOM Elements
@@ -227,14 +243,6 @@ function showPreviousQuestion() {
 
 
 
-// shows quiz questions upon redirection to quiz.html
-displayQuiz();
-
-showQuestion(currentExhibit);
-
-// Shows results when Get Results Button is clicked
-submitBtn.addEventListener('click', showResults);
-
 // Show previous and next questions when buttons are clicked
-preBtn.addEventListener('click', showPreviousQuestion);
-postBtn.addEventListener('click', showNextQuestion);
+if (preBtn != null) { preBtn.addEventListener('click', showPreviousQuestion); }
+if (postBtn != null) { postBtn.addEventListener('click', showNextQuestion); }

@@ -85,7 +85,7 @@ input[type="text"]:focus {
 .custom-field::after {
     content: attr(aria-label);
     font-size: 1.8rem;
-}   
+}    
 
 .btn--start {
     padding: .5em 1em;
@@ -117,9 +117,11 @@ input[type="text"]:focus {
     color: #fff;
     margin: .25em auto .5em;
 }
+/* ------------ */
+/*     Quiz     */
+/* ------------ */
 
-/* Quiz */
-
+/* The main container for the quiz */
 .game-area {
     max-width: 900px;
     width: 80%;
@@ -131,85 +133,98 @@ input[type="text"]:focus {
     box-shadow: 0 2px 10px rgba(45, 35, 46, .5);
 }
 
-.question {
-    max-width: 400px;
-    width: 100%;
-    color: #DBFE87;
-    text-align: center;
-    font-size: 3rem;
-    margin: .5em auto 1em;
-}
-
-.answers {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    max-width: 400px;
-    width: 80%;
-    margin: 0 auto;
-    color: #B8EBD0;
-    /* color: #20232E; */
-}
-
-input[type="radio" i] {
-    /* opacity: 0;
-    position: fixed;
-    width: 0;  */
-
-    margin-right: 1em;
-    cursor: pointer;
-}
-
-.radio-btn-label {
-    cursor: pointer;
-}
-
-.radio-btn-label:hover,
-.radio-btn-label:focus {
-    transform: scale(1.05);
-    transition: transform 250ms;
-    color: #fff;
-}
-
-/* .radio-btn-label {
-    display: inline-block;
-    text-align: center;
-    background-color: #9381FF;
-    padding: 10px 10px;
-    cursor: pointer;
-}  */
-/* .radio-btn-label:hover,
-.radio-btn-label:focus {
-    transform: scale(1.05);
-    transition: transform 250ms;
-    box-shadow: 0 2px 10px rgba(147, 129, 255, .5);
-} */
-/* input[name="question"]:checked {
-    background-color: #0E6BA8;
-    color: #B8EBD0;
-} */
-
+/* Div for the questions and options */
 .quiz-container {
     position: relative;
     height: 50vh;
-    margin-top: 1.5em;
+    margin: 1em auto;
 }
 
+/* Div for the current question and options */
 .exhibit {
     position: absolute;
     top: 0;
     left: 0;
-    width: 90%;
+    width: 100%;
     z-index: 1;
     opacity: 0;
     transition: opacity 500ms ease-in-out;
+    display: none;
 }
 
 .active-exhibit {
     opacity: 1;
     z-index: 2;
+    display: block;
 }
 
+/* Styles for the questions */
+.question-container {
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    font-size: 3rem;
+    color: #DBFE87;
+    margin-bottom: 1em;
+}
+
+/* Div for the options */
+.option-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 400px;
+    width: 70%;
+    margin: 0 auto 2em;
+}
+
+/* Styles for each option */
+/* .option {
+    color: #2D232E;
+    background-color: #9381FF;
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-align: justify;
+    padding: .5em 1em;
+    margin-bottom: .25em;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.option:hover,
+.option:focus {
+    background-color: rgb(181, 169, 250);
+    box-shadow: 0 2px 5px rgba(181, 169, 250, .5);
+} */
+
+input[type="radio"], label {
+    color: #2D232E;
+    background-color: #9381FF;
+    font-size: 1.8rem;
+    font-weight: 800;
+    text-align: justify;
+    padding: .5em 1em;
+    margin-bottom: .25em;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="radio"]:hover, 
+label:hover{
+    background-color: rgb(181, 169, 250);
+    box-shadow: 0 2px 5px rgba(181, 169, 250, .5);
+}
+
+input[type="radio"] {
+    opacity: 1;
+    margin-right: .35em;
+}
+
+.radio-checked{
+    background-color: #0E6BA8;
+    color: #B8EBD0;
+}
+
+/* Div for navigation buttons */
 .navigation-btns {
     width: 90%;
     margin: .5em auto;
@@ -219,6 +234,7 @@ input[type="radio" i] {
     align-items: center;
 }
 
+/* Styling for navigation buttons */
 .btn {
     background-color: #0E6BA8;
     color: #fff;
