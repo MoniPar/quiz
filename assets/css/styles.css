@@ -1,5 +1,10 @@
-/* * target all elements inc. pseudo */
-*, *::before, *::after {
+@import url('https://fonts.googleapis.com/css2?family=Nova+Square&family=Ubuntu&display=swap');
+
+
+/* Targets all elements including pseudo */
+*, 
+*::before, 
+*::after {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -15,16 +20,18 @@ a {text-decoration: none;}
 
 body {
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     background: linear-gradient(
         to right,
-        #EF798A,
-        #EF899B,
-        #EF798A
+        rgb(245, 186, 194),
+        #f8dadf,
+        rgb(245, 186, 194)
     );
     font-family: 'Nova Square', cursive;
     font-size: 1.6rem;
     line-height: 1.1;
+    display: flex;
+    flex-direction: column;
     overflow: scroll;
     -ms-overflow-style: none; /* Hide scrollbar for Edge */
     scrollbar-width: none;    /* Hide scrollbar for Firefox */
@@ -35,112 +42,197 @@ body::-webkit-scrollbar {
     display: none;
 }
 
-
-.home {
-    max-width: 350px;
-    width: 300px;
-    color: #20232E;
+/* Header Styling */
+header {
+    width: 100%;
+    height: 70px;
+    margin: 0 auto;
     text-align: center;
-    margin: 2em auto;
+    padding: .5em 0;
+    background-color: rgba(239, 121, 138, .5);
 }
 
 h1 {
     font-size: 5rem;
     letter-spacing: 2px;
-    margin-bottom: .5em;
+}
+
+/* Footer Styling */
+footer {
+    width: 100%;
+    height: 80px;
+    padding: .5em .5em 0;
+    margin-top: auto;
+    font-size: 1.4rem;
+    text-align: center;
+    font-family: 'Ubuntu', sans-serif;;
+    color: #2D232E;
+    background-color: rgba(239, 121, 138, .5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.social-links {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.social-links li {
+    display: inline-block;
+    font-size: 2rem;
+    padding: 0 2.5em .5em;
+}
+
+.social-links a {
+    color: #2D232E;
+}
+.social-links a:hover,
+.social-links a:focus {
+    color: rgb(75, 65, 134);
+    cursor: pointer;
+    transform: scale(1.2);
+    transition: transform .15s;
+}
+
+/* ------------- */
+/*   Home Page   */
+/* ------------- */
+.home {
+    max-width: 350px;
+    width: 300px;
+    color: #20232E;
+    text-align: center;
+    margin: 1em auto;
 }
 
 .logo {
     display: block;
     width: 250px;
-    /* height: 250px; */
     margin: 0 auto 1.5em;
     border-bottom-left-radius: 40px;
     border-top-right-radius: 40px;
 }
 
-.home p {
+.home > p {
     font-size: 2rem;
     margin-bottom: 1.5em;
 }
 
 input[type="text"] {
-    width: 200px;
-    padding: .5em 1em;
-    margin: .5em auto;
-    background-color: #ecabb5;
+    /* width: 200px; */
+    padding: .75em;
+    margin: .25em auto;
+    background-color: rgba(147, 129, 255, .5);
     border-radius: 4px;
     border: none;
-    font-size: 2rem;
+    font-size: 1.6rem;
+    text-align: center;
     color: #2D232E;
 }
 
 input[type="text"]:hover,
 input[type="text"]:focus {
-    background-color: #B8EBD0;
-    outline: 1px solid #9381FF;
+    background-color: rgba(239, 121, 138, .3);
+    border: none;
 }
 
-/* https://medium.com/codex/how-to-style-an-input-field-with-css-only-tips-and-techniques-e6a00e9dcc50 */
-.custom-field::after {
-    content: attr(aria-label);
-    font-size: 1.8rem;
+.input-label {
+    font-size: 1.5rem;
+    background-color: transparent;
 }    
 
-.btn--start {
-    padding: .5em 1em;
-    background-color: #0E6BA8;
-    color: #fff;
-    letter-spacing: 2px;
+.btn {
     border: none;
     border-radius: 5px;
     box-shadow: 0 2px 10px rgba(45, 35, 46, .5);
     cursor: pointer;
 }
 
-.btn--start:hover,
-.btn--start:focus {
-    transform: scale(1.02);
-    transition: transform 250s;
-    color: #2D232E;
-    background-color: #B8EBD0;
-    outline: 1px solid #2D232E;
+.btn-start, 
+.btn-submit {
+    color: #fff;
+    background-color: #0E6BA8;
+}
+
+.btn-start {
+    padding: .75em 1.75em;
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+}
+
+.btn-start:hover,
+.btn-start:focus {
+    transform: scale(1.1);
+    transition: transform 250ms;
+    font-weight: 700;
+    background-color: rgb(79, 151, 199);
     box-shadow: 0 4px 15px rgba(45, 35, 46, .8);
 }
 
 .feedback {
     max-width: 300px;
     width: 250px;
-    height: 35px;
     font-family: 'Ubuntu', sans-serif;
     font-style: italic;
-    color: #fff;
-    margin: .25em auto .5em;
+    font-size: 1.6rem;
+    color: #f13f59;
+    margin: .5em auto .75em;
 }
+
+
 /* ------------ */
 /*     Quiz     */
 /* ------------ */
 
 /* The main container for the quiz */
 .game-area {
-    max-width: 900px;
+    max-width: 760px;
+    /* height: 80vh; */
     width: 80%;
-    background-color: #2d232e;
+    background-color: rgba(45, 35, 46, .9);
     font-family: 'Ubuntu', sans-serif;
     border-radius: 4px;
-    padding: 2em 1em;
-    margin: 2em auto;
+    padding: 1em;
+    margin: 1em auto;
     box-shadow: 0 2px 10px rgba(45, 35, 46, .5);
 }
 
-/* Div for the questions and options */
-.quiz-container {
-    position: relative;
-    height: 50vh;
-    margin: 1em auto;
+.progress {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Div for the current question and options */
+#progress-text {
+    font-family: 'Nova Square', cursive;
+    color: #B8EBD0;
+    font-size: 1.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#progress-bar {
+    color: #1dee7f;
+
+}
+
+.quiz-container {
+    position: relative;
+    width: 100%;
+    height: 60vh;
+    margin-top: 1em;
+    padding: 1em;
+    color: #B8EBD0;
+    text-align: center;
+}
+
 .exhibit {
     position: absolute;
     top: 0;
@@ -148,7 +240,7 @@ input[type="text"]:focus {
     width: 100%;
     z-index: 1;
     opacity: 0;
-    transition: opacity 500ms ease-in-out;
+    transition: opacity 0.5s;
     display: none;
 }
 
@@ -158,65 +250,43 @@ input[type="text"]:focus {
     display: block;
 }
 
-/* Styles for the questions */
-.question-container {
-    max-width: 400px;
+.question {
     width: 100%;
-    text-align: center;
+
     font-size: 3rem;
-    color: #DBFE87;
-    margin-bottom: 1em;
+    margin-bottom: .5em;
 }
 
-/* Div for the options */
-.option-container {
+.answers {
+    width: 90%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    max-width: 400px;
-    width: 70%;
-    margin: 0 auto 2em;
-}
-
-/* Styles for each option */
-/* .option {
-    color: #2D232E;
-    background-color: #9381FF;
-    font-size: 1.8rem;
-    font-weight: 700;
     text-align: justify;
-    padding: .5em 1em;
-    margin-bottom: .25em;
-    border-radius: 5px;
-    cursor: pointer;
-}
-.option:hover,
-.option:focus {
-    background-color: rgb(181, 169, 250);
-    box-shadow: 0 2px 5px rgba(181, 169, 250, .5);
-} */
-
-input[type="radio"], label {
-    color: #2D232E;
-    background-color: #9381FF;
-    font-size: 1.8rem;
-    font-weight: 800;
-    text-align: justify;
-    padding: .5em 1em;
-    margin-bottom: .25em;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-input[type="radio"]:hover, 
-label:hover{
-    background-color: rgb(181, 169, 250);
-    box-shadow: 0 2px 5px rgba(181, 169, 250, .5);
+    margin: 0 auto;
 }
 
 input[type="radio"] {
-    opacity: 1;
-    margin-right: .35em;
+    margin-right: .5em;
+}
+
+.radio-label {
+    background-color: #9381FF;
+    color: #2D232E;
+    font-size: 1.8rem;
+    font-weight: 700;
+
+    margin-bottom: .25em;
+    padding: .5em .75em;
+    
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.radio-label:hover,
+.radio-label:focus {
+    background-color: rgb(181, 169, 250);
+    box-shadow: 0 2px 5px rgba(181, 169, 250, .5);
 }
 
 .radio-checked{
@@ -224,44 +294,45 @@ input[type="radio"] {
     color: #B8EBD0;
 }
 
-/* Div for navigation buttons */
-.navigation-btns {
-    width: 90%;
-    margin: .5em auto;
-    padding: 0 .5em;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.btn-nav--next {
+    float: right;
 }
 
-/* Styling for navigation buttons */
-.btn {
-    background-color: #0E6BA8;
-    color: #fff;
-    font-variant: small-caps;
-    letter-spacing: 1px;
-    padding: .5em 1em;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 0 2px 8px rgba(45, 35, 46, .9);
-    cursor: pointer;
-    margin: 0 auto 1em;
-}
-
-.btn:hover,
-.btn:focus {
-    border: 1px solid #EF798A;
-}
-
-.btn:active {
+.btn-nav {
+    display: inline-block;
+    color: #2D232E;font-size: 1.6rem;
+    font-weight: 700;
     background-color: #B8EBD0;
-    color: #20232E;
+    padding: .5em 1em;
 }
 
-
-
-#results {
+.btn-nav:hover,
+.btn-nav:focus {
+    background-color: #2D232E;
     color: #B8EBD0;
-    text-align: center;
+    border: 1px solid #B8EBD0;
 }
 
+.btn-submit {
+    padding: .5em 1em;
+    font-size: 1.6rem;
+    font-weight: 700;  
+    letter-spacing: 2px;
+    font-variant: small-caps;
+    margin: 1em auto;  
+}
+
+.btn-submit:hover,
+.btn-submit:focus {
+    transform: scale(1.05);
+    transition: transform 250ms ease-in-out;
+    font-weight: 700;
+    background-color: rgb(79, 151, 199);
+    box-shadow: 0 4px 15px rgb(45, 35, 46);   
+}
+
+@media only screen and (min-width: 760px) {
+    .game-area {
+        width: 60%;
+    }
+}

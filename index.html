@@ -9,41 +9,60 @@
     <meta name="keywords" content="interactive, quiz home page, username input field, start button">
     <!-- Link to Logo icon -->
     <link rel="icon" href="assets/images/icon.jpg" type="image/x-icon">
-    <!-- Link to Gooogle Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nova+Square&family=Ubuntu&display=swap" rel="stylesheet">
     <!-- Link to stylesheets -->
     <link rel="stylesheet" href="assets/css/styles.css">
 
     <title>Quizzified | Home</title>
 </head>
-<body>
-    <main class="home">
+<body>  
+    <header>
         <h1>Quizzified</h1>
+    </header>
+    <main class="home">
         <img src="assets/images/quizzified-logo.png" alt="Quizzified Logo" 
             class="logo">
         <p>Are you ready to test your general knowledge?</p>
         <!-- Username input and submit button -->
         <form class="name-form">
             <div class="username-container">
-                <label for="user-input" class="custom-field" 
-                    aria-label="Create a Username"></label><br>
+                <label for="user-input" class="input-label" 
+                    aria-label="Create a Username">Create a Username</label><br>
                 <input id="user-input" type="text" name="username" 
                     required>
             </div>
              <!-- Error Message for Username Validation -->
-            <div>
-                <p class="feedback" id="feedback">?</p>
+            <div class="feedback">
+                <p id="feedback"></p>
             </div>
             <div>
-                <input type="button" class="btn btn--start" value="Quizzify Me"
+                <input type="button" class="btn btn-start" value="Quizzify Me"
                     onclick="getUserName();">
             </div>
         </form>
     </main>
+    <footer>
+        <div class="social-links">
+            <ul>
+                <li>
+                    <a href="https://www.linkedin.com/in/monique-parnis/" target="_blank" rel="noopener"
+                      aria-label="Visit my Linked In Profile (opens in a new tab)">
+                      <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://github.com/MoniPar" target="_blank" rel="noopener"
+                      aria-label="Visit my GitHub Profile (opens in a new tab)">
+                      <i class="fa-brands fa-square-github"></i>
+                    </a>
+                </li>    
+            </ul>
+        </div>
+    </div>   
+    <p>&#169; 2022 | Quizzified by Monique Parnis</p> 
+    </footer>
     <!-- Link to JavaScript -->
     <script src="assets/js/script.js"></script>
+
     <!-- Fontawesome Link -->
     <script src="https://kit.fontawesome.com/967a4d433b.js" crossorigin="anonymous"></script>
 </body>

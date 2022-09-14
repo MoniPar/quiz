@@ -13,14 +13,15 @@ ___
 
 1. [Overview](#overview)
 2. [Features](#features)  
-
-
+    * [Index / Home Page](#index--home-page)
+    * [Quiz Page](#quiz-page)
+    * [Score Display](#score-display)
     * [Future Features](#future-features)
 3. [User Experience (UX)](#user-experience-ux)
-    * [Strategy / Site Goals](#strategysite-goals)
-    * [Scope / User Stories](#scopeuser-stories)
-    * [Structure / Design Choices](#structuredesign-choices)
-    * [Skeleton / Wireframes](#skeletonwireframes)
+    * [Strategy / Site Goals](#strategy--site-goals)
+    * [Scope / User Stories](#scope--user-stories)
+    * [Structure / Design Choices](#structure--design-choices)
+    * [Skeleton / Wireframes](#skeleton--wireframes)
     * [Surface](#surface)
 4. [Technologies](#technologies)
 5. [Testing](#testing)
@@ -51,6 +52,12 @@ Interactivity, score count, high score record, keyboard accessible.
 
 # Features
 
+## Index / Home Page
+
+## Quiz Page
+
+## Score Display
+
 ## Future Features
 
 [Back to Top](#table-of-contents)
@@ -59,14 +66,14 @@ Interactivity, score count, high score record, keyboard accessible.
 
 # User Experience (UX)
 
-## Strategy/Site Goals
-The main goal of the online quiz game is to provide users with a challenging game that tests their knowledge about various subjects. 
+## Strategy / Site Goals
+The main goal of the online quiz game is to provide users with a set of questions that tests their knowledge about various subjects. 
 
-## Score/User Stories
+## Scope / User Stories
 
-## Structure/Design Choices
+## Structure / Design Choices
 
-## Skeleton/Wireframes
+## Skeleton / Wireframes
 
 ## Surface
 
@@ -133,13 +140,25 @@ A quick search showed that certain browsers might be causing the problem. This [
 
 Solution: All extensions were disabled and upon refresh the error was gone.  Extensions were then enabled one by one, each time checking for errors. The Malwarebytes Browser Guard seemed to be the cause of this.
 
-* When trying to check if the validateUserInput() function was working, the page refreshed every time the submit button was clicked.  No errors or warnings show up in the console and no expected alerts. [Stackoverflow](https://stackoverflow.com/questions/44681646/the-page-will-strangely-refresh-when-i-click-the-button) helped figure out why.
+* When trying to check if the validateUserInput() function was working, the page refreshed every time the start/Quizzify Me button was clicked.  No errors or warnings show up in the console and no expected alerts. [Stackoverflow](https://stackoverflow.com/questions/44681646/the-page-will-strangely-refresh-when-i-click-the-button) helped figure out why.
 
 Solution: `<input type="submit">` submits the form data to the server and refreshes the page.  If `type="submit"` is removed, it will still behave in the same way since it is a form element.  In order to stop this refresh, it was changed to `<input type="button">`. 
 
 * The function validateUserInput() was passing the errorMsg "Username must have 3 or more characters", when 3 characters were inputted in the text field.  This is due to the fact that user.length is index based and thus was counting from 0.  
 
 Solution: The else if statement was changed to `(user.length <= 2)`
+
+* The Start/Quizzify Me button directs the user to the quiz page after inputting a valid username. However if the user pressed the enter key after typing their username, the page was being refreshed.  
+
+Solution: The following code prevents the page from being refreshed when the Enter key is pressed after typing in the username.  It then calls the function getUserName which stores the user input in the url and directs the user to the quiz page.
+```Javascript
+document.getElementById('user-input').addEventListener('keydown', function(event) {
+    if(event.key === 'Enter') {
+        event.preventDefault();
+        getUserName();
+    }
+})
+```
 
 * The tutorial being followed for the Quiz display function did not use template literals which made the code difficult to read.  When template literals were attempted, the radio buttons innerHTML tag name's value displayed `name="question[object Object]"` in the HTML when the js expression `${questions[i]}` was added to the 'question' value. This meant that the question number was not being defined properly and could cause errors later.
 
@@ -163,6 +182,16 @@ Solution: Since the quizContainer is only displayed on the quiz.html page, it ha
  if (quizContainer != null) { quizContainer.innerHTML = output.join(''); }
 ``` 
 
+## Manual Testing Bug Fixes
+
+* When testing the quiz with keyboard navigation, the focus was lost after going through the radio buttons for the question on display.  It was tabbing through all the hidden radio buttons underneath before getting to the previous and next buttons.
+
+Solution: The `<div>` with the 'active-exhibit' class had a `display:block`. Adding `display:none` to the `<div>` element with the 'exhibit' class made all the exhibits and their interactive radio buttons, which are visually hidden, also hidden for screen readers and took them out of the tabbing order.    
+
+* The tabbing order was working well until the user pressed the 'next' button.  Once this was pressed and the quiz moved on to the next question, the focus was once again lost and tabbing didn't bring the user anywhere.  
+
+Solution: The focus() method was added to the 'showNextExhibit' and 'showPreviousExhibit' functions in order to bring the focus back to the quiz question after these buttons are pressed. Giving the quiz `<div>` a tabindex of 0, made sure that the tab key brought the user back onto the next focusable element after pressing the next or previous buttons.
+
 [Back to Top](#table-of-contents)
 
 ---
@@ -182,6 +211,9 @@ Solution: Since the quizContainer is only displayed on the quiz.html page, it ha
 
 [How to shuffle an array of objects](https://www.webmound.com/shuffle-javascript-array/)
 
+[How to improve web accessibility when hiding elements](https://www.nomensa.com/blog/how-improve-web-accessibility-hiding-elements)
+
+[Giving focus to an element](https://www.w3schools.com/jsref/met_html_focus.asp)
 
 ## Content
 

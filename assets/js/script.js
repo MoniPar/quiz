@@ -1,6 +1,6 @@
 // Reference DOM Elements from index.html
-const username = document.getElementById("user-input");
-const feedback = document.getElementById("feedback");
+const username = document.getElementById('user-input');
+const feedback = document.getElementById('feedback');
 
 /**
  * Validates username inserted on the index.html(homepage)
@@ -11,10 +11,10 @@ function validateUserInput(user) {
     let errorMsg = '';
     
     if (user == '') {
-        // alert('username not specified');
+        alert('username not specified');
         errorMsg = "Please enter a Username";
-    } else if (user.length <= 2) {
-        // alert('username has less than 3 characters')
+    } else if (user.length <= Number(2)) {
+        alert('username has less than 3 characters')
         errorMsg = "Username must have 3 or more characters";
     } 
 
@@ -35,7 +35,7 @@ function getUserName() {
     let user = username.value;
 
     if (validateUserInput(user)) {
-        // alert('username validated');
+        alert('username validated');
         // console.log(user);
         
         // redirects to quiz.html while storing username in url 
@@ -58,20 +58,20 @@ function saveUserName() {
 
     // alert(user);
     console.log(user);
-
-    return true;
+    
+    return user;
 }
 
 // Reference DOM Elements from quiz.html
-const quizContainer = document.getElementById("quiz");
-const resultsContainer = document.getElementById("results");
-const submitBtn = document.getElementById("submit");
+const quizContainer = document.getElementById('quiz');
+const resultsContainer = document.getElementById('results');
+const submitBtn = document.getElementById('submit');
 
-// Array of quiz questions
-let questions = [
+// Array of quiz questionsco
+const questions = [
     {
         questionID: 0,
-        question: "Who was the Ancient Greek God of the Sun?",
+        question: 'Who was the Ancient Greek God of the Sun?',
         answers: {
             a: 'Zeus', 
             b: 'Hermes',
@@ -82,7 +82,7 @@ let questions = [
     }, 
     {
         questionID: 1,
-        question: "How many elements are there in the periodic table?",
+        question: 'How many elements are in the periodic table?',
         answers: {
             a: '42', 
             b: '153',
@@ -93,7 +93,7 @@ let questions = [
     },
     {
         questionID: 2,
-        question: "Which country has the highest life expectancy?",
+        question: 'Which country has the highest life expectancy?',
         answers: {
             a: 'Hong Kong', 
             b: 'Japan',
@@ -104,7 +104,7 @@ let questions = [
     },
     {
         questionID: 3,
-        question: "Who put a man in space first?",
+        question: 'Who put a man in space first?',
         answers: {
             a: 'China', 
             b: 'Russia',
@@ -112,135 +112,268 @@ let questions = [
             d: 'USA'
         }, 
         correctAnswer: 'b'
+    },
+    {
+        questionID: 4,
+        question: 'What is the currency of Poland?',
+        answers: {
+            a: 'Lira (&#8356;)',
+            b: 'Drachma (&#8367;)',
+            c: 'Zloty (&#122;)',
+            d: 'Euro (&#8364;)'
+        },
+        correctAnswer: 'c'
+    },
+    {
+        questionID: 5,
+        question: 'Which of these companies was formed first?',
+        answers: {
+            a: 'Netflix',
+            b: 'Facebook',
+            c: 'Bing',
+            d: 'Google'
+        },
+        correctAnswer: 'a'
+    },
+    {
+        questionID: 6,
+        question: 'Who wrote the original "Rocky" film?',
+        answers: {
+            a: 'Clint Eastwood',
+            b: 'Sylvester Stallone',
+            c: 'John Avildsen',
+            d: 'David Morrell'
+        },
+        correctAnswer: 'b'
+    },
+    { 
+        questionID: 7,
+        question: 'What type of rock is marble?',
+        answers: {
+            a: 'Igneous',
+            b: 'Sedimentary',
+            c: 'Basalt',
+            d: 'Metamorphic'
+        },
+        correctAnswer: 'd'
     }
 ];
- 
-/**
- * Shuffles the order of questions in the array of objects using the built in
- * JS array sort() method which swaps one item with the next one, 
- * takes a callback function which returns a random + or - number, 
+
+
+
+/** Some of the following code was adapted from https://simplestepscode.com/javascript-quiz-tutorial/
+ * Includes two functions, one which shuffles the quiz questions and another which
+ * displays the quiz on the page.
  */
-function randomise(questions) {
-
-    return questions.sort(() => 0.5 - Math.random());
-};
-
-// Some of the following code was adapted from https://simplestepscode.com/javascript-quiz-tutorial/
-
-/**
- * Generates the quiz: calls function to shuffle questions, adds HTML radio buttons to each answer,
- * adds each question and its answers to the output list and displays them on the page.
- */
-function displayQuiz() {
-    // randomises the questions
-    randomise(questions);
+function generateQuiz() {
     
-    // stores HTML output
-    let output = [];
+    /** https://www.webmound.com/shuffle-javascript-array/
+     * Shuffles the order of questions in the array of objects using the built in
+     * JS array sort() method which swaps one item with the next one, 
+     * takes a callback function which returns a random + or - number. 
+     */
+    function shuffle(questions) {
+        return questions.sort(() => 0.5 - Math.random());
+    };
 
-    // iterates through the array of questions
-    for (let i = 0; i < questions.length; i++) {
-        
-        // stores list of possible answers
-        let answers = [];
+    shuffle(questions);
 
-        // iterates through the list of available answers
-        for(letter in questions[i].answers) {
+    /**
+     * Gets the questions and answers from the array and displays them on 
+     * the page using innerHTML
+     */
+    function displayQuiz() {
+        // variable for questions and answer choices HTML
+        const output = [];
+
+        // Iterates through the array of questions 
+        for (let i = 0; i < questions.length; i++) {
             
-            // stores the Question ID for each of the questions in the array
-            const questionID = questions[i].questionID;
-            
-            // adds an HTML radio button and attributes to each of the available answers 
-            answers.push(
+            // variable for list of possible answers storage
+            const answers = [];
+
+             // gets the questionID of each question
+             const questionID = questions[i].questionID;
+
+            // gives the answer choices for each of the questions
+            for(letter in questions[i].answers){
+
+                // add an HTML radio button
+                answers.push(
+                    `
+                    <label id="label${[questionID]}_${letter}" class="radio-label">
+                        <input type="radio" name="question${questionID}" value="${letter}" onclick="selectOption(${[questionID]}, this.value);">
+                        ${questions[i].answers[letter]}
+                    </label>
+                    `
+                )
+            }
+
+            // add question and its answers to the output
+            output.push(
                 `
-                <label id="label${[questionID]}_${letter}" class="option">
-                    <input type="radio" name="question${[questionID]}" value="${letter}" 
-                      onclick="selectOption(${[questionID]}, this.value);">
-                    ${questions[questionID].answers[letter]}
-                </label>
+                <div class="exhibit">
+                    <div id="question${[questionID]}" class="question"> ${questions[i].question} </div>
+                    <div id="answers${[i]}" class="answers"> ${answers.join('')} </div>
+                </div>
                 `
             );
         }
 
-        // adds the question and its answers to the output
-        output.push(
-            `
-            <div class="exhibit">
-            <div id="question${[i]}" class="question-container"> ${questions[i].question} </div>
-            <div class="option-container"> ${answers.join('')} </div>
-            </div>
-            `
-        );
-
+        // combine output list into one string of HTML and put it on the page
+        quizContainer.innerHTML = output.join('');    
     }
-    // combines output list into one string of HTML and displays it on the page
-    quizContainer.innerHTML = output.join('');    
+    
+    displayQuiz();
+    
 }
 
 /**
- * Takes two parameters, the question the user is currently on and their selection,
- * gives their selected option a different style to distinguish it from the other unchecked
- * options.
+ * Takes two parameters; the question the user is on and their selected answer, iterates through the 
+ * options and adds the class of radio-checked to the option the user has clicked on/selected.
  */
- function selectOption(questionID, selection) {
+function selectOption(questionNo, selection) {
     
     const optionList = 'abcd';
     for (let i = 0; i <= optionList.length - 1; i++) {
 
         if (optionList[i] == selection) {
-            const optionChoice = document.getElementById('label'+questionID+'_'+selection);
+            const optionChoice = document.getElementById('label'+questionNo+'_'+selection);
             optionChoice.classList.add('radio-checked');
         } else {
-            const radioBtn = document.getElementById('label'+questionID+'_'+optionList[i]);
+            const radioBtn = document.getElementById('label'+questionNo+'_'+optionList[i]);
             radioBtn.classList.remove('radio-checked');
         }
     }
+
     return true;
 }
 
-// Define variables and reference DOM Elements
-const preBtn = document.getElementById('previous');
-const postBtn = document.getElementById('next');
+function getResults() {
+    
+    for (let i = 0; i <= questions.length - 1; i++) {
+        const questionTxt = questions[i].question;
+        const correctAns = questions[i].correctAnswer;
+        const selectedAnswer = document.querySelector('input[name="question'+[i]+'"]:checked').value;
+        
+        alert('Question: '+questionTxt+' CorrectAnswer: '+correctAns+' Selected: '+selectedAnswer);
+    }
+
+    return true;
+}
+
+/*
+// Loops over the user answers, checks them and shows the results
+function showResults() {
+
+    // gather all answer containers in quiz's HTML
+    const answerContainers = quizContainer.getElementsByClassName('answers');
+
+    // save user's answer in numCorrect variable
+    let numCorrect = 0;
+
+    // iterate through all questions and check answers
+    questions.forEach(
+        (question[i], questionID) => {
+
+            // looks into the current question's answer container
+            const answerContainer = answerContainers[questionNo];
+            // defines a CSS selector which will let us find which radio button is checked
+            const selector = `input[name=question${questionNo}]:checked`;
+            // searches for the CSS selector to find which answer's radio button is checked
+            // and get the value of that answer or if there is no checked answer use an ampty object
+            const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+
+            // if answer is correct
+            if(userAnswer === currentQ.correctAnswer) {
+
+                // add to the number of correct answers
+                numCorrect++;
+
+                // color the answers mint
+                answerContainers[questionNo].getElementsByClassName.color = '#B8EBD0';
+
+                // if answer is wrong or not answered
+            } else {
+
+                // color the answers rose
+                answerContainers[questionNo].getElementsByClassName.color = '#EF798A';
+            }
+        } 
+    );
+
+    // show number of correct answers out of total
+    resultsContainer.innerHTML = `You scored ${numCorrect} out of ${questions.length}`;
+}
+*/
+
+// Store references to navigation buttons and current exhibit
+const previousBtn = document.getElementById('previous');
+const nextBtn = document.getElementById('next');
 const exhibits = document.getElementsByClassName('exhibit');
 let currentExhibit = 0;
 
-/**
- * Shows one question at a time by hiding current question and showing
- * new question.  Shows and hides previous, next and submit buttons depending on 
- * the current question displayed.
+
+/** The following functions were adapted from https://www.sitepoint.com/simple-javascript-quiz/
+ * Shows one exhibit (question and its set of options) at a time 
  */
-function showQuestion(n) {
+function showExhibit(n) {
+    
+    // hides the current exhibit by removing the active-exhibit class
     exhibits[currentExhibit].classList.remove('active-exhibit');
+    // shows the new exhibit by adding the active-exhibit class
     exhibits[n].classList.add('active-exhibit');
+    // updates the current exhibit's number
     currentExhibit = n;
 
+    // if user is on the first exhibit, hide the previous button else show it
     if(currentExhibit === 0) {
-        preBtn.style.display = 'none';
+        previousBtn.style.display = 'none';
     } else {
-        preBtn.style.display = "inline-block";
+        previousBtn.style.display = 'inline-block';
     }
 
+    // if user is on the last exhibit, hide the next button and show the submit button
+    // else show the next button and hide the submit button
     if(currentExhibit === exhibits.length - 1) {
-        postBtn.style.display = "none";
-        submitBtn.style.display = "block";
+        nextBtn.style.display = 'none';
+        submitBtn.style.display = 'block';
     } else {
-        postBtn.style.display = "inline-block";
-        submitBtn.style.display = "none";
+        nextBtn.style.display = 'inline-block';
+        submitBtn.style.display = 'none';
     }
 }
 
-// Next button navigation
-function showNextQuestion() {
-    showQuestion(currentExhibit + 1);
+// Allows next button to show next exhibit
+function showNextExhibit() {
+    showExhibit(currentExhibit + 1);
+    
+    // brings back the focus to the quiz div/radio button options
+    document.getElementById('quiz').focus();
 }
 
-// Previous button navigation
-function showPreviousQuestion() {
-    showQuestion(currentExhibit - 1);
+// Allows previous button to show previous exhibit
+function showPreviousExhibit() {
+    showExhibit(currentExhibit - 1);
+
+    // brings back the focus to the quiz div/radio button options
+    document.getElementById('quiz').focus();
 }
 
 
+// Prevents page refresh on Enter key for form text input and calls getUserName function
+if (document.getElementById("user-input") != null) {
+    document.getElementById("user-input").addEventListener("keydown", function(event) {
+    if (event.key === 'Enter') {
+            event.preventDefault();
+            getUserName();
+        }
+    })
+}
 
-// Show previous and next questions when buttons are clicked
-if (preBtn != null) { preBtn.addEventListener('click', showPreviousQuestion); }
-if (postBtn != null) { postBtn.addEventListener('click', showNextQuestion); }
+// On submit, show results
+// if (submitBtn != null) { submitBtn.addEventListener('click', showResults); }
+
+// Shows previous exhibit when previous button is clicked
+if (previousBtn != null) { previousBtn.addEventListener('click', showPreviousExhibit); }
+if (nextBtn != null) { nextBtn.addEventListener('click', showNextExhibit); }

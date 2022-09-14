@@ -9,40 +9,69 @@
     <meta name="keywords" content="quiz, online, interactive, general knowledge, multiple choice, fun, learn, challenging">
     <!-- Link to Logo icon -->
     <link rel="icon" href="assets/images/icon.jpg" type="image/x-icon">
-    <!-- Link to Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nova+Square&family=Ubuntu&display=swap" rel="stylesheet">    
     <!-- Link to my Stylesheet -->
     <link rel="stylesheet" href="assets/css/styles.css">
     
     <title>Quizzified | Online Quiz</title>
 </head>
 <body>
+    <header>
+        <h1>Quizzified</h1>
+    </header>
     <main class="game-area">
+        <div class="progress">
+            <div id="progress-text">
+                <p>0</p>
+                <p>/</p>
+                <p>10</p>
+            </div>
+            <div id="progress-bar">Progress Empty</div>
+        </div>
         <div class="quiz-container">
-            <div id="quiz"></div>
+            <div id="quiz" tabindex="0"></div>
         </div>
-        <div class="navigation-btns">
-            <button id="previous" aria-label="Previous Button" 
-            data-choice="prebtn" class="btn btn--prev">Previous</button>
+        <div class="controls">
+            <button id="previous" aria-label="Previous Button"
+                data-choice="prebtn" class="btn btn-nav btn-nav--pre">Previous</button>
             <button id="next" aria-label="Next Button"
-            data-choice="postbtn" class="btn btn--next">Next</button>
+                data-choice="nextbtn" class="btn btn-nav btn-nav--next">Next</button>
+            <button id="submit" aria-label="Results"
+                data-choice="submit" class="btn btn-submit">Results</button>
         </div>
-        <button id="submit" aria-label="Get Results"
-        data-choice="submit" class="btn btn--submit">Get Results</button>
-        <div id="results">?</div>
+        
     </main>
+    <footer>
+        <div class="social-links">
+            <ul>
+                <li>
+                    <a href="https://www.linkedin.com/in/monique-parnis/" target="_blank" rel="noopener"
+                      aria-label="Visit my Linked In Profile (opens in a new tab)">
+                      <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://github.com/MoniPar" target="_blank" rel="noopener"
+                      aria-label="Visit my GitHub Profile (opens in a new tab)">
+                      <i class="fa-brands fa-square-github"></i>
+                    </a>
+                </li>    
+            </ul>
+        </div>
+    </div>   
+    <p>&#169; 2022 | Quizzified by Monique Parnis</p> 
+    </footer>
     <!-- Link for External JavaScript -->
     <script src="assets/js/script.js"></script>
+    
     <script>
         // Calls function to get username from url and stores it in a variable
-        saveUserName();
-        // Calls function to display quiz questions
-        displayQuiz();
-        // Calls function to display one question at a time
-        showQuestion(currentExhibit);
-
+        let user = saveUserName();
+        // alert(user);
+        // Calls function to build quiz
+        generateQuiz();
+        
+        // Calls function to display only one quiz question and its choices
+        showExhibit(currentExhibit);
     </script>
     <!-- Fontawesome Link -->
     <script src="https://kit.fontawesome.com/967a4d433b.js" crossorigin="anonymous"></script>
