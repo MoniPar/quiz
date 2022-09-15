@@ -200,8 +200,9 @@ input[type="text"]:focus {
 }
 
 .progress {
-    width: 100%;
+    width: 50%;
     height: 50px;
+    margin: 0 auto 1em;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -215,10 +216,20 @@ input[type="text"]:focus {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: .5em;
 }
 
 .progress-bar {
-    color: #1dee7f;
+    width: 100%;
+    border: 2px solid rgba(29, 238, 127, .7);
+    border-radius: 50px;
+}
+
+.progress-fill {
+    width: 1%;
+    height: 20px;
+    background-color: rgba(29, 238, 127, .5);
+    border-radius: 50px;
 }
 
 .quiz-container {
