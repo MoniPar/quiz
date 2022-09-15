@@ -39,7 +39,7 @@ function getUserName() {
         // console.log(user);
         
         // redirects to quiz.html while storing username in url 
-        window.location.replace('../quiz.html?user='+user);     
+        window.location.replace('quiz.html?user='+user);     
     }
     
     return true;
