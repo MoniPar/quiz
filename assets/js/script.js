@@ -11,10 +11,10 @@ function validateUserInput(user) {
     let errorMsg = '';
     
     if (user == '') {
-        alert('username not specified');
+        // alert('username not specified');
         errorMsg = "Please enter a Username";
     } else if (user.length <= Number(2)) {
-        alert('username has less than 3 characters')
+        // alert('username has less than 3 characters')
         errorMsg = "Username must have 3 or more characters";
     } 
 
@@ -35,7 +35,7 @@ function getUserName() {
     let user = username.value;
 
     if (validateUserInput(user)) {
-        alert('username validated');
+        // alert('username validated');
         // console.log(user);
         
         // redirects to quiz.html while storing username in url 
