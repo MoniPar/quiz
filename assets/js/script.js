@@ -156,6 +156,28 @@ const questions = [
             d: 'Metamorphic'
         },
         correctAnswer: 'd'
+    }, 
+    {
+        questionID: 8,
+        question: 'Pogonophobia is the fear of ...',
+        answers: {
+            a: 'clowns',
+            b: 'beards',
+            c: 'pogs',
+            d: 'witches'
+        },
+        correctAnswer: 'b'
+    },
+    {
+        questionID: 9,
+        question: 'What shapes are the cells of a honeycomb?',
+        answers: {
+            a: 'Hexagons',
+            b: 'Circles',
+            c: 'Spheres',
+            d: 'Pentagons'
+        },
+        correctAnswer: 'a'
     }
 ];
 
@@ -311,14 +333,33 @@ function showResults() {
 const previousBtn = document.getElementById('previous');
 const nextBtn = document.getElementById('next');
 const exhibits = document.getElementsByClassName('exhibit');
+const exhibitNo = document.getElementById('exhibit-num');
+const progressBar = document.getElementById('progress-bar');
 let currentExhibit = 0;
+let exhibitCounter = 1;
+let width = 10;
 
+function increment() {
+    exhibitCounter++;
+    exhibitNo.innerText = `${exhibitCounter}`;
+    
+    width += 10;
+    progressBar.style.width = width + '%';
+}
+
+function decrement() {
+    exhibitCounter--;
+    exhibitNo.innerText = `${exhibitCounter}`;
+    
+    width -= 10;
+    progressBar.style.width = width + '%';
+}
 
 /** The following functions were adapted from https://www.sitepoint.com/simple-javascript-quiz/
  * Shows one exhibit (question and its set of options) at a time 
  */
 function showExhibit(n) {
-    
+
     // hides the current exhibit by removing the active-exhibit class
     exhibits[currentExhibit].classList.remove('active-exhibit');
     // shows the new exhibit by adding the active-exhibit class
@@ -331,6 +372,7 @@ function showExhibit(n) {
         previousBtn.style.display = 'none';
     } else {
         previousBtn.style.display = 'inline-block';
+
     }
 
     // if user is on the last exhibit, hide the next button and show the submit button
@@ -347,7 +389,7 @@ function showExhibit(n) {
 // Allows next button to show next exhibit
 function showNextExhibit() {
     showExhibit(currentExhibit + 1);
-    
+
     // brings back the focus to the quiz div/radio button options
     document.getElementById('quiz').focus();
 }
@@ -355,7 +397,7 @@ function showNextExhibit() {
 // Allows previous button to show previous exhibit
 function showPreviousExhibit() {
     showExhibit(currentExhibit - 1);
-
+    
     // brings back the focus to the quiz div/radio button options
     document.getElementById('quiz').focus();
 }
@@ -375,5 +417,12 @@ if (document.getElementById("user-input") != null) {
 // if (submitBtn != null) { submitBtn.addEventListener('click', showResults); }
 
 // Shows previous exhibit when previous button is clicked
-if (previousBtn != null) { previousBtn.addEventListener('click', showPreviousExhibit); }
-if (nextBtn != null) { nextBtn.addEventListener('click', showNextExhibit); }
+if (previousBtn != null) { 
+    previousBtn.addEventListener('click', showPreviousExhibit);
+    previousBtn.addEventListener('click', decrement);
+}
+
+if (nextBtn != null) { 
+    nextBtn.addEventListener('click', showNextExhibit); 
+    nextBtn.addEventListener('click', increment);
+}

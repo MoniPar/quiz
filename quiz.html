@@ -20,13 +20,13 @@
     </header>
     <main class="game-area">
         <div class="progress">
-            <div id="progress-text" class="progress-txt">
-                <p>0</p>
+            <div class="progress-txt">
+                <p id="exhibit-num">1</p>
                 <p>/</p>
                 <p>10</p>
             </div>
-            <div id="progress-bar" class="progress-bar">
-                <div class="progress-fill"></div>
+            <div class="progress-outline">
+                <div id="progress-bar" class="progress-bar"></div>
             </div>
         </div>
         <div class="quiz-container">
@@ -74,6 +74,7 @@
         
         // Calls function to display only one quiz question and its choices
         showExhibit(currentExhibit);
+
     </script>
     <!-- Fontawesome Link -->
     <script src="https://kit.fontawesome.com/967a4d433b.js" crossorigin="anonymous"></script>
