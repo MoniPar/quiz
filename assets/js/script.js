@@ -251,11 +251,13 @@ function generateQuiz() {
 }
 
 /**
- * Takes two parameters; the question the user is on and their selected answer, iterates through the 
- * options and adds the class of radio-checked to the option the user has clicked on/selected.
+ * Takes two parameters; the question the user is on and their selected answer, 
+ * iterates through the options and adds the class of radio-checked to 
+ * the option the user has clicked on/selected.
  */
 function selectOption(questionNo, selection) {
     
+    // creates a variable to store the list of option selections
     const optionList = 'abcd';
     for (let i = 0; i <= optionList.length - 1; i++) {
 
@@ -271,63 +273,95 @@ function selectOption(questionNo, selection) {
     return true;
 }
 
-function getResults() {
+/**
+ * Iterates through all quiz questions and checks if each question has a checked radio button,
+ * if a question doesn't have a radio button checked, an error message is displayed
+ * if all radio buttons are checked, function returns true
+ */
+function validateChecked() {
     
+    let allChecked = true;
     for (let i = 0; i <= questions.length - 1; i++) {
-        const questionTxt = questions[i].question;
-        const correctAns = questions[i].correctAnswer;
-        const selectedAnswer = document.querySelector('input[name="question'+[i]+'"]:checked').value;
         
-        alert('Question: '+questionTxt+' CorrectAnswer: '+correctAns+' Selected: '+selectedAnswer);
+        let name = 'question'+[i];
+        // if radio button is unchecked it returns an empty string and posts null, meaning
+        // allChecked is false
+        if (document.querySelector('input[name='+name+']:checked') == null) {
+            allChecked = false;
+        }
+    }
+
+    if (allChecked == false) {
+        alert('Please answer all questions.');
+
+        return false;
     }
 
     return true;
 }
 
-/*
-// Loops over the user answers, checks them and shows the results
-function showResults() {
+/**
+ * If validateChecked function returns true, loops through all the questions and checks 
+ * their value against the correct answer, if correct it increments the score by 1 and
+ * calls the displayResults function taking the total score as a parameter.
+ */
+function getResults() {
 
-    // gather all answer containers in quiz's HTML
-    const answerContainers = quizContainer.getElementsByClassName('answers');
+    if (validateChecked()) {
 
-    // save user's answer in numCorrect variable
-    let numCorrect = 0;
+        let correctTotal = 0;
+        for (let i = 0; i <= questions.length - 1; i++) {
+            
+            // creates a variable which will get the correct answer for each current question
+            const correctAns = questions[i].correctAnswer;
+            //const questionTxt = questions[i].question;
 
-    // iterate through all questions and check answers
-    questions.forEach(
-        (question[i], questionID) => {
+            // creates a variable which will get the question ID of each current question
+            const questionID = questions[i].questionID;
+            
 
-            // looks into the current question's answer container
-            const answerContainer = answerContainers[questionNo];
-            // defines a CSS selector which will let us find which radio button is checked
-            const selector = `input[name=question${questionNo}]:checked`;
-            // searches for the CSS selector to find which answer's radio button is checked
-            // and get the value of that answer or if there is no checked answer use an ampty object
-            const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+            let name = 'question'+questionID;
 
-            // if answer is correct
-            if(userAnswer === currentQ.correctAnswer) {
+            // stores the value of the selected radio button to the variable
+            const selectedAnswer = document.querySelector('input[name='+name+']:checked').value;
 
-                // add to the number of correct answers
-                numCorrect++;
-
-                // color the answers mint
-                answerContainers[questionNo].getElementsByClassName.color = '#B8EBD0';
-
-                // if answer is wrong or not answered
-            } else {
-
-                // color the answers rose
-                answerContainers[questionNo].getElementsByClassName.color = '#EF798A';
+            //alert('Question: '+questionTxt+' CorrectAnswer: '+correctAns+' Selected: '+selectedAnswer);
+            
+            // checks if value of selected answer is equal to the correct answer
+            if (selectedAnswer == correctAns)
+            {
+                // increments the total by 1 
+                correctTotal += 1;
             }
-        } 
-    );
+        }
+        
+        //alert(correctTotal +' / '+ questions.length);
 
-    // show number of correct answers out of total
-    resultsContainer.innerHTML = `You scored ${numCorrect} out of ${questions.length}`;
+        displayResults(correctTotal);
+
+        return true;
+    }
+
+    return false;
 }
-*/
+
+/**
+ * Takes the total of correct answers as a parameter and displays it after hiding
+ * the game area display.  It calls the saveUserName function to display username in 
+ * results area
+ * @param {*} correctTotal 
+ */
+function displayResults(correctTotal) {
+
+    const gameArea = document.getElementById('game-area');
+    const resultArea = document.getElementById('result-area');
+
+    gameArea.style.display = 'none';
+    resultArea.style.display = 'block';
+
+    document.getElementById('user').innerHTML = saveUserName();
+    document.getElementById('result').innerHTML = correctTotal +' out of '+ questions.length;
+}
 
 // Store references to navigation buttons and current exhibit
 const previousBtn = document.getElementById('previous');
@@ -339,6 +373,10 @@ let currentExhibit = 0;
 let exhibitCounter = 1;
 let width = 10;
 
+/**
+ * Called when next button is clicked, increments by one and displays the question count and
+ * the progress bar which is incremented by 10% every time the next button is clicked
+ */
 function increment() {
     exhibitCounter++;
     exhibitNo.innerText = `${exhibitCounter}`;
@@ -347,6 +385,10 @@ function increment() {
     progressBar.style.width = width + '%';
 }
 
+/**
+ * Called when the previous button is clicked, decrements the question count by 1 and the
+ * progress bar by 10% and displays them
+ */
 function decrement() {
     exhibitCounter--;
     exhibitNo.innerText = `${exhibitCounter}`;
@@ -372,7 +414,6 @@ function showExhibit(n) {
         previousBtn.style.display = 'none';
     } else {
         previousBtn.style.display = 'inline-block';
-
     }
 
     // if user is on the last exhibit, hide the next button and show the submit button
@@ -413,15 +454,13 @@ if (document.getElementById("user-input") != null) {
     })
 }
 
-// On submit, show results
-// if (submitBtn != null) { submitBtn.addEventListener('click', showResults); }
-
-// Shows previous exhibit when previous button is clicked
+// Call the showPreviousExhibit and the decrement functions when the previous button is clicked
 if (previousBtn != null) { 
     previousBtn.addEventListener('click', showPreviousExhibit);
     previousBtn.addEventListener('click', decrement);
 }
 
+// Call the showNextExhibit and the increment functions when the next button is clicked
 if (nextBtn != null) { 
     nextBtn.addEventListener('click', showNextExhibit); 
     nextBtn.addEventListener('click', increment);

@@ -18,30 +18,40 @@
     <header>
         <h1>Quizzified</h1>
     </header>
-    <main class="game-area">
-        <div class="progress">
-            <div class="progress-txt">
-                <p id="exhibit-num">1</p>
-                <p>/</p>
-                <p>10</p>
+    <main>
+        <div id="game-area" class="game-area">
+            <div class="progress">
+                <div class="progress-txt">
+                    <p id="exhibit-num">1</p>
+                    <p>/</p>
+                    <p>10</p>
+                </div>
+                <div class="progress-outline">
+                    <div id="progress-bar" class="progress-bar"></div>
+                </div>
             </div>
-            <div class="progress-outline">
-                <div id="progress-bar" class="progress-bar"></div>
+            <div class="quiz-container">
+                <div id="quiz" tabindex="0"></div>
             </div>
+            <div class="quiz-feedback">
+                <p id="error-msg">Please answer all questions to get results!</p>
+            </div>
+            <div class="controls">
+                <button id="previous" aria-label="Previous Button"
+                    class="btn btn-nav btn-nav--pre">Previous</button>
+                <button id="next" aria-label="Next Button"
+                    class="btn btn-nav btn-nav--next">Next</button>
+                <button id="submit" aria-label="Results"
+                    class="btn btn-submit" onclick="getResults();">Results</button>
+            </div>        
         </div>
-        <div class="quiz-container">
-            <div id="quiz" tabindex="0"></div>
+        <div id="result-area" style="display:none;">
+            <p>Hello <span id="user"></span></p>
+            <span id="result"></span>
+            <button type="button" class="btn" id="play-again" onclick="location.reload();">Play Again</button>
         </div>
-        <div class="controls">
-            <button id="previous" aria-label="Previous Button"
-                data-choice="prebtn" class="btn btn-nav btn-nav--pre">Previous</button>
-            <button id="next" aria-label="Next Button"
-                data-choice="nextbtn" class="btn btn-nav btn-nav--next">Next</button>
-            <button id="submit" aria-label="Results"
-                data-choice="submit" class="btn btn-submit">Results</button>
-        </div>
-        
     </main>
+
     <footer>
         <div class="social-links">
             <ul>

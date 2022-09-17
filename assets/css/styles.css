@@ -191,6 +191,7 @@ input[type="text"]:focus {
 .game-area {
     max-width: 760px;
     width: 80%;
+    min-height: 520px;
     background-color: rgba(45, 35, 46, .9);
     font-family: 'Ubuntu', sans-serif;
     border-radius: 4px;
