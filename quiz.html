@@ -23,7 +23,7 @@
             <div class="progress">
                 <div class="progress-txt">
                     <p id="exhibit-num">1</p>
-                    <p>/</p>
+                    <p> &nbsp;/&nbsp;</p>
                     <p>10</p>
                 </div>
                 <div class="progress-outline">
@@ -34,7 +34,7 @@
                 <div id="quiz" tabindex="0"></div>
             </div>
             <div class="quiz-feedback">
-                <p id="error-msg">Please answer all questions to get results!</p>
+                <p id="error-msg"></p>
             </div>
             <div class="controls">
                 <button id="previous" aria-label="Previous Button"
@@ -45,13 +45,19 @@
                     class="btn btn-submit" onclick="getResults();">Results</button>
             </div>        
         </div>
-        <div id="result-area" style="display:none;">
-            <p>Hello <span id="user"></span></p>
+        <div id="result-area" class="result-area" style="display:none;">
+            <div class="icon" id="icon">
+            <!--<i class="fa-solid fa-trophy" aria-hidden="true" id="trophy" title="Trophy">
+                    <span class="sr-only">Trophy</span>
+                </i> -->
+            </div>
+            <p id="comment"></p>
+            <p>You scored</p>
             <span id="result"></span>
-            <button type="button" class="btn" id="play-again" onclick="location.reload();">Play Again</button>
+            <button id="play-again" aria-label="Play Again" 
+                class="btn btn-start"onclick="location.reload();">Play Again</button>
         </div>
     </main>
-
     <footer>
         <div class="social-links">
             <ul>

@@ -18,6 +18,17 @@ html {
 li { list-style-type: none;}
 a {text-decoration: none;}
 
+/* Hides elements, readable by screen readers 
+https://webaim.org/techniques/css/invisiblecontent/ */
+.sr-only {
+    position:absolute;
+    left:-10000px;
+    top:auto;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+}
+
 body {
     width: 100vw;
     min-height: 100vh;
@@ -239,7 +250,7 @@ input[type="text"]:focus {
     position: relative;
     width: 100%;
     min-height: 30rem;
-    margin: 1em auto;
+    margin: 1em auto 0;
     padding: 1em;
     color: #B8EBD0;
     text-align: center;
@@ -304,8 +315,16 @@ input[type="radio"] {
     color: #B8EBD0;
 }
 
+.quiz-feedback {
+    color: #f1919f;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
 .controls {
-    margin: 1em;
+    min-height: 50px;
+    padding: .5em 0;
+    margin-top: 1em;
 }
 
 .btn-nav--next {
@@ -334,7 +353,7 @@ input[type="radio"] {
     font-weight: 700;  
     letter-spacing: 2px;
     font-variant: small-caps;
-    margin: 1em auto;  
+    margin: 1em auto 0;  
 }
 
 .btn-submit:hover,
@@ -347,6 +366,36 @@ input[type="radio"] {
 }
 
 
+/* -------------- */
+/*    Results     */
+/* -------------- */
+
+.result-area {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    text-align: center;
+}
+
+.result-area span {
+    margin-bottom: 1.5em;
+}
+.icon {
+    width: 150px;
+    background-color: rgba(45, 35, 46, .9);
+    font-size: 5rem;
+    margin-bottom: 1em;
+    padding: .5em;
+    border: none;
+    border-radius: 10px;
+}
+
+#trophy {
+    color: gold;
+}
 @media only screen and (min-width: 760px) {
     html {
         font-size: 100%;

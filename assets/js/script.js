@@ -1,6 +1,20 @@
 // Reference DOM Elements from index.html
 const username = document.getElementById('user-input');
 const feedback = document.getElementById('feedback');
+// Store references to navigation buttons and current exhibit
+const previousBtn = document.getElementById('previous');
+const nextBtn = document.getElementById('next');
+const exhibits = document.getElementsByClassName('exhibit');
+// Reference DOM Elements 
+const exhibitNo = document.getElementById('exhibit-num');
+const progressBar = document.getElementById('progress-bar');
+const alertMsg = document.getElementById('error-msg');
+let currentExhibit = 0;
+let exhibitCounter = 1;
+let width = 10;
+// Reference DOM Elements from quiz.html
+const quizContainer = document.getElementById('quiz');
+const submitBtn = document.getElementById('submit');
 
 /**
  * Validates username inserted on the index.html(homepage)
@@ -11,10 +25,9 @@ function validateUserInput(user) {
     let errorMsg = '';
     
     if (user == '') {
-        // alert('username not specified');
         errorMsg = "Please enter a Username";
     } else if (user.length <= Number(2)) {
-        // alert('username has less than 3 characters')
+
         errorMsg = "Username must have 3 or more characters";
     } 
 
@@ -34,15 +47,10 @@ function getUserName() {
 
     let user = username.value;
 
-    if (validateUserInput(user)) {
-        // alert('username validated');
-        // console.log(user);
-        
+    if (validateUserInput(user)) { 
         // redirects to quiz.html while storing username in url 
-        window.location.replace('quiz.html?user='+user);     
+        window.location.replace(`quiz.html?user=${user}`);     
     }
-    
-    return true;
 }
 
 /**
@@ -56,16 +64,8 @@ function saveUserName() {
     // Get the value of "some_key" in eg "https://example.com/?some_key=some_value"
     let user = params.user; // "user"
 
-    // alert(user);
-    console.log(user);
-    
     return user;
 }
-
-// Reference DOM Elements from quiz.html
-const quizContainer = document.getElementById('quiz');
-const resultsContainer = document.getElementById('results');
-const submitBtn = document.getElementById('submit');
 
 // Array of quiz questionsco
 const questions = [
@@ -218,7 +218,7 @@ function generateQuiz() {
              const questionID = questions[i].questionID;
 
             // gives the answer choices for each of the questions
-            for(letter in questions[i].answers){
+            for(letter in questions[i].answers) {
 
                 // add an HTML radio button
                 answers.push(
@@ -247,34 +247,31 @@ function generateQuiz() {
     }
     
     displayQuiz();
-    
 }
 
 /**
  * Takes two parameters; the question the user is on and their selected answer, 
- * iterates through the options and adds the class of radio-checked to 
+ * iterates through the options and adds/removes the class of radio-checked to 
  * the option the user has clicked on/selected.
  */
 function selectOption(questionNo, selection) {
     
     // creates a variable to store the list of option selections
-    const optionList = 'abcd';
+    const optionList = ['a', 'b', 'c', 'd'];
     for (let i = 0; i <= optionList.length - 1; i++) {
 
         if (optionList[i] == selection) {
-            const optionChoice = document.getElementById('label'+questionNo+'_'+selection);
+            const optionChoice = document.getElementById(`label${questionNo}_${selection}`);
             optionChoice.classList.add('radio-checked');
         } else {
-            const radioBtn = document.getElementById('label'+questionNo+'_'+optionList[i]);
+            const radioBtn = document.getElementById(`label${questionNo}_${optionList[i]}`);
             radioBtn.classList.remove('radio-checked');
         }
     }
-
-    return true;
 }
 
 /**
- * Iterates through all quiz questions and checks if each question has a checked radio button,
+ * Iterates through all quiz questions and checks if each question has an unchecked radio button,
  * if a question doesn't have a radio button checked, an error message is displayed
  * if all radio buttons are checked, function returns true
  */
@@ -283,16 +280,16 @@ function validateChecked() {
     let allChecked = true;
     for (let i = 0; i <= questions.length - 1; i++) {
         
-        let name = 'question'+[i];
-        // if radio button is unchecked it returns an empty string and posts null, meaning
-        // allChecked is false
-        if (document.querySelector('input[name='+name+']:checked') == null) {
+        let name = `question${[i]}`;
+        // if radio button is unchecked (returns an empty string and posts null),
+        // then sets allChecked to false
+        if (document.querySelector(`input[name='${name}']:checked`) == null) {
             allChecked = false;
         }
     }
 
     if (allChecked == false) {
-        alert('Please answer all questions.');
+        alertMsg.innerHTML = `Hey ${user}, did you answer all questions?`;
 
         return false;
     }
@@ -314,19 +311,15 @@ function getResults() {
             
             // creates a variable which will get the correct answer for each current question
             const correctAns = questions[i].correctAnswer;
-            //const questionTxt = questions[i].question;
-
+            
             // creates a variable which will get the question ID of each current question
             const questionID = questions[i].questionID;
             
-
-            let name = 'question'+questionID;
+            let name = `question${questionID}`;
 
             // stores the value of the selected radio button to the variable
-            const selectedAnswer = document.querySelector('input[name='+name+']:checked').value;
+            const selectedAnswer = document.querySelector(`input[name='${name}']:checked`).value;
 
-            //alert('Question: '+questionTxt+' CorrectAnswer: '+correctAns+' Selected: '+selectedAnswer);
-            
             // checks if value of selected answer is equal to the correct answer
             if (selectedAnswer == correctAns)
             {
@@ -334,15 +327,9 @@ function getResults() {
                 correctTotal += 1;
             }
         }
-        
-        //alert(correctTotal +' / '+ questions.length);
 
         displayResults(correctTotal);
-
-        return true;
     }
-
-    return false;
 }
 
 /**
@@ -355,23 +342,40 @@ function displayResults(correctTotal) {
 
     const gameArea = document.getElementById('game-area');
     const resultArea = document.getElementById('result-area');
+    const icon = document.getElementById('icon');
+    const comment = document.getElementById('comment');
+    const result = document.getElementById('result');
+    const user = saveUserName();
 
     gameArea.style.display = 'none';
-    resultArea.style.display = 'block';
+    resultArea.style.display = '';
+    
+    result.innerText = `${correctTotal} out of ${questions.length}`;
 
-    document.getElementById('user').innerHTML = saveUserName();
-    document.getElementById('result').innerHTML = correctTotal +' out of '+ questions.length;
+    if (correctTotal == questions.length) {
+        icon.innerHTML = `
+        <i class="fa-solid fa-trophy" aria-hidden="true" title="Trophy" id="trophy">
+        <span class="sr-only">Trophy</span>
+        `
+        comment.innerText = `You're a Quizzified master ${user}`;
+        
+    } else if (correctTotal < (questions.length) && correctTotal > (questions.length / 2)) {
+        icon.innerHTML = `
+        <i class="fa-solid fa-award" aria-hidden="true" title="Medal" id="medal">
+        <span class="sr-only">Medal</span>
+        `
+        comment.innerText = `You need to get out more often ${user}`;
+       
+    } else {
+        icon.innerHTML = `
+        <i class="fa-regular fa-face-sad-tear" aria-hidden="true" title="Crying face" id="crying">
+        <span class="sr-only">Crying Face</span>
+        `
+        comment.innerText = `What planet have you been living on ${user}?`;
+    }
 }
 
-// Store references to navigation buttons and current exhibit
-const previousBtn = document.getElementById('previous');
-const nextBtn = document.getElementById('next');
-const exhibits = document.getElementsByClassName('exhibit');
-const exhibitNo = document.getElementById('exhibit-num');
-const progressBar = document.getElementById('progress-bar');
-let currentExhibit = 0;
-let exhibitCounter = 1;
-let width = 10;
+
 
 /**
  * Called when next button is clicked, increments by one and displays the question count and
@@ -382,7 +386,7 @@ function increment() {
     exhibitNo.innerText = `${exhibitCounter}`;
     
     width += 10;
-    progressBar.style.width = width + '%';
+    progressBar.style.width = `${width}%`;
 }
 
 /**
@@ -394,7 +398,7 @@ function decrement() {
     exhibitNo.innerText = `${exhibitCounter}`;
     
     width -= 10;
-    progressBar.style.width = width + '%';
+    progressBar.style.width = `${width}%`;
 }
 
 /** The following functions were adapted from https://www.sitepoint.com/simple-javascript-quiz/
