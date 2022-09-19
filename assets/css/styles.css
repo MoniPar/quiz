@@ -200,7 +200,7 @@ input[type="text"]:focus {
 
 /* The main container for the quiz */
 .game-area {
-    max-width: 760px;
+    max-width: 800px;
     width: 80%;
     min-height: 520px;
     background-color: rgba(45, 35, 46, .9);
@@ -214,7 +214,7 @@ input[type="text"]:focus {
 .progress {
     width: 50%;
     height: 50px;
-    margin: 0 auto 2em;
+    margin: 1em auto 2em;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -249,7 +249,7 @@ input[type="text"]:focus {
 .quiz-container {
     position: relative;
     width: 100%;
-    min-height: 30rem;
+    min-height: 300px;
     margin: 1em auto 0;
     padding: 1em;
     color: #B8EBD0;
@@ -274,7 +274,7 @@ input[type="text"]:focus {
 }
 
 .question {
-    max-width: 600px;
+    max-width: 525px;
     font-size: 2.75rem;
     margin: 0 auto .5em;
 }
@@ -283,14 +283,26 @@ input[type="text"]:focus {
     width: 200px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     text-align: justify;
     margin: 0 auto;
 }
 
 input[type="radio"] {
-    margin: 0 .5em;
+    -webkit-appearance: none;
+    border-radius: 50%;
+    margin: 0 .75em;
     width: 1em;
     height: 1em;
+    /* border: 2px solid #2D232E; */
+    background-color: #b9aefa;
+    transition: .2s all linear;
+    position: relative;
+    top: 0;
+}
+
+input[type="radio"]:checked {
+    border: 8px solid #9381FF;
 }
 
 .radio-label {
@@ -378,11 +390,13 @@ input[type="radio"] {
     align-items: center;
     font-size: 3rem;
     text-align: center;
+    padding: 1em;
 }
 
 .result-area span {
     margin-bottom: 1.5em;
 }
+
 .icon {
     width: 150px;
     background-color: rgba(45, 35, 46, .9);
@@ -394,8 +408,28 @@ input[type="radio"] {
 }
 
 #trophy {
-    color: gold;
+    color: #deee50;
 }
+
+#medal {
+    color: #9381FF;
+}
+
+#crying {
+    color: #0E6BA8;
+}
+
+@media only screen and (min-width: 375px) {
+    .quiz-container {
+        min-height: 275px;
+    }
+}
+@media only screen and (min-width: 425px) {
+    .controls {
+        padding: .5em 2.5em;
+    }
+}
+
 @media only screen and (min-width: 760px) {
     html {
         font-size: 100%;
@@ -417,17 +451,60 @@ input[type="radio"] {
         width: 60%;
     }
 
-    .progress-fill {
+    .progress-bar{
         height: 30px;
     }
+
     .answers {
-        width: 320px;
+        width: 300px;
     }
 
     input[type="radio"] {
         margin: 0 .5em;
         width: 1.6em;
         height: 1.6em;
+    }
+
+    .quiz-container {
+        min-height: 425px;
+    }
+
+    .result-area {
+        height: 0;
+        line-height: 1.4;
+    }
+
+}
+
+@media only screen and (min-width: 1024px) {
+
+    .game-area {
+        width: 100%;
+        /* padding: 3em; */
+    }
+
+    .progress {
+        margin-bottom: 3em;
+    }
+
+    .quiz-container {
+        min-height: 320px
+    }
+
+    .question {
+        max-width: 525px;
+        margin-bottom: 1em;
+    }
+    
+    .answers {
+        width: 600px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: .5em;
+    }
+
+    .controls {
+        margin-top: 2em;
     }
 
 }

@@ -357,21 +357,31 @@ function displayResults(correctTotal) {
         <i class="fa-solid fa-trophy" aria-hidden="true" title="Trophy" id="trophy">
         <span class="sr-only">Trophy</span>
         `
-        comment.innerText = `You're a Quizzified master ${user}`;
+        comment.innerText = `
+            You're a Quizzified Master 
+            ${user}
+        `;
         
     } else if (correctTotal < (questions.length) && correctTotal > (questions.length / 2)) {
         icon.innerHTML = `
         <i class="fa-solid fa-award" aria-hidden="true" title="Medal" id="medal">
         <span class="sr-only">Medal</span>
         `
-        comment.innerText = `You need to get out more often ${user}`;
+        comment.innerText = `
+            Pretty, pretty, pretty good 
+            ${user}
+        `;
        
     } else {
         icon.innerHTML = `
         <i class="fa-regular fa-face-sad-tear" aria-hidden="true" title="Crying face" id="crying">
         <span class="sr-only">Crying Face</span>
         `
-        comment.innerText = `What planet have you been living on ${user}?`;
+        comment.innerText = `
+            Oh dear! 
+            Well at least you tried 
+            ${user}
+        `;
     }
 }
 
