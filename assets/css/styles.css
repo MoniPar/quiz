@@ -202,7 +202,7 @@ input[type="text"]:focus {
 .game-area {
     max-width: 800px;
     width: 80%;
-    min-height: 520px;
+    min-height: 490px;
     background-color: rgba(45, 35, 46, .9);
     font-family: 'Ubuntu', sans-serif;
     border-radius: 4px;
@@ -350,6 +350,7 @@ input[type="radio"]:checked {
     font-weight: 700;
     background-color: #B8EBD0;
     padding: .5em 1em;
+    /* margin-bottom: 2em; */
 }
 
 .btn-nav:hover,
@@ -393,30 +394,33 @@ input[type="radio"]:checked {
     padding: 1em;
 }
 
-.result-area span {
-    margin-bottom: 1.5em;
-}
-
 .icon {
     width: 150px;
-    background-color: rgba(45, 35, 46, .9);
+    background: linear-gradient(135deg,
+    rgb(45, 35, 46),
+    transparent);
     font-size: 5rem;
     margin-bottom: 1em;
     padding: .5em;
     border: none;
     border-radius: 10px;
+    box-shadow: 7px 6px 10px rgba(100, 8, 136, .8);
 }
 
 #trophy {
-    color: #deee50;
+    color: rgb(238, 166, 12);
 }
 
 #medal {
-    color: #9381FF;
+    color: rgb(184, 235, 208);
 }
 
 #crying {
-    color: #0E6BA8;
+    color: rgb(14, 107, 168);
+}
+
+.result-area span {
+    margin-bottom: 1.5em;
 }
 
 @media only screen and (min-width: 375px) {
@@ -444,6 +448,7 @@ input[type="radio"]:checked {
     }
 
     .game-area {
+        min-height: 760px;
         padding: 2em;
     }
 
@@ -470,17 +475,22 @@ input[type="radio"]:checked {
     }
 
     .result-area {
-        height: 0;
+        padding: 0;
+        margin: 2em 1em;
         line-height: 1.4;
     }
 
+    .icon {
+        width: 220px;
+        margin-bottom: 0;
+
+    }
 }
 
 @media only screen and (min-width: 1024px) {
 
     .game-area {
         width: 100%;
-        /* padding: 3em; */
     }
 
     .progress {

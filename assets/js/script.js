@@ -378,9 +378,8 @@ function displayResults(correctTotal) {
         <span class="sr-only">Crying Face</span>
         `
         comment.innerText = `
-            Oh dear! 
-            Well at least you tried 
-            ${user}
+            What planet are you living on
+            ${user}?
         `;
     }
 }
