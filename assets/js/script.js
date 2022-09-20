@@ -93,12 +93,12 @@ const questions = [
     },
     {
         questionID: 2,
-        question: 'Which country has the highest life expectancy?',
+        question: 'What is a 200&#176; angle called?',
         answers: {
-            a: 'Hong Kong', 
-            b: 'Japan',
-            c: 'Switzerland', 
-            d: 'Iceland'
+            a: 'Reflex', 
+            b: 'Acute',
+            c: 'Obtuse', 
+            d: 'Right'
         }, 
         correctAnswer: 'a'
     },

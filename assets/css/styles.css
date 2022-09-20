@@ -201,7 +201,7 @@ input[type="text"]:focus {
 /* The main container for the quiz */
 .game-area {
     max-width: 800px;
-    width: 80%;
+    width: 85%;
     min-height: 490px;
     background-color: rgba(45, 35, 46, .9);
     font-family: 'Ubuntu', sans-serif;
@@ -280,7 +280,7 @@ input[type="text"]:focus {
 }
 
 .answers {
-    width: 200px;
+    width: 210px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -288,21 +288,22 @@ input[type="text"]:focus {
     margin: 0 auto;
 }
 
+/* https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input/radio */
 input[type="radio"] {
+    position: relative;
+    top: 0;
     -webkit-appearance: none;
+    -moz-appearance: none;
     border-radius: 50%;
     margin: 0 .75em;
     width: 1em;
     height: 1em;
-    /* border: 2px solid #2D232E; */
     background-color: #b9aefa;
     transition: .2s all linear;
-    position: relative;
-    top: 0;
 }
 
 input[type="radio"]:checked {
-    border: 8px solid #9381FF;
+    border: 6px solid #9381FF;
 }
 
 .radio-label {
@@ -319,11 +320,11 @@ input[type="radio"]:checked {
 .radio-label:hover,
 .radio-label:focus {
     background-color: rgb(181, 169, 250);
-    box-shadow: 0 2px 5px rgba(181, 169, 250, .5);
+    box-shadow: 3px 4px 10px rgba(181, 169, 250, .5);
 }
 
 .radio-checked{
-    background-color: #0E6BA8;
+    background-color: #2472a7;
     color: #B8EBD0;
 }
 
@@ -335,7 +336,7 @@ input[type="radio"]:checked {
 
 .controls {
     min-height: 50px;
-    padding: .5em 0;
+    padding: .5em;
     margin-top: 1em;
 }
 
@@ -350,7 +351,7 @@ input[type="radio"]:checked {
     font-weight: 700;
     background-color: #B8EBD0;
     padding: .5em 1em;
-    /* margin-bottom: 2em; */
+    box-shadow: 3px 3px 9px rgba(184, 235, 208, .4);
 }
 
 .btn-nav:hover,
@@ -384,7 +385,6 @@ input[type="radio"]:checked {
 /* -------------- */
 
 .result-area {
-    height: 80vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -400,7 +400,6 @@ input[type="radio"]:checked {
     rgb(45, 35, 46),
     transparent);
     font-size: 5rem;
-    margin-bottom: 1em;
     padding: .5em;
     border: none;
     border-radius: 10px;
@@ -416,7 +415,7 @@ input[type="radio"]:checked {
 }
 
 #crying {
-    color: rgb(14, 107, 168);
+    color: rgb(255, 255, 255);
 }
 
 .result-area span {
@@ -428,6 +427,7 @@ input[type="radio"]:checked {
         min-height: 275px;
     }
 }
+
 @media only screen and (min-width: 425px) {
     .controls {
         padding: .5em 2.5em;
@@ -468,6 +468,10 @@ input[type="radio"]:checked {
         margin: 0 .5em;
         width: 1.6em;
         height: 1.6em;
+    }
+
+    input[type="radio"]:checked {
+        border: 8px solid #9381FF;
     }
 
     .quiz-container {
