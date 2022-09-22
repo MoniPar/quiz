@@ -1,38 +1,43 @@
-// Reference DOM Elements from index.html
+/* exported generateQuiz, selectOption, getResults */
+
+// References to HTML elements and variable assignments
 const username = document.getElementById('user-input');
 const feedback = document.getElementById('feedback');
-// Store references to navigation buttons and current exhibit
 const previousBtn = document.getElementById('previous');
 const nextBtn = document.getElementById('next');
 const exhibits = document.getElementsByClassName('exhibit');
-// Reference DOM Elements 
 const exhibitNo = document.getElementById('exhibit-num');
 const progressBar = document.getElementById('progress-bar');
 const alertMsg = document.getElementById('error-msg');
-let currentExhibit = 0;
-let exhibitCounter = 1;
-let width = 10;
-// Reference DOM Elements from quiz.html
 const quizContainer = document.getElementById('quiz');
 const submitBtn = document.getElementById('submit');
 
 /**
  * Validates username inserted on the index.html(homepage)
  * and displays error messages if username is invalid
+ * @param {*} user user input
+ * @returns true
  */
 function validateUserInput(user) {
     
     let errorMsg = '';
-    
+
+    // if no user input is inserted
     if (user == '') {
+
         errorMsg = "Please enter a Username";
+    
+    // if user input is less than 3 characters 
     } else if (user.length <= Number(2)) {
 
         errorMsg = "Username must have 3 or more characters";
     } 
 
+    // if errorMsg is not empty
     if (errorMsg != '') {
+        // display errorMsg in feedback div on home page
         feedback.innerHTML = errorMsg;
+        
         return false;
     }
     
@@ -40,7 +45,7 @@ function validateUserInput(user) {
 }
 
 /**
- * Gets and stores user's input if validateUserInput 
+ * Gets and stores user input if validateUserInput 
  * function is true and redirects to quiz.html page
  */
 function getUserName() {
@@ -55,19 +60,20 @@ function getUserName() {
 
 /**
  * Takes username value stored in url and stores it in a variable
+ * @returns user
  */
 function saveUserName() {
     // https://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
     const params = new Proxy(new URLSearchParams(window.location.search), {
         get: (searchParams, prop) => searchParams.get(prop),
     });
-    // Get the value of "some_key" in eg "https://example.com/?some_key=some_value"
-    let user = params.user; // "user"
+    // Get the value of "user"
+    let user = params.user; 
 
     return user;
 }
 
-// Array of quiz questionsco
+// Array of quiz questions
 const questions = [
     {
         questionID: 0,
@@ -119,7 +125,7 @@ const questions = [
         answers: {
             a: 'Lira (&#8356;)',
             b: 'Drachma (&#8367;)',
-            c: 'Zloty (&#122;)',
+            c: 'Zloty (&#122;&#322;)',
             d: 'Euro (&#8364;)'
         },
         correctAnswer: 'c'
@@ -181,22 +187,28 @@ const questions = [
     }
 ];
 
+let currentExhibit = 0;
+let exhibitCounter = 1;
+let width = 10;
 
 
-/** Some of the following code was adapted from https://simplestepscode.com/javascript-quiz-tutorial/
+// Some of the following code was adapted from https://simplestepscode.com/javascript-quiz-tutorial/
+
+/** 
  * Includes two functions, one which shuffles the quiz questions and another which
  * displays the quiz on the page.
  */
 function generateQuiz() {
     
-    /** https://www.webmound.com/shuffle-javascript-array/
+    /** 
      * Shuffles the order of questions in the array of objects using the built in
-     * JS array sort() method which swaps one item with the next one, 
+     * JS array sort() method which swaps one item with the next one and 
      * takes a callback function which returns a random + or - number. 
      */
     function shuffle(questions) {
+        // Taken from https://www.webmound.com/shuffle-javascript-array/
         return questions.sort(() => 0.5 - Math.random());
-    };
+    }
 
     shuffle(questions);
 
@@ -205,33 +217,34 @@ function generateQuiz() {
      * the page using innerHTML
      */
     function displayQuiz() {
-        // variable for questions and answer choices HTML
+        // variable for questions and answer choices
         const output = [];
 
-        // Iterates through the array of questions 
+        // iterates through the array of questions 
         for (let i = 0; i < questions.length; i++) {
             
-            // variable for list of possible answers storage
+            // variable for list of possible answers
             const answers = [];
 
-             // gets the questionID of each question
-             const questionID = questions[i].questionID;
+            // gets the questionID of each question
+            const questionID = questions[i].questionID;
 
-            // gives the answer choices for each of the questions
-            for(letter in questions[i].answers) {
+            // iterates through the answer options for each question
+            for (let letter in questions[i].answers) {
 
-                // add an HTML radio button
+                // adds and HTML radio button and label with attributes for each answer option
                 answers.push(
                     `
                     <label id="label${[questionID]}_${letter}" class="radio-label">
-                        <input type="radio" name="question${questionID}" value="${letter}" onclick="selectOption(${[questionID]}, this.value);">
+                        <input type="radio" name="question${questionID}" value="${letter}" 
+                            onclick="selectOption(${[questionID]}, this.value);">
                         ${questions[i].answers[letter]}
                     </label>
                     `
-                )
+                );
             }
 
-            // add question and its answers to the output
+            // creates HTML divs to contain the questions and answers and adds the answers to the output 
             output.push(
                 `
                 <div class="exhibit">
@@ -249,14 +262,15 @@ function generateQuiz() {
     displayQuiz();
 }
 
-/**
- * Takes two parameters; the question the user is on and their selected answer, 
- * iterates through the options and adds/removes the class of radio-checked to 
- * the option the user has clicked on/selected.
+/** 
+ * Iterates through the options and adds the class of radio-checked to the option 
+ * the user has clicked on/selected, while removing the radio-checked class
+ * from any previously selected radio button which becomes unchecked by default.
+ * @param questionNo the question the user is on
+ * @param selection the user's selected answer
  */
 function selectOption(questionNo, selection) {
-    
-    // creates a variable to store the list of option selections
+    // stores the list of option selections in a variable to iterate through them
     const optionList = ['a', 'b', 'c', 'd'];
     for (let i = 0; i <= optionList.length - 1; i++) {
 
@@ -271,13 +285,17 @@ function selectOption(questionNo, selection) {
 }
 
 /**
- * Iterates through all quiz questions and checks if each question has an unchecked radio button,
- * if a question doesn't have a radio button checked, an error message is displayed
- * if all radio buttons are checked, function returns true
+ * Iterates through all quiz questions and checks if each question has a checked radio button.
+ * @returns true
+ * If a question doesn't have a radio button checked, an error message is displayed.
  */
 function validateChecked() {
     
     let allChecked = true;
+
+    // Calls function to get username from url and assigns it to a variable
+    let user = saveUserName();
+
     for (let i = 0; i <= questions.length - 1; i++) {
         
         let name = `question${[i]}`;
@@ -309,14 +327,13 @@ function getResults() {
         let correctTotal = 0;
         for (let i = 0; i <= questions.length - 1; i++) {
             
-            // creates a variable which will get the correct answer for each current question
+            // assigns a variable to the correct answer for each current question
             const correctAns = questions[i].correctAnswer;
             
-            // creates a variable which will get the question ID of each current question
+            // assigns a variable to the question ID of each current question
             const questionID = questions[i].questionID;
             
             let name = `question${questionID}`;
-
             // stores the value of the selected radio button to the variable
             const selectedAnswer = document.querySelector(`input[name='${name}']:checked`).value;
 
@@ -333,58 +350,67 @@ function getResults() {
 }
 
 /**
- * Takes the total of correct answers as a parameter and displays it after hiding
- * the game area display.  It calls the saveUserName function to display username in 
- * results area
- * @param {*} correctTotal 
+ * Displays the total of correct answers after hiding the game area display.  
+ * Calls the saveUserName function to display username in results area.
+ * @param {*} correctTotal the total of correct answers
  */
 function displayResults(correctTotal) {
 
+    // References HTML elements locally
     const gameArea = document.getElementById('game-area');
     const resultArea = document.getElementById('result-area');
+    const result = document.getElementById('result');
     const icon = document.getElementById('icon');
     const comment = document.getElementById('comment');
-    const result = document.getElementById('result');
-    const user = saveUserName();
 
+    let user = saveUserName();
+
+    // replace quiz questions with results
     gameArea.style.display = 'none';
     resultArea.style.display = '';
-    
     result.innerText = `${correctTotal} out of ${questions.length}`;
 
+    // if 10 out of 10 questions are correct
     if (correctTotal == questions.length) {
+        // display trophy icon
         icon.innerHTML = `
         <i class="fa-solid fa-trophy" aria-hidden="true" title="Trophy" id="trophy">
         <span class="sr-only">Trophy</span>
-        `
+        `;
+        // display comment 
         comment.innerText = `
             You're a Quizzified Master 
             ${user}
         `;
         
+        // if correct questions is between 6 and 9  
     } else if (correctTotal < (questions.length) && correctTotal > (questions.length / 2)) {
+        // display Medal
         icon.innerHTML = `
         <i class="fa-solid fa-award" aria-hidden="true" title="Medal" id="medal">
         <span class="sr-only">Medal</span>
-        `
+        `;
+        // display comment
         comment.innerText = `
             Pretty, pretty, pretty good 
             ${user}
         `;
        
+        // otherwise (5 or less questions correct)
     } else {
+        // display sad, crying face
         icon.innerHTML = `
         <i class="fa-regular fa-face-sad-tear" aria-hidden="true" title="Crying face" id="crying">
         <span class="sr-only">Crying Face</span>
-        `
+        `;
+
+        // display comment
         comment.innerText = `
             What planet are you living on
             ${user}?
         `;
     }
 }
-
-
 
 /**
  * Called when next button is clicked, increments by one and displays the question count and
@@ -410,7 +436,10 @@ function decrement() {
     progressBar.style.width = `${width}%`;
 }
 
-/** The following functions were adapted from https://www.sitepoint.com/simple-javascript-quiz/
+
+// The following functions were adapted from https://www.sitepoint.com/simple-javascript-quiz/
+
+/** 
  * Shows one exhibit (question and its set of options) at a time 
  */
 function showExhibit(n) {
@@ -440,19 +469,23 @@ function showExhibit(n) {
     }
 }
 
-// Allows next button to show next exhibit
+/**
+ * Called when next button is clicked; shows next exhibit and brings the focus
+ * back to the quiz div and answer options (radio buttons)
+ */
 function showNextExhibit() {
     showExhibit(currentExhibit + 1);
 
-    // brings back the focus to the quiz div/radio button options
     document.getElementById('quiz').focus();
 }
 
-// Allows previous button to show previous exhibit
+/**
+ * Called when previous button is clicked; shows previous exhibit and brings the focus
+ * back to the quiz div and answer options (radio buttons)
+ */
 function showPreviousExhibit() {
     showExhibit(currentExhibit - 1);
     
-    // brings back the focus to the quiz div/radio button options
     document.getElementById('quiz').focus();
 }
 
@@ -464,17 +497,18 @@ if (document.getElementById("user-input") != null) {
             event.preventDefault();
             getUserName();
         }
-    })
+    });
 }
 
-// Call the showPreviousExhibit and the decrement functions when the previous button is clicked
-if (previousBtn != null) { 
-    previousBtn.addEventListener('click', showPreviousExhibit);
-    previousBtn.addEventListener('click', decrement);
-}
 
-// Call the showNextExhibit and the increment functions when the next button is clicked
+// Call the showNextExhibit and the increment function when the next button is clicked
 if (nextBtn != null) { 
     nextBtn.addEventListener('click', showNextExhibit); 
     nextBtn.addEventListener('click', increment);
+}
+
+// Call the showPreviousExhibit and the decrement function when the previous button is clicked
+if (previousBtn != null) { 
+    previousBtn.addEventListener('click', showPreviousExhibit);
+    previousBtn.addEventListener('click', decrement);
 }

@@ -15,7 +15,7 @@ ___
 2. [Features](#features)  
     * [Index / Home Page](#index--home-page)
     * [Quiz Page](#quiz-page)
-    * [Score Display](#score-display)
+    * [Score Display](#result-page)
     * [Future Features](#future-features)
 3. [User Experience (UX)](#user-experience-ux)
     * [Strategy / Site Goals](#strategy--site-goals)
@@ -40,11 +40,12 @@ ___
 
 The aim of this project is to demonstrate skills in HTML, CSS and JavaScript.  
 
-It is a mobile-first build and is responsive on tablet, desktop and screens up to 2000px wide. It is also compatible with all popular browsers. 
+It is a mobile-first build and is responsive on tablet and desktop. Checking for compatibility with Firefox, Edge, Safari.
 
 The online quiz is intended to target players young and old, who want to challenge themselves and perhaps learn a few more historical, scientific, mathematical and popular culture facts. 
 
-Interactivity, score count, high score record, keyboard accessible.
+The quiz consists of 10 questions, with 4 answer options, of which only 1 is correct.  It is interactive and keyboard/screen reader accessible. 
+
 
 
 
@@ -56,7 +57,7 @@ Interactivity, score count, high score record, keyboard accessible.
 
 ## Quiz Page
 
-## Score Display
+## Result Page
 
 ## Future Features
 
@@ -101,22 +102,19 @@ The main goal of the online quiz game is to provide users with a set of question
 
 * index.html
 
-Warning: The type attribute is unnecessary for JavaScript resources.
-
-From line 46, column 5; to line 46, column 61
-```HTML
-<script src="assets/js/script.js" type="text/javascript"></script>
-```
-Solution: The type attribute was removed.
+Document checking completed. No errors or warnings to show.
 
 * quiz.html
 
+Document checking completed. No errors or warnings to show.
 
 #### [CSS Validator](https://jigsaw.w3.org/css-validator/)
 
 Congratulations! No Error Found.
 
 #### [JavaScript Validator](https://jshint.com/)
+
+
 
 ---
 
@@ -164,8 +162,13 @@ document.getElementById('user-input').addEventListener('keydown', function(event
 
 Solution: This was substituted with `[i]`, since in this case 'i' represents each question in the array.  
 
+* For better user experience, it was decided to display the questions at random rather than having them always displayed in the order they are listed in the array.  After inserting the 'shuffle()' function, the answer choices did not always match the question displayed.
+
+Solution: After various attempts at fixing this, it was decided to give each question and its relevant answer choices a unique ID by which they could be grouped together.  `questionID` and a specific number was added to each item in the array of questions.  Each answer choice was then labelled according to the question it was intended for. Adding a `questionID` was also very useful when checking the user's selected answer with the correct answer later on in the game. 
+
+
 * Uncaught TypeError: Cannot read properties of undefined (reading 'classList') at showExhibit 
-The element was referenced by its ID instead of class, therefore it could not add or remove another CSS class when needed to.
+The element was referenced by its 'id' instead of 'class', therefore it could not add or remove another class attribute when needed to.
 
 Solution: A class attribute was added to the element so that the classList property was able to add/remove classes to/from the list.  
 
@@ -181,6 +184,10 @@ Solution: Since the quizContainer is only displayed on the quiz.html page, it ha
 ```javaScript
  if (quizContainer != null) { quizContainer.innerHTML = output.join(''); }
 ``` 
+
+* When trying to replace the 'gameArea' with the 'resultArea' using the `style.display` property, the `resultArea.style.display = 'block'` was clashing with the `display: flex` CSS styling for the 'resultArea' div.  
+
+Solution: The 'block' value was replaced with 'flex' in the script.  While attempting different solutions it was discovered that passing in an empty string also worked in replacing the 'gameArea' with the 'resultArea' as long as 'gameArea' was given the value of `style.display = 'none'`.
 
 ## Manual Testing Bug Fixes
 
@@ -205,6 +212,8 @@ Solution: The focus() method was added to the 'showNextExhibit' and 'showPreviou
 
 # Citation of Sources
 
+[How to save user input into a variable in HTML](https://stackoverflow.com/questions/17433557/how-to-save-user-input-into-a-variable-in-html-and-javascript)
+
 [How to redirect to a new page using Javascript](https://www.designcise.com/web/tutorial/how-to-redirect-to-another-web-page-using-javascript)
 
 [How to get string values from URL](https://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript)
@@ -213,7 +222,12 @@ Solution: The focus() method was added to the 'showNextExhibit' and 'showPreviou
 
 [How to improve web accessibility when hiding elements](https://www.nomensa.com/blog/how-improve-web-accessibility-hiding-elements)
 
+[HTML Currency Character Codes](https://html-css-js.com/html/character-codes/currency/)
+
 [Giving focus to an element](https://www.w3schools.com/jsref/met_html_focus.asp)
+
+[Styling radio inputs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input/radio)
+
 
 ## Content
 

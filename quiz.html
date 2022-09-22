@@ -19,23 +19,28 @@
         <h1>Quizzified</h1>
     </header>
     <main>
+        <!-- Quiz Area -->
         <div id="game-area" class="game-area">
+            <!-- Question Count and Progress Bar -->
             <div class="progress">
                 <div class="progress-txt">
                     <p id="exhibit-num">1</p>
-                    <p> &nbsp;/&nbsp;</p>
+                    <p>&nbsp;/&nbsp;</p>
                     <p>10</p>
                 </div>
                 <div class="progress-outline">
                     <div id="progress-bar" class="progress-bar"></div>
                 </div>
             </div>
+            <!-- Question and answer options -->
             <div class="quiz-container">
                 <div id="quiz" tabindex="0"></div>
             </div>
+            <!-- Error Message -->
             <div class="quiz-feedback">
                 <p id="error-msg"></p>
             </div>
+            <!-- Previous, Next and Results Buttons -->
             <div class="controls">
                 <button id="previous" aria-label="Previous Button"
                     class="btn btn-nav btn-nav--pre">Previous</button>
@@ -45,13 +50,14 @@
                     class="btn btn-submit" onclick="getResults();">Results</button>
             </div>        
         </div>
+        <!-- Results Area -->
         <div id="result-area" class="result-area" style="display:none;">
             <div class="icon" id="icon"></div>
             <p id="comment"></p><br>
             <p>You scored</p>
             <span id="result"></span>
             <button id="play-again" aria-label="Play Again" 
-                class="btn btn-start"onclick="location.reload();">Play Again</button>
+                class="btn btn-start" onclick="location.reload();">Play Again</button>
         </div>
     </main>
     <footer>
@@ -71,22 +77,16 @@
                 </li>    
             </ul>
         </div>
-    </div>   
-    <p>&#169; 2022 | Quizzified by Monique Parnis</p> 
+        <p>&#169; 2022 | Quizzified by Monique Parnis</p> 
     </footer>
     <!-- Link for External JavaScript -->
     <script src="assets/js/script.js"></script>
-    
+    <!-- Internal JavaScript code -->
     <script>
-        // Calls function to get username from url and stores it in a variable
-        let user = saveUserName();
-        // alert(user);
         // Calls function to build quiz
         generateQuiz();
-        
-        // Calls function to display only one quiz question and its choices
+        // Calls function to display only one quiz question and its answer options
         showExhibit(currentExhibit);
-
     </script>
     <!-- Fontawesome Link -->
     <script src="https://kit.fontawesome.com/967a4d433b.js" crossorigin="anonymous"></script>
