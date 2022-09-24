@@ -264,6 +264,10 @@ input[type="text"]:focus {
     text-align: center;
 }
 
+.quiz {
+    height: fit-content;
+}
+
 /* Pagination for quiz questions and answer options */
 .exhibit {
     position: absolute;
