@@ -68,6 +68,10 @@ h1 {
     letter-spacing: 2px;
 }
 
+h1 a {
+    color: #20232E;
+}
+
 /* Footer Styling */
 footer {
     width: 100%;

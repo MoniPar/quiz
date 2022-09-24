@@ -1,11 +1,11 @@
 
 # Quizzified Online Quiz
 
-Welcome to Quizzified! Quizzified is an online quiz game which tests the general knowledge of players.  The set of questions are randomly generated to give returning players a slightly different experience. Each question is presented with four choice answers with only one correct answer. 
+Welcome to Quizzified! Quizzified is an online quiz game which tests the general knowledge of players young and old.  The set of questions are randomly generated to give returning players a slightly different experience. Each question is presented with four choice answers out of which only one answer is correct. Players are presented with their score after answering all questions, however it is not specified which answers they get right or wrong.  Instead they are encouraged to take the quiz again to better their score.   
 
-![Quiz responsiveness on multiple screen sizes]()
+![Quiz responsiveness on multiple screen sizes](assets/documentation/quizzified-responsive.png)
 
-[Visit the Quizzified online quiz here]()
+[Visit the Quizzified online quiz here](https://monipar.github.io/quiz/)
 
 ___
 
@@ -40,22 +40,85 @@ ___
 
 The aim of this project is to demonstrate skills in HTML, CSS and JavaScript.  
 
-It is a mobile-first build and is responsive on tablet and desktop. Checking for compatibility with Firefox, Edge, Safari.
+It is a mobile-first build and is responsive on tablet and desktop. Quizzified is compatible with Chrome, Firefox, Edge and Safari.
 
-The online quiz is intended to target players young and old, who want to challenge themselves and perhaps learn a few more historical, scientific, mathematical and popular culture facts. 
+The quiz consists of ten questions, with four answer options, of which only one is correct.  It is interactive and accessible by keyboard navigation and screen readers.   
 
-The quiz consists of 10 questions, with 4 answer options, of which only 1 is correct.  It is interactive and keyboard/screen reader accessible. 
-
-
-
+The online quiz was primarily intended to test a group of thirteen to fifteen year old students, on the various subjects they were studying in school.  Its purpose was to encourage them to research the questions they were unsure about and keep taking the quiz until they got a perfect score. Teachers, staff members and family members also took the challenge and found that it also helped them to learn a few more historical, scientific, mathematical and popular culture facts they didn't know. 
 
 ---
 
 # Features
 
-## Index / Home Page
+## Existing Features
+
+### Index / Home Page
+
+    iPhone 6/7/8
+![Home Page on screen from 320px wide](assets/documentation/home-mobile_50.png)
+
+    Laptop 1024px wide
+![Home Page on screen 1024px wide](assets/documentation/home-laptop_25.png) 
+
+The Home Page consists of the following features:
+
+* A Header
+
+The Header, which displays the name of the quiz, is present on all pages.  It is a link by which the user can navigate back to the Home Page at any moment of the game and restart the quiz.  It is keyboard focusable and has a tooltip when hovered on to show the user that it is a link which will bring them back to start.
+
+![Header Tooltip](assets/documentation/header-link.png)
+
+* The Logo
+
+The Logo is displayed on the main area of the Home Page as an image.  It consists of a glitched out letter 'Q', the name 'Quizzified' and the slogan 'Stimulate your mind'.  These three components are colourful and produce a good contrast against the dark background of the image.  It is meant to be eye-catching and playful, and gives the quiz a distinguished look.   
+
+* Text and Username input
+
+The main area also features a question to entice the user while also specifying that they are going to be tested on General Knowledge questions.
+
+A text input field invites the user to enter a username in order to start the game.  An error message is displayed under the input field if the user tries to start the game without inserting a valid username. If the username is valid, the user can press the 'Enter' key on their keyboard or navigate to the button below to start the quiz.
+
+![Error message 1 for invalid username](assets/documentation/home-errormsg1.png)
+
+![Error message 2 for invalid username](assets/documentation/home-errormsg2.png)
+
+* A Start Button
+
+The Start Button is an important feature on the Home Page.  It is large and provides optimal contrast against the light coloured background.  It scales up and changes colour when it is hovered or focussed on. 
+
+* A Footer
+
+The Footer is located at the bottom of all pages of the site.  It provides links to relevant developer pages, displayed as social icons.  They change colour when hovered or focussed on, open in a new tab and contain descriptive labels for screen readers.  Copyright and developer information are also displayed in the Footer.  
 
 ## Quiz Page
+
+![Quiz Page Mobile]()
+
+![Quiz Page Tablet]()
+
+![Quiz Page Laptop]()
+
+The Quiz Page displays the Header and Footer.  The Main area consists of the following features:
+
+* A question counter and a progress bar
+
+These are displayed at the top of the quiz container.  The question counter counts the questions out of 10.  This is useful for the player to know which question they are on and how many are left.
+
+The Progress Bar is a graphic representation of the above.  A percentage of the capsule shaped bar fills up when the user clicks on the next button and empties when the previous button is clicked. 
+
+![Question counter and progress bar half full]()
+
+![Question counter and progress bar full]()
+
+* A question and a block of answer options
+
+Each quiz question is displayed one at a time and a set of options are presented below for the player to pick an answer.  Each answer option consists of a radio buttons with a label, styled to look like buttons.  The player can click on the word or on the stylish radio button and it will produce the same effect.  These buttons have a focus and hover effect.  When clicked or selected each button changes colour while the radio button has a slight animation to show that it is being checked.  A keyboard user can easily navigate through the  answer options with the 'arrow keys' and make their selection with the 'space' or 'enter' key.  They can then continue tabbing to the navigation buttons.
+
+![Radio buttons and selection]()
+
+* Navigation and Results Buttons
+
+These are displayed at the bottom of the quiz container.  The Next button displayed on the right appears with the first question, while the previous button becomes visible on the left when the user navigates to the second question.  The Results button appears when the user gets to the last question of the quiz.  These buttons all have a hover and focus effect.  When a keyboard user clicks on the next or previous button and is directed to the next or previous question, the focus is brought back to the top.  This is helpful for the user as they don't have to navigate their way back to the answer options using the 'tab' and 'shift' keys.  It also makes the tabbing order more intuitive as one always expects the first tab to bring focus on the top when on a new question. 
 
 ## Result Page
 
@@ -205,6 +268,18 @@ Solution: The focus() method was added to the 'showNextExhibit' and 'showPreviou
 
 # Deployment
 
+This online quiz was deployed to [GitHub Pages](https://pages.github.com/).  The steps taken in deploying this project are as follows:
+
+1. Log on to GitHub and select 'quiz' from the list of repositories.
+2. Click on 'Settings' on the menu just below the repository's name.
+3. Navigate to the left side menu and click on 'Pages' in the 'Code and Automation' section.
+4. In the Main area under 'Build and Deployment', click on the source dropdown menu and select the 'Deploy from Branch' selection.
+5. In the 'Branch' section select the `main` branch and the `/(root)` folder.
+6. Click 'Save'.
+7. A message that the site is ready to be deployed appears just under the 'GitHub Pages' heading.  After refreshing the page, the link to the deployed site appears in a different color. 
+8. Click on the link to go to the live deployed page. 
+
+The live link can be found [here](https://monipar.github.io/quiz/)
 
 [Back to Top](#table-of-contents)
 
