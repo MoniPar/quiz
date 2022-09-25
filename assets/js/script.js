@@ -375,7 +375,7 @@ function displayResults(correctTotal) {
         // display trophy icon
         icon.innerHTML = `
         <i class="fa-solid fa-trophy" aria-hidden="true" title="Trophy" id="trophy">
-        <span class="sr-only">Trophy</span>
+        <span class="sr-only">Trophy</span></i>
         `;
         // display comment 
         comment.innerText = `
@@ -388,7 +388,7 @@ function displayResults(correctTotal) {
         // display Medal
         icon.innerHTML = `
         <i class="fa-solid fa-award" aria-hidden="true" title="Medal" id="medal">
-        <span class="sr-only">Medal</span>
+        <span class="sr-only">Medal</span></i>
         `;
         // display comment
         comment.innerText = `
@@ -401,7 +401,7 @@ function displayResults(correctTotal) {
         // display sad, crying face
         icon.innerHTML = `
         <i class="fa-regular fa-face-sad-tear" aria-hidden="true" title="Crying face" id="crying">
-        <span class="sr-only">Crying Face</span>
+        <span class="sr-only">Crying Face</span></i>
         `;
 
         // display comment

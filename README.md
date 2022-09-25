@@ -15,7 +15,7 @@ ___
 2. [Features](#features)  
     * [Index / Home Page](#index--home-page)
     * [Quiz Page](#quiz-page)
-    * [Score Display](#result-page)
+    * [Score Display](#score-display)
     * [Future Features](#future-features)
 3. [User Experience (UX)](#user-experience-ux)
     * [Strategy / Site Goals](#strategy--site-goals)
@@ -43,8 +43,6 @@ The aim of this project is to demonstrate skills in HTML, CSS and JavaScript.
 It is a mobile-first build and is responsive on tablet and desktop. Quizzified is compatible with Chrome, Firefox, Edge and Safari.
 
 The quiz consists of ten questions, with four answer options, of which only one is correct.  It is interactive and accessible by keyboard navigation and screen readers.   
-
-The online quiz was primarily intended to test a group of thirteen to fifteen year old students, on the various subjects they were studying in school.  Its purpose was to encourage them to research the questions they were unsure about and keep taking the quiz until they got a perfect score. Teachers, staff members and family members also took the challenge and found that it also helped them to learn a few more historical, scientific, mathematical and popular culture facts they didn't know. 
 
 ---
 
@@ -92,11 +90,14 @@ The Footer is located at the bottom of all pages of the site.  It provides links
 
 ## Quiz Page
 
-![Quiz Page Mobile]()
+    Galaxy S8 360px wide
+![Quiz Page Mobile](assets/documentation/quiz-mobile_25.png)
 
-![Quiz Page Tablet]()
+    iPad 768px wide
+![Quiz Page Tablet](assets/documentation/quiz-tablet_50.png)
 
-![Quiz Page Laptop]()
+    laptop 1024px wide
+![Quiz Page Laptop](assets/documentation/quiz-laptop_50.png)
 
 The Quiz Page displays the Header and Footer.  The Main area consists of the following features:
 
@@ -106,23 +107,47 @@ These are displayed at the top of the quiz container.  The question counter coun
 
 The Progress Bar is a graphic representation of the above.  A percentage of the capsule shaped bar fills up when the user clicks on the next button and empties when the previous button is clicked. 
 
-![Question counter and progress bar half full]()
+![Question counter and progress bar half full](assets/documentation/progresscountbar-halffull.png)
 
-![Question counter and progress bar full]()
+![Question counter and progress bar full](assets/documentation/progresscountbar-full.png)
 
 * A question and a block of answer options
 
 Each quiz question is displayed one at a time and a set of options are presented below for the player to pick an answer.  Each answer option consists of a radio buttons with a label, styled to look like buttons.  The player can click on the word or on the stylish radio button and it will produce the same effect.  These buttons have a focus and hover effect.  When clicked or selected each button changes colour while the radio button has a slight animation to show that it is being checked.  A keyboard user can easily navigate through the  answer options with the 'arrow keys' and make their selection with the 'space' or 'enter' key.  They can then continue tabbing to the navigation buttons.
 
-![Radio buttons and selection]()
+![Radio buttons and selection](assets/documentation/radio-selected.png)
 
 * Navigation and Results Buttons
 
 These are displayed at the bottom of the quiz container.  The Next button displayed on the right appears with the first question, while the previous button becomes visible on the left when the user navigates to the second question.  The Results button appears when the user gets to the last question of the quiz.  These buttons all have a hover and focus effect.  When a keyboard user clicks on the next or previous button and is directed to the next or previous question, the focus is brought back to the top.  This is helpful for the user as they don't have to navigate their way back to the answer options using the 'tab' and 'shift' keys.  It also makes the tabbing order more intuitive as one always expects the first tab to bring focus on the top when on a new question. 
 
-## Result Page
+![Navigation Buttons and error message display](assets/documentation/navbtns-errormsg.png)
+
+An extra feature added here is useful for the player in making sure that they have selected an option answer for every question.  If the player has not selected an answer option for one or more of the questions, an error message is displayed when they click on the 'Results' button.  They can then navigate back and check that their answers. This feature uses their username to attract their attention and give them a more personalised experience.
+
+## Score Display
+
+    Tablet 810px wide
+![Score Display Tablet](assets/documentation/score-display_50_25.png)
+
+The Score display consists of an icon, a small remark which includes the player's username, the total score and the 'Play Again' button.
+
+At present there are three different outcomes, where the icon and the remark change according to the total score. 
+
+The icon is a visual representation of the score outcome.  The remark is meant to reward, incentivise or gently put down the player while also encouraging them to take the quiz again to improve their outcome.  The 'Play Again' button draws the user's eye and entices them to play the quiz again.
 
 ## Future Features
+
+The following features will be added at a later date to improve user experience: 
+
+* More available questions, perhaps using an external API, so that the players are tested on different questions every time they take the quiz.
+A difficulty level option might be included here.
+
+* Increase the number of different outcomes on 'Score Display' when there are more questions added.
+
+* Store players' data (username, score and date played), using Google Sheets API.  This will make the quiz more competitive as players will return to try beat the top score.
+
+* Give the player an option to share their score via social media. This will entice other players to play the quiz.  
 
 [Back to Top](#table-of-contents)
 
@@ -131,16 +156,78 @@ These are displayed at the bottom of the quiz container.  The Next button displa
 # User Experience (UX)
 
 ## Strategy / Site Goals
-The main goal of the online quiz game is to provide users with a set of questions that tests their knowledge about various subjects. 
+
+The online quiz was primarily intended to test a group of thirteen to fifteen year old students, on the various subjects they are studying in school.  Its purpose is to encourage these students to research the questions they are unsure about and keep taking the quiz until they get a perfect score. Teachers, staff members and family members also took the challenge and found that it also helped them to learn a few more historical, scientific, mathematical and popular culture facts they didn't know. 
+
+The main goal of the online quiz game is to provide users with a set of questions that test their knowledge about various subjects.  The questions are of different difficulty levels so that players young and old are able to participate in the quiz. The site is accessible and easy to navigate.  It provides the user a few minutes of entertainment and encourages them to give the quiz another go to better their outcome.
 
 ## Scope / User Stories
 
+### Users will be able to: 
+
+* easily understand the purpose of the website
+* navigate the website intuitively
+* navigate and interact with the game easily on their phone, tablet or laptop
+* play the game without the use of a mouse
+* learn about the developer of the quiz and be able to contact them
+* open external links in a new tab so they don't have to find their way back to the home page
+* go back to the home page if they choose to
+* have a positive experience and complete the quiz to the end
+* be provided with feedback upon quiz completion
+* be challenged to take the quiz again
+* be able to have another go at the quiz straight away, without having to re-insert their username
+* have a slightly different experience when replaying the quiz.
+
+
 ## Structure / Design Choices
+
+This online quiz is designed with a minimalist approach. It offers simplicity and consistency within its structure and its uncluttered design helps to retain the user's focus on the game.  
+The simple structured layout, consists of a header and a footer, which are the same on the Home Page, the Quiz Page as well as the Score Display to keep the design uniform and for ease of access.  The layout of the website is consistent across devices.   
+
+The Quiz questions are clearly displayed with large font and the option answers follow right underneath.  Each option is hoverable and changes colour upon selection.  On wider screens the option answers are displayed in two columns instead of one in order for the user to have full view of the navigation buttons without having to scroll down everytime they need to move on to the next question.  Pagination for the questions and answers was included to help the player focus on one question at a time.  The 'Previous' button gives them the ability to go back and check their answers before they submit to get results.  
+
+The Score Display at the end of the quiz is also clearly displayed with little icons to give the user some visual feedback as well as a more personalised feel with the use of their username in the text remark area congratulating them or commiserating them on their defeat.
+
+Please refer back to [Features](#existing-features) for more detailed information on the features used and design choices.
 
 ## Skeleton / Wireframes
 
+Wireframes were first sketched with pen and paper. This method helped with brainstorming, deciding the most essential parts for the quiz and work out a flow to the logic that will need to be implemented. They were then wireframed in [Balsamiq](https://balsamiq.com/wireframes/) to give a closer indication of the intended design.
+
+[Right click to view Balsamiq Wireframes in pdf format](assets/documentation/quizzified-wireframes.pdf)
+
+Note: Through the design phase some elements were changed to allow for a better user experience.
+
 ## Surface
 
+* Colour Scheme
+
+A neutral pastel scheme was used for the online quiz as the focus needed to be on the quiz questions rather than the colour design.  
+
+[Coolors](https://coolors.co/) was used to generate the following colour palette.
+
+![Coolors colour palette for Quizzified](assets/documentation/coolors-color-palette.jpg)
+
+A lighter shade of 'Ultra Red' was used as the body colour of the website, with an opacity for the header and footer.  
+
+'Raisin Black' was used as the main typeface of the website.  It was also used as the background for the quiz container with some opacity in order to make it softer on the eye.  
+
+The cool 'Magic Mint' was ideal for the typeface of the quiz questions and the background colour for the navigation buttons. 
+
+'Honolulu Blue' provided great contrast for the 'Quizzify Me' and 'Results' buttons against the soft rose background.  It was also used for the user selected answer options which had to be identifiable from the unchecked ones.
+
+The smooth 'Medium Purple' was ideal for the answer options as it complimented the darkish quiz background and the soft rose colour of the body.  A lighter shade of it was used for the custom styled radio buttons and a darker shade to fill the radio buttons in when checked.   
+
+* Typography
+
+[Google Fonts](https://fonts.google.com/) 'Nova Square' and 'Ubuntu' where chosen for the website.  
+The 'Nova Square' font was chosen for its clean, playful and modern style.  It is used on the Header, Home Page and Score Display. It is well spaced out and clear to read. 
+The more serious 'Ubuntu' is used for the quiz questions, this is useful for the user as it has a higher readability to allow for more focus on the quiz test. 
+
+* Icons
+
+The icons used throught the website were taken from [Font Awesome](https://fontawesome.com). The icons used in the footer are interactive links and have an `aria-label` which gives the relevant information to screen readers to read out to the users.  The icons used in the Score Display are mainly decorative, they are eye-catching and identify with the text underneath them. It was decided however to add a tooltip to the icons to help users identify the icons better. A `<span>`tag with text for screen readers only was also implemented so that blind users get the full feedback score experience like other users.
+ 
 [Back to Top](#table-of-contents)
 
 ---
