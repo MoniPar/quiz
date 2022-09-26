@@ -315,17 +315,28 @@ Congratulations! No Error Found.
 Other Warnings included;
 * Missing Semicolons - these were all corrected
 
-* Undefined Variables - these were removed if they were unnecessary and statements were used instead for some.
+* Undefined Variables - these were removed if they were unnecessary and statements were used instead for some others.
 
-* Three unused variables (generateQuiz, selectOption, getResults) - These were functions that are either called internally from the HTML or from other functions.  They have been catalogued in line 1 of the .js file.
+* Three unused variables (generateQuiz, selectOption, getResults) - These are functions that are either called internally from the HTML or from other functions.  They have been catalogued in line 1 of the .js file.
 ` /* exported generateQuiz, selectOption, getResults */ `
 
 ---
 
 ## Lighthouse Testing
 
+    Chrome DevTools Lighthouse
 
+* Home Page / Index - Mobile
+![Index Mobile Lighthouse](assets/documentation/home-mobile-lithse_75.png)
 
+* Home Page / Index - Desktop
+![Index Desktop Lighthouse](assets/documentation/home-desktop-lithse_75.png)
+
+* Quiz Page - Mobile
+![Quiz Mobile Lighthouse](assets/documentation/quiz-mobile-lithse_75.png)
+
+* Quiz Page - Desktop
+![Quiz Desktop Lighthouse](assets/documentation/quiz-desktop-lithse_75.png)
 
 
 [Back to Top](#table-of-contents)
@@ -358,7 +369,7 @@ Solution: The else if statement was changed to `(user.length <= 2)`
 
 * The Start/Quizzify Me button directs the user to the quiz page after inputting a valid username. However if the user pressed the enter key after typing their username, the page was being refreshed.  
 
-Solution: The following code prevents the page from being refreshed when the Enter key is pressed after typing in the username.  It then calls the function getUserName which stores the user input in the url and directs the user to the quiz page.
+Solution: The following code was added to prevent the page from being refreshed when the Enter key is pressed after typing in the username.  It then calls the function getUserName which stores the user input in the url and directs the user to the quiz page.
 ```Javascript
 document.getElementById('user-input').addEventListener('keydown', function(event) {
     if(event.key === 'Enter') {
@@ -384,7 +395,7 @@ Solution: A class attribute was added to the element so that the classList prope
 
 * Uncaught TypeError: Cannot set properties of null (setting 'innerHTML') at displayQuiz
 
-This error was showing as soon as the index.html page was loaded refering to this piece of JS code:
+This error was showing as soon as the index.html page was loaded referring to this piece of JS code:
 ```javaScript
 quizContainer.innerHTML = output.join('');
 ```

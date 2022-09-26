@@ -72,6 +72,11 @@ h1 a {
     color: #20232E;
 }
 
+h1 a:hover,
+h1 a:focus {
+    color: #86071a;
+}
+
 /* Footer Styling */
 footer {
     width: 100%;
@@ -104,12 +109,11 @@ footer {
 .social-links a {
     color: #2D232E;
 }
+
 .social-links a:hover,
 .social-links a:focus {
-    color: rgb(75, 65, 134);
+    color: #86071a;
     cursor: pointer;
-    transform: scale(1.2);
-    transition: transform .15s;
 }
 
 /* ------------- */
@@ -126,6 +130,7 @@ footer {
 .logo {
     display: block;
     width: 250px;
+    height: 273px;
     margin: 0 auto 1.5em;
     border-bottom-left-radius: 40px;
     border-top-right-radius: 40px;
@@ -244,7 +249,7 @@ input[type="text"]:focus {
 /* Progress Bar */
 .progress-outline {
     width: 100%;
-    border: 2px solid rgba(29, 238, 127, .7);
+    border: 2px solid rgba(76, 240, 150, .9);
     border-radius: 50px;
     box-sizing: border-box;
 }
@@ -252,7 +257,7 @@ input[type="text"]:focus {
 .progress-bar {
     width: 10%;
     height: 20px;
-    background-color: rgba(29, 238, 127, .5);
+    background-color: rgba(76, 240, 150, .7);
     border-radius: 50px;
     overflow: hidden;
 }
