@@ -134,13 +134,13 @@ The Score display consists of an icon, a small remark which includes the player'
 
 At present there are three different outcomes, where the icon and the remark change according to the total score. 
 
-The icon is a visual representation of the score outcome.  The remark is meant to reward, incentivise or gently put down the player while also encouraging them to take the quiz again to improve their outcome.  The 'Play Again' button draws the user's eye and entices them to play the quiz again.
+The icon is a visual representation of the score outcome.  The remark is meant to reward, incentivise or gently put down the player while also encouraging them to take the quiz again to improve their outcome.  The 'Play Again' button draws the user's eye and entices them to play the quiz again. Pressing this button will refresh the quiz and bring the player back to the start of the quiz without having to re-insert the Username.
 
 ## Future Features
 
 The following features will be added at a later date to improve user experience: 
 
-* More available questions, perhaps using an external API, so that the players are tested on different questions every time they take the quiz.
+* More available questions, perhaps using an external API, so that the players are tested on a few different questions every time they take the quiz.
 A difficulty level option might be included here.
 
 * Increase the number of different outcomes on 'Score Display' when there are more questions added.
@@ -236,9 +236,32 @@ The icons used throught the website were taken from [Font Awesome](https://fonta
 
 ## Languages
 
+* [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS)
+* [HTML5](https://en.wikipedia.org/wiki/HTML5)
+* [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+
 ## Libraries & Frameworks
 
+* [Google Fonts](https://fonts.google.com/)
+* [Font Awesome](https://fontawesome.com/)
+
 ## Tools
+
+* [Am I Responsive](https://ui.dev/amiresponsive)
+* [Balsamiq](https://balsamiq.com/wireframes/)
+* [Can I Use](https://caniuse.com/)
+* [Chrome Developer Tools and Lighthouse](https://developer.chrome.com/docs/devtools/)
+* [Edge Developer Tools and Lighthouse](https://learn.microsoft.com/en-us/microsoft-edge/devtools-guide-chromium/overview)
+* [Firefox Developer Tools and Accessibility Inspector](https://firefox-source-docs.mozilla.org/devtools-user/tools_toolbox/index.html)
+* [GitPod](https://www.gitpod.io/)
+* [GitHub](https://github.com/)
+* [JSHint A Static Code Analysis Tool for JavaScript](https://jshint.com/)
+* [Simple Image Resizer](https://www.simpleimageresizer.com/)
+* [Tiny PNG](https://tinypng.com/)
+* [Windows 10 Photos & Video Editor](https://support.microsoft.com/en-us/windows/edit-photos-and-videos-in-windows-10-a3a6e711-1b70-250a-93fa-ef99048a2c86)
+* [W3C Markup Validation Service](https://validator.w3.org/)
+* [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/)
+
 
 [Back to Top](#table-of-contents)
 
@@ -248,8 +271,9 @@ The icons used throught the website were taken from [Font Awesome](https://fonta
 
 ## Validator Testing
 
-#### [HTML Validator](https://validator.w3.org/)
+#### HTML
 
+The code from the following HTML files was passed through the [Official W3C Markup Validator](https://validator.w3.org/)
 * index.html
 
 Document checking completed. No errors or warnings to show.
@@ -258,17 +282,53 @@ Document checking completed. No errors or warnings to show.
 
 Document checking completed. No errors or warnings to show.
 
-#### [CSS Validator](https://jigsaw.w3.org/css-validator/)
+#### CSS
+
+The code from the stylesheet was passed through the [Official W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
 
 Congratulations! No Error Found.
 
-#### [JavaScript Validator](https://jshint.com/)
+#### JavaScript
 
+* No errors were found when passing through the [Official Jshint Validator](https://jshint.com/)
 
+* The following metrics were returned:
+
+    * There are 18 functions in this file.
+
+    * Function with the largest signature take 2 arguments, while the median is 0.
+
+    * Largest function has 16 statements in it, while the median is 4.
+
+    * The most complex function has a cyclomatic complexity value of 4 while the median is 1.5.
+
+* One warning is returned: 
+
+**To Review at a Later Date** 
+
+`233	The body of a for in should be wrapped in an if statement to filter unwanted properties from the prototype.`
+
+*At the moment the for in loop is not causing any problems, however it will need to be re-written as a for loop or its body needs to be wrapped in an if statement that makes sure each property has an own property of the object* 
+
+[Information on the for in option here](http://linterrors.com/js/option-forin) 
+
+Other Warnings included;
+* Missing Semicolons - these were all corrected
+
+* Undefined Variables - these were removed if they were unnecessary and statements were used instead for some.
+
+* Three unused variables (generateQuiz, selectOption, getResults) - These were functions that are either called internally from the HTML or from other functions.  They have been catalogued in line 1 of the .js file.
+` /* exported generateQuiz, selectOption, getResults */ `
 
 ---
 
 ## Lighthouse Testing
+
+
+
+
+
+[Back to Top](#table-of-contents)
 
 ---
 
