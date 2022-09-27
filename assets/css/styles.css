@@ -210,6 +210,10 @@ input[type="text"]:focus {
 /* ------------ */
 /*     Quiz     */
 /* ------------ */
+main {
+    padding: 1em 0;
+    margin: auto 0;
+}
 
 /* The main container for the quiz */
 .game-area {
@@ -220,7 +224,7 @@ input[type="text"]:focus {
     font-family: 'Ubuntu', sans-serif;
     border-radius: 4px;
     padding: 1em;
-    margin: 1em auto;
+    margin: auto;
     box-shadow: 2px 10px 15px rgba(45, 35, 46, .5);
 }
 
@@ -524,7 +528,6 @@ input[type="radio"]:checked {
     .icon {
         width: 220px;
         margin-bottom: 0;
-
     }
 }
 

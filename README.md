@@ -359,10 +359,21 @@ No issues
 | Page | Device | Category | Result |
 |------|--------|----------|--------|
 |Index | Mobile | Performance | 99% |
-|||Accessibility|
-
-
-
+|||Accessibility| 100% |
+|||Best Practice | 100% |
+|||SEO | 100% |
+|| Desktop | Performance | 99% |
+||| Accessibility | 100% |
+||| Best Practice | 100% |
+||| SEO | 100% |
+| Quiz | Mobile | Performance | 99% |
+||| Accessibility | 100% |
+||| Best Practice | 100% |
+||| SEO | 100% |
+|| Desktop | Performance | 100% |
+||| Accessibility | 100% |
+||| Best Practice | 100% |
+||| SEO | 100% | 
 
 
 [Back to Top](#table-of-contents)
@@ -371,6 +382,19 @@ No issues
 
 ## Manual Testing
 
+### Browser Compatibility
+
+Quizzified was tested manually and is compatible with the following browsers:
+* Google Chrome
+* Edge
+* Firefox
+* Safari on mobile
+
+### Device Compatibility
+
+The Website was tested on Chrome and Edge Developer Tools for responsiveness on multiple devices and is fully responsive from a minimum screen size of 320px.
+
+Students and friends who have played the quiz on mobile and other devices including voice over on both android and iPhones found no issues with either the functionality or responsiveness of the quiz. There was however one issue with keyboard navigation which has been addressed in [Manual Testing Bug Fixes](#manual-testing-bug-fixes)
 
 [Back to Top](#table-of-contents)
 
