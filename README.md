@@ -258,6 +258,7 @@ The icons used throught the website were taken from [Font Awesome](https://fonta
 * [JSHint A Static Code Analysis Tool for JavaScript](https://jshint.com/)
 * [Simple Image Resizer](https://www.simpleimageresizer.com/)
 * [Tiny PNG](https://tinypng.com/)
+* [Web Accessibility Evaluation Tool](https://wave.webaim.org/)
 * [Windows 10 Photos & Video Editor](https://support.microsoft.com/en-us/windows/edit-photos-and-videos-in-windows-10-a3a6e711-1b70-250a-93fa-ef99048a2c86)
 * [W3C Markup Validation Service](https://validator.w3.org/)
 * [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/)
@@ -324,19 +325,44 @@ Other Warnings included;
 
 ## Lighthouse Testing
 
-    Chrome DevTools Lighthouse
+### Chrome DevTools Lighthouse
 
-* Home Page / Index - Mobile
+**Home Page / index - Mobile**
+
 ![Index Mobile Lighthouse](assets/documentation/home-mobile-lithse_75.png)
 
-* Home Page / Index - Desktop
+**Home Page / index - Desktop**
+
 ![Index Desktop Lighthouse](assets/documentation/home-desktop-lithse_75.png)
 
-* Quiz Page - Mobile
+**Quiz Page - Mobile**
+
 ![Quiz Mobile Lighthouse](assets/documentation/quiz-mobile-lithse_75.png)
 
-* Quiz Page - Desktop
+**Quiz Page - Desktop**
+
 ![Quiz Desktop Lighthouse](assets/documentation/quiz-desktop-lithse_75.png)
+
+### FireFox Accessibility Inspector
+
+**Home Page / index**
+
+No issues
+
+**Quiz Page**
+
+1 keyboard issue - Focusable elements should have interactive semantics.  
+***The element mentioned here is the `quiz` div.  This was chosen to be the focusable element in order to get the tab focus back on the displayed exhibit after clicking the 'next' or 'previous' button.  
+
+### Edge DevTools Lighthouse
+
+| Page | Device | Category | Result |
+|------|--------|----------|--------|
+|Index | Mobile | Performance | 99% |
+|||Accessibility|
+
+
+
 
 
 [Back to Top](#table-of-contents)

@@ -124,7 +124,8 @@ footer {
     width: 300px;
     color: #20232E;
     text-align: center;
-    margin: 1em auto;
+    padding: 1em 0;
+    margin: auto;
 }
 
 .logo {
@@ -136,9 +137,9 @@ footer {
     border-top-right-radius: 40px;
 }
 
-.home > p {
+.home > h2 {
     font-size: 2rem;
-    margin-bottom: 1.5em;
+    margin-bottom: 1.25em;
 }
 
 input[type="text"] {
@@ -548,10 +549,10 @@ input[type="radio"]:checked {
     }
     
     .answers {
-        width: 600px;
+        width: 610px;
         display: grid;
         grid-template-columns: 1fr 1fr;
-        column-gap: .5em;
+        column-gap: .4em;
     }
 
     .controls {
