@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Nova+Square&family=Ubuntu&display=swap');
 
-
 /* Targets all elements including pseudo */
 *, 
 *::before, 
@@ -119,6 +118,7 @@ footer {
 /* ------------- */
 /*   Home Page   */
 /* ------------- */
+
 .home {
     max-width: 350px;
     width: 300px;
@@ -214,6 +214,7 @@ input[type="button"] {
 /* ------------ */
 /*     Quiz     */
 /* ------------ */
+
 main {
     padding: 1em 0;
     margin: auto 0;

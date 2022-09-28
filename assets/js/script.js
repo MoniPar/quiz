@@ -194,7 +194,6 @@ let currentExhibit = 0;
 let exhibitCounter = 1;
 let width = 10;
 
-
 // Some of the following code was adapted from https://simplestepscode.com/javascript-quiz-tutorial/
 
 /** 
@@ -439,7 +438,6 @@ function decrement() {
     progressBar.style.width = `${width}%`;
 }
 
-
 // The following functions were adapted from https://www.sitepoint.com/simple-javascript-quiz/
 
 /** 
@@ -492,7 +490,6 @@ function showPreviousExhibit() {
     document.getElementById('quiz').focus();
 }
 
-
 // Prevents page refresh on Enter key for form text input and calls getUserName function
 if (document.getElementById("user-input") != null) {
     document.getElementById("user-input").addEventListener("keydown", function(event) {
@@ -502,7 +499,6 @@ if (document.getElementById("user-input") != null) {
         }
     });
 }
-
 
 // Call the showNextExhibit and the increment function when the next button is clicked
 if (nextBtn != null) { 
