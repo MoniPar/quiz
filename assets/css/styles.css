@@ -562,7 +562,7 @@ Taken from https://css-tricks.com/solving-sticky-hover-states-with-media-hover-h
     }
 
     .question {
-        max-width: 525px;
+        max-width: 600px;
         margin-bottom: 1em;
     }
     

@@ -11,32 +11,33 @@ ___
 
 # Table of Contents
 
-1. [Overview](#overview)
-2. [Features](#features)  
+1. [Overview](#1-overview)
+2. [Features](#2-features)  
     * [Index / Home Page](#index--home-page)
     * [Quiz Page](#quiz-page)
     * [Score Display](#score-display)
     * [Future Features](#future-features)
-3. [User Experience (UX)](#user-experience-ux)
+3. [User Experience (UX)](#3-user-experience-ux)
     * [Strategy / Site Goals](#strategy--site-goals)
     * [Scope / User Stories](#scope--user-stories)
     * [Structure / Design Choices](#structure--design-choices)
     * [Skeleton / Wireframes](#skeleton--wireframes)
     * [Surface](#surface)
-4. [Technologies](#technologies)
-5. [Testing](#testing)
+4. [Technologies](#4-technologies)
+5. [Testing](#5-testing)
     * [Validator Testing](#validator-testing)
     * [Lighthouse Testing](#lighthouse-testing)
     * [Manual Testing](#manual-testing)
-6. [Bugs](#bugs)
-7. [Citation of Sources](#citation-of-sources)
+6. [Bugs](#6-bugs)
+7. [Deployment](#7-deployment)
+8. [Citation of Sources](#8-citation-of-sources)
     * [Content](#content)
     * [Media](#media)
-8. [Acknowledgements](#acknowledgements)
+9. [Acknowledgements](#9-acknowledgements)
 
 ---
 
-# Overview
+# 1. Overview
 
 The aim of this project is to demonstrate skills in HTML, CSS and JavaScript.  
 
@@ -46,7 +47,7 @@ The quiz consists of ten questions, with four answer options, of which only one 
 
 ---
 
-# Features
+# 2. Features
 
 ## Existing Features
 
@@ -88,7 +89,7 @@ The Start Button is an important feature on the Home Page.  It is large and prov
 
 The Footer is located at the bottom of all pages of the site.  It provides links to relevant developer pages, displayed as icons.  They change colour when hovered or focused on, open in a new tab and contain descriptive labels for screen readers.  Copyright and developer information are also displayed in the Footer.  
 
-## Quiz Page
+### Quiz Page
 
     Galaxy S8 360px wide
 ![Quiz Page Mobile](assets/documentation/quiz-mobile_25.png)
@@ -101,15 +102,15 @@ The Footer is located at the bottom of all pages of the site.  It provides links
 
 The Quiz Page displays the Header and Footer.  The Main area consists of the following features:
 
-* A question counter and a progress bar
+* A question count and a progress bar
 
-These are displayed at the top of the quiz container.  The question counter counts the questions out of 10.  This is useful for the player to know which question they are on and how many are left.
+These are displayed at the top of the quiz container.  The question count, counts the questions out of 10.  This is useful for the player to know which question they are on and how many are left.
 
-The Progress Bar is a graphic representation of the above.  A percentage of the capsule shaped bar fills up when the user clicks on the next button and empties when the previous button is clicked. 
+The Progress Bar is a graphic representation of the above.  A percentage of the capsule shaped bar fills up when the user clicks on the Next button and empties when the Previous button is clicked. 
 
-![Question counter and progress bar half full](assets/documentation/progresscountbar-halffull.png)
+![Question count and progress bar half full](assets/documentation/progresscountbar-halffull.png)
 
-![Question counter and progress bar full](assets/documentation/progresscountbar-full.png)
+![Question count and progress bar full](assets/documentation/progresscountbar-full.png)
 
 * A question and a block of answer options
 
@@ -125,7 +126,7 @@ These are displayed at the bottom of the quiz container.  The Next button displa
 
 An extra feature that is useful to the player makes sure that they have selected an answer option for every question;  if the player has not selected an answer option for one or more of the questions, an error message is displayed when they click on the Results button.  They can then navigate back and check their answers. This feature uses their username to attract their attention and give them a more personalised experience.
 
-## Score Display
+### Score Display
 
     Tablet 810px wide
 ![Score Display Tablet](assets/documentation/score-display_50_25.png)
@@ -153,7 +154,7 @@ A difficulty level option might be included here.
 
 ---
 
-# User Experience (UX)
+# 3. User Experience (UX)
 
 ## Strategy / Site Goals
 
@@ -214,7 +215,7 @@ A lighter shade of 'Ultra Red' was used as the body background colour of the web
 
 The cool 'Magic Mint' was ideal for the typeface of the quiz questions and the background colour for the navigation buttons. 
 
-'Honolulu Blue' provided great contrast for the Quizzify Me and Results buttons against the soft rose background.  It was also used for the user selected answer options which had to be identifiable from the unchecked ones.
+'Honolulu Blue' provided great contrast for the Quizzify Me and Results buttons against the soft rose background.  It was also used for the user's selected answer which needs to be identifiable from the unchecked ones.
 
 The smooth 'Medium Purple' was ideal for the answer options as it complimented the darkish quiz background and the soft rose colour of the body.  A lighter shade of it was used for the custom styled radio buttons and a darker shade to fill the radio buttons in when checked.   
 
@@ -232,7 +233,7 @@ The icons used throught the website were taken from [Font Awesome](https://fonta
 
 ---
 
-# Technologies
+# 4. Technologies
 
 ## Languages
 
@@ -268,7 +269,7 @@ The icons used throught the website were taken from [Font Awesome](https://fonta
 
 ---
 
-# Testing
+# 5. Testing
 
 ## Validator Testing
 
@@ -400,7 +401,7 @@ Students and friends who have played the quiz on mobile and other devices includ
 
 ---
 
-# Bugs
+# 6. Bugs
 
 * Unchecked runtime.lastError: The message port closed before a response was received
 
@@ -468,20 +469,20 @@ Solution: The `<div>` with the 'active-exhibit' class had a `display:block`. Add
 
 * The tabbing order was working well until the user pressed the 'next' button.  Once this was pressed and the quiz moved on to the next question, the focus was once again lost and tabbing didn't bring the user anywhere.  
 
-Solution: The focus() method was added to the 'showNextExhibit' and 'showPreviousExhibit' functions in order to bring the focus back to the quiz question after these buttons are pressed. Giving the quiz `<div>` a tabindex of 0, made sure that the tab key brought the user back onto the next focusable element after pressing the next or previous buttons.
+Solution: The focus() method was added to the 'showNextExhibit' and 'showPreviousExhibit' functions in order to bring the focus back to the quiz question after these buttons are pressed. Giving the quiz `<div>` a tabindex of 0, made sure that the tab key brought the user closer to the next focusable element after pressing the Next or Previous buttons.
 
-* On the home page, if voice over user clicked on the 'Quizzify Me' button without entering username, no auditory feedback was returned.  In order to read the error message, user would have had to swipe back, which was not very intuitive.
+* On the Home Page, if a voice over user clicked on the 'Quizzify Me' button without entering username, no auditory feedback was returned.  In order to read the error message, the user would have had to swipe back, which was not very intuitive.
 
 Solution: `data-error` and `aria-labelledBy` attributes were added to the `input` tag and `aria-live` was added to the div contaning the error message. The following expression was added to the validateUserInput function in order to get the appropriate error message called out when the user clicked the 'Quizzify Me' button.
 ```JavaScript
 username.setAttribute('data-has-error', 'true');
 ```
 
-* One of the features for the Score Display is that blind and visually impaired users are able to access all the information on the page including the icon displayed.  However when this was tested with voice over, the icon was being skipped altogether.  
+* One of the aims for the Score Display is that blind and visually impaired users are able to access all the information on the page including the icon displayed.  However when this was tested with voice over, the icon was being skipped altogether.  
 
-Solution: Looking back at the innerHTML for this feature, it was noticed that the `span` tag with the `sr-only` class and icon description was placed inside the `i` tag and thus it was being ignored because of the `aria-hidden = "true"` attribute. This was corrected by placing the `span` tag outside the `i` tag.  
+Solution: Looking back at the innerHTML for this feature, it was noticed that the `<span></span>` tag with the `sr-only` class and icon description was placed inside the `<i></i>` tag and thus it was being ignored because of the `aria-hidden = "true"` attribute. This was corrected by placing the `<span></span>` tag outside the `<i></i>` tag.  
 
-* While testing on iOS, it became apparent that the 'Quizzify Me' button did not have consistent styling with the 'Results' and the 'Play Again' buttons.  This is due to the fact that the 'Quizzify Me' button is coded as an `<input type="button">` element while all the other buttons are `<button>` elements and thus the styling is replaced by iOS's default styling. 
+* While testing on iOS, it became apparent that the Quizzify Me button did not have consistent styling with the Results and the Play Again buttons.  This is due to the fact that the Quizzify Me button is coded as an `<input type="button">` element while all the other buttons are `<button>` elements and thus the styling is replaced by iOS's default styling. 
 
 Solution: As with the radio buttons styling on iOS the following lines of code were added to the CSS in order to remove the default iOS styling. 
 ```CSS
@@ -493,7 +494,7 @@ input[type="button"] {
 
 * Another issue that arose while manually testing on certain iOS devices was that when the radio button label in the quiz was selected, rather than displaying the selected option with the blue background and white text, the hover/focus background style was being displayed.  This changed the label text to white and it was hard to read with the displayed bright background colour.  
 
-Solution: The 'radio-label' hover/focus styles did not have a color property set to the dark color.  This was included, and made the text more readable when selected.  Since hover was not needed for the small screen sizes it was decided to move the hover styles into a media query which applies the styles only on devices with hover capabilities.
+Solution: The radio button label hover/focus styles did not have a color property set to the dark color.  This was included, and made the text more readable when selected.  Since hover was not needed for the small screen sizes it was decided to move the hover styles into a media query which applies the styles only on devices with hover capabilities.
 
 
 ## Bugs Left Unfixed
@@ -501,14 +502,14 @@ Solution: The 'radio-label' hover/focus styles did not have a color property set
 Due to time constraints the following bugs have been noted to fix at a later date.
 
 * While keyboard navigation between the displayed exhibits seems to work well on Chrome, Safari and Edge it is still an issue on Firefox.  Having the 'Quiz' div as the focusable area seems to be adding an extra step for voice over on android.  This, however seems to be working well with iOS devices. 
-* Voice over on iOS does not read from the first element on the Score Display.
 
+* Voice over on iOS does not read from the first element on the Score Display.  More testing and research on this will be needed to solve.
 
 [Back to Top](#table-of-contents)
 
 ---
 
-# Deployment
+# 7. Deployment
 
 This online quiz was deployed to [GitHub Pages](https://pages.github.com/).  The steps taken in deploying this project are as follows:
 
@@ -527,7 +528,7 @@ The live link can be found [here](https://monipar.github.io/quiz/)
 
 ---
 
-# Citation of Sources
+# 8. Citation of Sources
 
 [Some code as cited within script.js was adapted from Simple Steps Code quiz tutorial](https://simplestepscode.com/javascript-quiz-tutorial/)
 
@@ -565,7 +566,7 @@ The live link can be found [here](https://monipar.github.io/quiz/)
 
 ## Content
 
-Quiz questions were taken from subjects taught in secondary school and checked with different sources on [Google](https://www.google.com/)
+Quiz questions were taken from subjects taught and discussed in secondary school and checked with different sources on [Google](https://www.google.com/)
 
 ## Media
 
@@ -580,11 +581,11 @@ The Quizzified Logo was designed using [Brandcrowd.com](https://www.brandcrowd.c
 
 ---
 
-# Acknowledgements
+# 9. Acknowledgements
 
 * My Code Institute Mentor, Samantha Dartnall, for the valuable professional guidance throughout the development of this project.
-* Kasia Boguucka for all the help and encouragement especially on Thursday mornings.
-* My brother Leon Parnis, the msletbb cohort and everyone on Slack for troubleshooting, motivation and assistance.
+* Student Care, Kasia Bogucka, for all the help and encouragement especially on Thursday mornings.
+* My brother Leon Parnis, the msletbb cohort and everyone on Slack for help with troubleshooting and motivation.
 * The students and staff of Rosmini Community School who have tested my quiz.
 * My partner Austen Donohoe for all the patience, grammar corrections and for keeping me sane. 
 
