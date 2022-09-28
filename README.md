@@ -481,7 +481,27 @@ username.setAttribute('data-has-error', 'true');
 
 Solution: Looking back at the innerHTML for this feature, it was noticed that the `span` tag with the `sr-only` class and icon description was placed inside the `i` tag and thus it was being ignored because of the `aria-hidden = "true"` attribute. This was corrected by placing the `span` tag outside the `i` tag.  
 
-* While testing on iOS, it became apparent that the 'Quizzify Me' button did not have consistent styling with the 'Results' and the 'Play Again' buttons.  This is due to the fact that the 'Quizzify Me' button is an `<input type="button">` while all the other buttons are `<button>` elements and the styling is replaced by iOS's default styling. 
+* While testing on iOS, it became apparent that the 'Quizzify Me' button did not have consistent styling with the 'Results' and the 'Play Again' buttons.  This is due to the fact that the 'Quizzify Me' button is coded as an `<input type="button">` element while all the other buttons are `<button>` elements and thus the styling is replaced by iOS's default styling. 
+
+Solution: As with the radio buttons styling on iOS the following lines of code were added to the CSS in order to remove the default iOS styling. 
+```CSS
+input[type="button"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+```
+
+* Another issue that arose while manually testing on certain iOS devices was that when the radio button label in the quiz was selected, rather than displaying the selected option with the blue background and white text, the hover/focus background style was being displayed.  This changed the label text to white and it was hard to read with the displayed bright background colour.  
+
+Solution: The 'radio-label' hover/focus styles did not have a color property set to the dark color.  This was included, and made the text more readable when selected.  Since hover was not needed for the small screen sizes it was decided to move the hover/focus styles into a media query for minimum screen size of 760px.
+
+## Bugs Left Unfixed
+
+Due to time constraints the following bugs have been noted to fix on a later date.
+
+* While keyboard navigation between the displayed exhibits seems to work well on Chrome, Safari and Edge it is still an issue on Firefox.  Having the 'Quiz' div as the focusable area seems to be adding an extra step for voice over on android.  This, however seems to be working well with iOS devices. 
+* Voice over on iOS does not read from the first element on the Score Display.
+
 
 [Back to Top](#table-of-contents)
 
@@ -508,6 +528,12 @@ The live link can be found [here](https://monipar.github.io/quiz/)
 
 # Citation of Sources
 
+[Some code was adapted from Simple Steps Code quiz tutorial](https://simplestepscode.com/javascript-quiz-tutorial/)
+
+[Some code was adapted from Site Point quiz tutorial](https://www.sitepoint.com/simple-javascript-quiz/)
+
+[The Shuffle Function was taken from this in-depth Guide](https://www.webmound.com/shuffle-javascript-array/)
+
 [How to save user input into a variable in HTML](https://stackoverflow.com/questions/17433557/how-to-save-user-input-into-a-variable-in-html-and-javascript)
 
 [How to redirect to a new page using Javascript](https://www.designcise.com/web/tutorial/how-to-redirect-to-another-web-page-using-javascript)
@@ -524,18 +550,28 @@ The live link can be found [here](https://monipar.github.io/quiz/)
 
 [Styling radio inputs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input/radio)
 
+[Using ARIA live regions](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions)
+
+[W3Schools JavaScript Tutorial](https://www.w3schools.com/js/)
+
+[Stack Overflow](https://stackoverflow.com/)
 
 ## Content
+
+Quiz questions were taken from subjects taught in secondary school and checked with different sources on [Google](https://www.google.com/)
 
 ## Media
 
 The Quizzified Logo was designed using [Brandcrowd.com](https://www.brandcrowd.com/)
+
 
 [Back to Top](#table-of-contents)
 
 ---
 
 # Acknowledgements
+
+
 
 [Back to Top](#table-of-contents)
 
