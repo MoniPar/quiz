@@ -37,7 +37,8 @@ function validateUserInput(user) {
     if (errorMsg != '') {
         // display errorMsg in feedback div on home page
         feedback.innerHTML = errorMsg;
-        
+        // adds functionality for screen readers to read error message 
+        // when it is displayed on screen
         username.setAttribute('data-has-error', 'true');
         
         return false;
@@ -377,7 +378,7 @@ function displayResults(correctTotal) {
         // display trophy icon
         icon.innerHTML = `
         <i class="fa-solid fa-trophy" aria-hidden="true" title="Trophy" id="trophy"></i>
-        <span class="sr-only">Trophy</span>
+        <span class="sr-only">Congrats you got a Trophy</span>
         `;
         // display comment 
         comment.innerText = `
@@ -390,7 +391,7 @@ function displayResults(correctTotal) {
         // display medal icon
         icon.innerHTML = `
         <i class="fa-solid fa-award" aria-hidden="true" title="Medal" id="medal"></i>
-        <span class="sr-only">Medal</span>
+        <span class="sr-only">Well done you got a Medal</span>
         `;
         // display comment
         comment.innerText = `
@@ -403,7 +404,7 @@ function displayResults(correctTotal) {
         // display crying face icon
         icon.innerHTML = `
         <i class="fa-regular fa-face-sad-tear" aria-hidden="true" title="Crying face" id="crying"></i>
-        <span class="sr-only">Crying Face</span>
+        <span class="sr-only">Boohoo you got a crying face</span>
         `;
 
         // display comment

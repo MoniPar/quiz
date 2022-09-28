@@ -390,7 +390,7 @@ Quizzified was tested manually and is compatible with the following browsers:
 * Firefox
 * Safari on mobile
 
-### Device Compatibility
+### Device Compatibility and Responsiveness
 
 The Website was tested on Chrome and Edge Developer Tools for responsiveness on multiple devices and is fully responsive from a minimum screen size of 320px.
 
@@ -469,6 +469,19 @@ Solution: The `<div>` with the 'active-exhibit' class had a `display:block`. Add
 * The tabbing order was working well until the user pressed the 'next' button.  Once this was pressed and the quiz moved on to the next question, the focus was once again lost and tabbing didn't bring the user anywhere.  
 
 Solution: The focus() method was added to the 'showNextExhibit' and 'showPreviousExhibit' functions in order to bring the focus back to the quiz question after these buttons are pressed. Giving the quiz `<div>` a tabindex of 0, made sure that the tab key brought the user back onto the next focusable element after pressing the next or previous buttons.
+
+* On the home page, if voice over user clicked on the 'Quizzify Me' button without entering username, no auditory feedback was returned.  In order to read the error message, user would have had to swipe back, which was not very intuitive.
+
+Solution: `data-error` and `aria-labelledBy` attributes were added to the `input` tag and `aria-live` was added to the div contaning the error message. The following expression was added to the validateUserInput function in order to get the appropriate error message called out when the user clicked the 'Quizzify Me' button.
+```JavaScript
+username.setAttribute('data-has-error', 'true');
+```
+
+* One of the features for the Score Display is that blind and visually impaired users are able to access all the information on the page including the icon displayed.  However when this was tested with voice over, the icon was being skipped altogether.  
+
+Solution: Looking back at the innerHTML for this feature, it was noticed that the `span` tag with the `sr-only` class and icon description was placed inside the `i` tag and thus it was being ignored because of the `aria-hidden = "true"` attribute. This was corrected by placing the `span` tag outside the `i` tag.  
+
+* While testing on iOS, it became apparent that the 'Quizzify Me' button did not have consistent styling with the 'Results' and the 'Play Again' buttons.  This is due to the fact that the 'Quizzify Me' button is an `<input type="button">` while all the other buttons are `<button>` elements and the styling is replaced by iOS's default styling. 
 
 [Back to Top](#table-of-contents)
 
