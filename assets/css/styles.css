@@ -351,6 +351,12 @@ input[type="radio"]:checked {
     cursor: pointer;
 }
 
+.radio-label:focus {
+    background-color: rgb(181, 169, 250);
+    color: #2D232E;
+    box-shadow: 3px 4px 10px rgba(181, 169, 250, .5);
+}
+
 .radio-checked{
     background-color: #2472a7;
     color: #B8EBD0;
@@ -458,6 +464,17 @@ input[type="radio"]:checked {
 /*    Media Queries    */
 /*  ================== */
 
+/* Allows styles to apply only on devices with hover capability
+Taken from https://css-tricks.com/solving-sticky-hover-states-with-media-hover-hover/ */
+@media (hover: hover) {
+
+    .radio-label:hover {
+        background-color: rgb(181, 169, 250);
+        color: #2D232E;
+        box-shadow: 3px 4px 10px rgba(181, 169, 250, .5);
+    }
+}
+
 /* Screens wider than 375px */
 @media only screen and (min-width: 375px) {
     .quiz-container {
@@ -507,13 +524,6 @@ input[type="radio"]:checked {
         margin: 0 .5em;
         width: 1.6em;
         height: 1.6em;
-    }
-
-    .radio-label:hover,
-    .radio-label:focus {
-        background-color: rgb(181, 169, 250);
-        color: #2D232E;
-        box-shadow: 3px 4px 10px rgba(181, 169, 250, .5);
     }
 
     input[type="radio"]:checked {

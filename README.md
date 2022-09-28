@@ -1,7 +1,7 @@
 
 # Quizzified Online Quiz
 
-Welcome to Quizzified! Quizzified is an online quiz game which tests the general knowledge of players young and old.  The set of questions are randomly generated to give returning players a slightly different experience. Each question is presented with four choice answers out of which only one answer is correct. Players are presented with their score after answering all questions, however it is not specified which answers they get right or wrong.  Instead they are encouraged to take the quiz again to better their score.   
+Welcome to Quizzified! Quizzified is an online quiz game which tests the general knowledge of players young and old.  The set of questions are randomly generated to give returning players a slightly different experience. Each question is presented with four answer choices out of which only one answer is correct. Players are presented with their score after answering all questions, however it is not specified which answers they get right or wrong.  Instead they are encouraged to take the quiz again to better their score.   
 
 ![Quiz responsiveness on multiple screen sizes](assets/documentation/quizzified-responsive.png)
 
@@ -68,7 +68,7 @@ The Header, which displays the name of the quiz, is present on all pages.  It is
 
 * The Logo
 
-The Logo is displayed on the main area of the Home Page as an image.  It consists of a glitched out letter 'Q', the name 'Quizzified' and the slogan 'Stimulate your mind'.  These three components are colourful and produce a good contrast against the dark background of the image.  It is meant to be eye-catching and playful, and gives the quiz a distinguished look.   
+The Logo is displayed on the main area of the Home Page as an image.  It consists of a glitched out letter 'Q', the name 'Quizzified' and the slogan 'Stimulate your mind'.  These three components are colourful and produce a good contrast against the dark background of the image.  It is meant to be eye-catching and playful, and gives the quiz a distinctive look.   
 
 * Text and Username input
 
@@ -82,11 +82,11 @@ A text input field invites the user to enter a username in order to start the ga
 
 * A Start Button
 
-The Start Button is an important feature on the Home Page.  It is large and provides optimal contrast against the light coloured background.  It scales up and changes colour when it is hovered or focussed on. 
+The Start Button is an important feature on the Home Page.  It is large and provides optimal contrast against the light coloured background.  It scales up and changes colour when it is hovered or focused on. 
 
 * A Footer
 
-The Footer is located at the bottom of all pages of the site.  It provides links to relevant developer pages, displayed as social icons.  They change colour when hovered or focussed on, open in a new tab and contain descriptive labels for screen readers.  Copyright and developer information are also displayed in the Footer.  
+The Footer is located at the bottom of all pages of the site.  It provides links to relevant developer pages, displayed as icons.  They change colour when hovered or focused on, open in a new tab and contain descriptive labels for screen readers.  Copyright and developer information are also displayed in the Footer.  
 
 ## Quiz Page
 
@@ -113,28 +113,28 @@ The Progress Bar is a graphic representation of the above.  A percentage of the 
 
 * A question and a block of answer options
 
-Each quiz question is displayed one at a time and a set of options are presented below for the player to pick an answer.  Each answer option consists of a radio buttons with a label, styled to look like buttons.  The player can click on the word or on the stylish radio button and it will produce the same effect.  These buttons have a focus and hover effect.  When clicked or selected each button changes colour while the radio button has a slight animation to show that it is being checked.  A keyboard user can easily navigate through the  answer options with the 'arrow keys' and make their selection with the 'space' or 'enter' key.  They can then continue tabbing to the navigation buttons.
+Each quiz question is displayed one at a time and a set of options are presented below for the player to pick an answer.  Each answer option consists of a radio button with a label, styled to look like buttons.  The player can click on the word or on the stylized radio button and it will produce the same effect.  These buttons have a focus and hover effect.  When clicked or selected each button changes colour while the radio button has a slight animation to show that it is being checked.  A keyboard user can easily navigate through the  answer options with the 'arrow keys' and make their selection with the 'space' or 'enter' key.  They can then continue tabbing to the navigation buttons.
 
 ![Radio buttons and selection](assets/documentation/radio-selected.png)
 
 * Navigation and Results Buttons
 
-These are displayed at the bottom of the quiz container.  The Next button displayed on the right appears with the first question, while the previous button becomes visible on the left when the user navigates to the second question.  The Results button appears when the user gets to the last question of the quiz.  These buttons all have a hover and focus effect.  When a keyboard user clicks on the next or previous button and is directed to the next or previous question, the focus is brought back to the top.  This is helpful for the user as they don't have to navigate their way back to the answer options using the 'tab' and 'shift' keys.  It also makes the tabbing order more intuitive as one always expects the first tab to bring focus on the top when on a new question. 
+These are displayed at the bottom of the quiz container.  The Next button displayed on the right appears with the first question, while the Previous button becomes visible on the left when the user navigates to the second question, and every following question.  The Results button appears when the user gets to the last question of the quiz.  These buttons all have a hover and focus effect.  When a keyboard user clicks on the Next or Previous button and is directed to the next or previous question, the focus is brought back to the top.  This is helpful for the user as they don't have to navigate their way back to the answer options using the 'tab' and 'shift' keys.  It also makes the tabbing order more intuitive as one always expects the first tab to bring focus to the top when on a new question. 
 
 ![Navigation Buttons and error message display](assets/documentation/navbtns-errormsg.png)
 
-An extra feature added here is useful for the player in making sure that they have selected an option answer for every question.  If the player has not selected an answer option for one or more of the questions, an error message is displayed when they click on the 'Results' button.  They can then navigate back and check that their answers. This feature uses their username to attract their attention and give them a more personalised experience.
+An extra feature that is useful to the player makes sure that they have selected an answer option for every question;  if the player has not selected an answer option for one or more of the questions, an error message is displayed when they click on the Results button.  They can then navigate back and check their answers. This feature uses their username to attract their attention and give them a more personalised experience.
 
 ## Score Display
 
     Tablet 810px wide
 ![Score Display Tablet](assets/documentation/score-display_50_25.png)
 
-The Score display consists of an icon, a small remark which includes the player's username, the total score and the 'Play Again' button.
+The Score Display consists of an icon, a small remark which includes the player's username, the total score and the Play Again button.
 
-At present there are three different outcomes, where the icon and the remark change according to the total score. 
+At present, there are three different outcomes where the icon and the remark change according to the total score. 
 
-The icon is a visual representation of the score outcome.  The remark is meant to reward, incentivise or gently put down the player while also encouraging them to take the quiz again to improve their outcome.  The 'Play Again' button draws the user's eye and entices them to play the quiz again. Pressing this button will refresh the quiz and bring the player back to the start of the quiz without having to re-insert the Username.
+The icon is a visual representation of the score outcome.  The remark is meant to reward, incentivise or gently put down the player while also encouraging them to take the quiz again to improve their outcome.  The Play Again button draws the user's eye and entices them to play the quiz again. Pressing this button will refresh the quiz and bring the player back to the start of the quiz without having to re-insert the Username.
 
 ## Future Features
 
@@ -157,7 +157,7 @@ A difficulty level option might be included here.
 
 ## Strategy / Site Goals
 
-The online quiz was primarily intended to test a group of thirteen to fifteen year old students, on the various subjects they are studying in school.  Its purpose is to encourage these students to research the questions they are unsure about and keep taking the quiz until they get a perfect score. Teachers, staff members and family members also took the challenge and found that it also helped them to learn a few more historical, scientific, mathematical and popular culture facts they didn't know. 
+The online quiz was primarily intended to test a group of thirteen to fifteen year old students on the various subjects they are studying in school.  Its purpose is to encourage these students to research the questions they are unsure about and keep taking the quiz until they get a perfect score. Teachers, staff members and family members also took the challenge and found that it helped them to learn a few more historical, scientific, mathematical and popular culture facts they didn't know. 
 
 The main goal of the online quiz game is to provide users with a set of questions that test their knowledge about various subjects.  The questions are of different difficulty levels so that players young and old are able to participate in the quiz. The site is accessible and easy to navigate.  It provides the user a few minutes of entertainment and encourages them to give the quiz another go to better their outcome.
 
@@ -181,12 +181,12 @@ The main goal of the online quiz game is to provide users with a set of question
 
 ## Structure / Design Choices
 
-This online quiz is designed with a minimalist approach. It offers simplicity and consistency within its structure and its uncluttered design helps to retain the user's focus on the game.  
+This online quiz is designed with a minimalist approach. It offers simplicity and consistency within its structure and its uncluttered design helps to maintain the user's focus on the game.  
 The simple structured layout, consists of a header and a footer, which are the same on the Home Page, the Quiz Page as well as the Score Display to keep the design uniform and for ease of access.  The layout of the website is consistent across devices.   
 
-The Quiz questions are clearly displayed with large font and the option answers follow right underneath.  Each option is hoverable and changes colour upon selection.  On wider screens the option answers are displayed in two columns instead of one in order for the user to have full view of the navigation buttons without having to scroll down everytime they need to move on to the next question.  Pagination for the questions and answers was included to help the player focus on one question at a time.  The 'Previous' button gives them the ability to go back and check their answers before they submit to get results.  
+The Quiz questions are clearly displayed with large font and the answer options follow right underneath.  Each option is hoverable and changes colour upon selection.  On wider screens the answer options are displayed in two columns instead of one in order for the user to have full view of the navigation buttons without having to scroll down everytime they need to move on to the next question.  Pagination for the questions and answers was included to help the player focus on one question at a time.  The Previous button gives them the ability to go back and check their answers before they submit to get results.  
 
-The Score Display at the end of the quiz is also clearly displayed with little icons to give the user some visual feedback as well as a more personalised feel with the use of their username in the text remark area congratulating them or commiserating them on their defeat.
+The Score Display at the end of the quiz is also clearly displayed with little icons to give the user some visual feedback as well as a more personalised feel with the use of their username in the text remark area congratulating them or commiserating with them on their defeat.
 
 Please refer back to [Features](#existing-features) for more detailed information on the features used and design choices.
 
@@ -208,13 +208,13 @@ A neutral pastel scheme was used for the online quiz as the focus needed to be o
 
 ![Coolors colour palette for Quizzified](assets/documentation/coolors-color-palette.jpg)
 
-A lighter shade of 'Ultra Red' was used as the body colour of the website, with an opacity for the header and footer.  
+A lighter shade of 'Ultra Red' was used as the body background colour of the website, with an opacity for the header and footer.  
 
 'Raisin Black' was used as the main typeface of the website.  It was also used as the background for the quiz container with some opacity in order to make it softer on the eye.  
 
 The cool 'Magic Mint' was ideal for the typeface of the quiz questions and the background colour for the navigation buttons. 
 
-'Honolulu Blue' provided great contrast for the 'Quizzify Me' and 'Results' buttons against the soft rose background.  It was also used for the user selected answer options which had to be identifiable from the unchecked ones.
+'Honolulu Blue' provided great contrast for the Quizzify Me and Results buttons against the soft rose background.  It was also used for the user selected answer options which had to be identifiable from the unchecked ones.
 
 The smooth 'Medium Purple' was ideal for the answer options as it complimented the darkish quiz background and the soft rose colour of the body.  A lighter shade of it was used for the custom styled radio buttons and a darker shade to fill the radio buttons in when checked.   
 
@@ -226,7 +226,7 @@ The more serious 'Ubuntu' is used for the quiz questions, this is useful for the
 
 * Icons
 
-The icons used throught the website were taken from [Font Awesome](https://fontawesome.com). The icons used in the footer are interactive links and have an `aria-label` which gives the relevant information to screen readers to read out to the users.  The icons used in the Score Display are mainly decorative, they are eye-catching and identify with the text underneath them. It was decided however to add a tooltip to the icons to help users identify the icons better. A `<span>`tag with text for screen readers only was also implemented so that blind users get the full feedback score experience like other users.
+The icons used throught the website were taken from [Font Awesome](https://fontawesome.com). The icons used in the footer are interactive links and have an `aria-label` which gives the relevant information to screen readers to read out to the users.  The icons used in the Score Display are mainly decorative. They are eye-catching and identify with the text underneath them. It was decided however to add a tooltip to the icons to help users identify the icons better. A `<span>` tag with text for screen readers only was also implemented so that users with no sight get the full feedback score experience like other users.
  
 [Back to Top](#table-of-contents)
 
@@ -309,7 +309,7 @@ Congratulations! No Error Found.
 
 `233	The body of a for in should be wrapped in an if statement to filter unwanted properties from the prototype.`
 
-*At the moment the for in loop is not causing any problems, however it will need to be re-written as a for loop or its body needs to be wrapped in an if statement that makes sure each property has an own property of the object* 
+*At the moment the for in loop is not causing any problems, however it will need to be re-written as a for loop or its body needs to be wrapped in an if statement that makes sure each property has an own property of the object.* 
 
 [Information on the for in option here](http://linterrors.com/js/option-forin) 
 
@@ -352,7 +352,7 @@ No issues
 **Quiz Page**
 
 1 keyboard issue - Focusable elements should have interactive semantics.  
-***The element mentioned here is the `quiz` div.  This was chosen to be the focusable element in order to get the tab focus back on the displayed exhibit after clicking the 'next' or 'previous' button.  
+***The element mentioned here is the `quiz` div.  This was chosen to be the focusable element in order to get the tab focus back on the displayed exhibit after clicking the Next or Previous button.***  
 
 ### Edge DevTools Lighthouse
 
@@ -413,13 +413,13 @@ Solution: All extensions were disabled and upon refresh the error was gone.  Ext
 
 Solution: `<input type="submit">` submits the form data to the server and refreshes the page.  If `type="submit"` is removed, it will still behave in the same way since it is a form element.  In order to stop this refresh, it was changed to `<input type="button">`. 
 
-* The function validateUserInput() was passing the errorMsg "Username must have 3 or more characters", when 3 characters were inputted in the text field.  This is due to the fact that user.length is index based and thus was counting from 0.  
+* The function validateUserInput() was passing the errorMsg "Username must have 3 or more characters", when 3 characters were inputted in the text field.  This is due to the fact that `user.length` is index based and thus was counting from 0.  
 
 Solution: The else if statement was changed to `(user.length <= 2)`
 
-* The Start/Quizzify Me button directs the user to the quiz page after inputting a valid username. However if the user pressed the enter key after typing their username, the page was being refreshed.  
+* The Start/Quizzify Me button directs the user to the Quiz Page after inputting a valid username. However if the user pressed the Enter key after typing their username, the page was being refreshed.  
 
-Solution: The following code was added to prevent the page from being refreshed when the Enter key is pressed after typing in the username.  It then calls the function getUserName which stores the user input in the url and directs the user to the quiz page.
+Solution: The following code was added to prevent the page from being refreshed when the Enter key is pressed after typing in the username.  It then calls the function getUserName which stores the user input in the url and directs the user to the Quiz Page.
 ```Javascript
 document.getElementById('user-input').addEventListener('keydown', function(event) {
     if(event.key === 'Enter') {
@@ -429,7 +429,7 @@ document.getElementById('user-input').addEventListener('keydown', function(event
 })
 ```
 
-* The tutorial being followed for the Quiz display function did not use template literals which made the code difficult to read.  When template literals were attempted, the radio buttons innerHTML tag name's value displayed `name="question[object Object]"` in the HTML when the js expression `${questions[i]}` was added to the 'question' value. This meant that the question number was not being defined properly and could cause errors later.
+* The tutorial being followed for the 'quizDisplay' function did not use template literals which made the code difficult to read.  When template literals were attempted, the radio buttons innerHTML tag name's value displayed `name="question[object Object]"` in the HTML when the js expression `${questions[i]}` was added to the 'question' value. This meant that the question number was not being defined properly and could cause errors later.
 
 Solution: This was substituted with `[i]`, since in this case 'i' represents each question in the array.  
 
@@ -493,11 +493,12 @@ input[type="button"] {
 
 * Another issue that arose while manually testing on certain iOS devices was that when the radio button label in the quiz was selected, rather than displaying the selected option with the blue background and white text, the hover/focus background style was being displayed.  This changed the label text to white and it was hard to read with the displayed bright background colour.  
 
-Solution: The 'radio-label' hover/focus styles did not have a color property set to the dark color.  This was included, and made the text more readable when selected.  Since hover was not needed for the small screen sizes it was decided to move the hover/focus styles into a media query for minimum screen size of 760px.
+Solution: The 'radio-label' hover/focus styles did not have a color property set to the dark color.  This was included, and made the text more readable when selected.  Since hover was not needed for the small screen sizes it was decided to move the hover styles into a media query which applies the styles only on devices with hover capabilities.
+
 
 ## Bugs Left Unfixed
 
-Due to time constraints the following bugs have been noted to fix on a later date.
+Due to time constraints the following bugs have been noted to fix at a later date.
 
 * While keyboard navigation between the displayed exhibits seems to work well on Chrome, Safari and Edge it is still an issue on Firefox.  Having the 'Quiz' div as the focusable area seems to be adding an extra step for voice over on android.  This, however seems to be working well with iOS devices. 
 * Voice over on iOS does not read from the first element on the Score Display.
@@ -528,9 +529,9 @@ The live link can be found [here](https://monipar.github.io/quiz/)
 
 # Citation of Sources
 
-[Some code was adapted from Simple Steps Code quiz tutorial](https://simplestepscode.com/javascript-quiz-tutorial/)
+[Some code as cited within script.js was adapted from Simple Steps Code quiz tutorial](https://simplestepscode.com/javascript-quiz-tutorial/)
 
-[Some code was adapted from Site Point quiz tutorial](https://www.sitepoint.com/simple-javascript-quiz/)
+[Some code as cited within script.js was adapted from Site Point quiz tutorial](https://www.sitepoint.com/simple-javascript-quiz/)
 
 [The Shuffle Function was taken from this in-depth Guide](https://www.webmound.com/shuffle-javascript-array/)
 
@@ -552,9 +553,15 @@ The live link can be found [here](https://monipar.github.io/quiz/)
 
 [Using ARIA live regions](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions)
 
-[W3Schools JavaScript Tutorial](https://www.w3schools.com/js/)
+[W3Schools](https://www.w3schools.com/js/)
+
+[Code Institute lessons](https://codeinstitute.net/ie/)
+
+[MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
 [Stack Overflow](https://stackoverflow.com/)
+
+[CSS Tricks](https://css-tricks.com)
 
 ## Content
 
@@ -564,6 +571,10 @@ Quiz questions were taken from subjects taught in secondary school and checked w
 
 The Quizzified Logo was designed using [Brandcrowd.com](https://www.brandcrowd.com/)
 
+[Google fonts used throughout the website](https://fonts.google.com/)
+
+[Font Awesome Icons](https://fontawesome.com/icons)
+
 
 [Back to Top](#table-of-contents)
 
@@ -571,7 +582,11 @@ The Quizzified Logo was designed using [Brandcrowd.com](https://www.brandcrowd.c
 
 # Acknowledgements
 
-
+* My Code Institute Mentor, Samantha Dartnall, for the valuable professional guidance throughout the development of this project.
+* Kasia Boguucka for all the help and encouragement especially on Thursday mornings.
+* My brother Leon Parnis, the msletbb cohort and everyone on Slack for troubleshooting, motivation and assistance.
+* The students and staff of Rosmini Community School who have tested my quiz.
+* My partner Austen Donohoe for all the patience, grammar corrections and for keeping me sane. 
 
 [Back to Top](#table-of-contents)
 
