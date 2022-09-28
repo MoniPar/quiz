@@ -26,15 +26,16 @@
         <!-- Username input and submit button -->
         <form class="name-form">
             <div class="username-container">
-                <label for="user-input" class="input-label" 
-                    aria-label="Create a Username">Create a Username</label><br>
-                <input id="user-input" type="text" name="username" 
-                    required>
+                <label for="user-input" class="input-label">Create a Username</label><br>
+                <input id="user-input" type="text" name="username" title="Enter Username here"
+                    data-error="Username must have 3 or more characters" 
+                    aria-labelledby="user-input user-error" required>
+                <!-- Error Messages for Username Validation -->
+                <div class="feedback" aria-live="assertive" aria-relevant="additions removals"
+                    id="user-error"><p id="feedback"></p>
+                </div>
             </div>
-            <!-- Error Messages for Username Validation -->
-            <div class="feedback">
-                <p id="feedback"></p>
-            </div>
+            
             <!-- Start Quiz Button -->
             <div>
                 <input type="button" class="btn btn-start" value="Quizzify Me"

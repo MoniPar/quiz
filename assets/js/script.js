@@ -38,6 +38,8 @@ function validateUserInput(user) {
         // display errorMsg in feedback div on home page
         feedback.innerHTML = errorMsg;
         
+        username.setAttribute('data-has-error', 'true');
+        
         return false;
     }
     
@@ -374,8 +376,8 @@ function displayResults(correctTotal) {
     if (correctTotal == questions.length) {
         // display trophy icon
         icon.innerHTML = `
-        <i class="fa-solid fa-trophy" aria-hidden="true" title="Trophy" id="trophy">
-        <span class="sr-only">Trophy</span></i>
+        <i class="fa-solid fa-trophy" aria-hidden="true" title="Trophy" id="trophy"></i>
+        <span class="sr-only">Trophy</span>
         `;
         // display comment 
         comment.innerText = `
@@ -383,12 +385,12 @@ function displayResults(correctTotal) {
             ${user}
         `;
         
-        // if correct questions is between 6 and 9  
+        // if number of correct questions is between 6 and 9  
     } else if (correctTotal < (questions.length) && correctTotal > (questions.length / 2)) {
-        // display Medal
+        // display medal icon
         icon.innerHTML = `
-        <i class="fa-solid fa-award" aria-hidden="true" title="Medal" id="medal">
-        <span class="sr-only">Medal</span></i>
+        <i class="fa-solid fa-award" aria-hidden="true" title="Medal" id="medal"></i>
+        <span class="sr-only">Medal</span>
         `;
         // display comment
         comment.innerText = `
@@ -398,10 +400,10 @@ function displayResults(correctTotal) {
        
         // otherwise (5 or less questions correct)
     } else {
-        // display sad, crying face
+        // display crying face icon
         icon.innerHTML = `
-        <i class="fa-regular fa-face-sad-tear" aria-hidden="true" title="Crying face" id="crying">
-        <span class="sr-only">Crying Face</span></i>
+        <i class="fa-regular fa-face-sad-tear" aria-hidden="true" title="Crying face" id="crying"></i>
+        <span class="sr-only">Crying Face</span>
         `;
 
         // display comment
